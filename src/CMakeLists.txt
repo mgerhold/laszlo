@@ -1,0 +1,14 @@
+add_executable(
+        laszlo
+        main.cpp
+        lexer.hpp
+        lexer.cpp
+        token.hpp
+        overloaded.hpp
+        parser.cpp
+        parser.hpp
+        interpreter.cpp
+        interpreter.hpp
+        source_location.hpp
+        ostream_formatter.hpp
+)
