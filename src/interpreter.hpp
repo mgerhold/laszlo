@@ -2,4 +2,4 @@
 
 #include "parser.hpp"
 
-void interpret(AbstractSyntaxTree const& ast);
+void interpret(Statements const& program);

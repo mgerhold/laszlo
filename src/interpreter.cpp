@@ -24,8 +24,8 @@ static void interpret(Statement const& statement) {
     );
 }
 
-void interpret(AbstractSyntaxTree const& ast) {
-    for (auto const& statement : ast) {
+void interpret(Statements const& program) {
+    for (auto const& statement : program) {
         interpret(statement);
     }
 }

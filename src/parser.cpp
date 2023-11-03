@@ -1,4 +1,5 @@
 #include "parser.hpp"
+#include "parser_error.hpp"
 
 class ParserState final {
 private:
@@ -74,7 +75,7 @@ public:
     }
 };
 
-[[nodiscard]] AbstractSyntaxTree parse(Tokens const& tokens) {
+[[nodiscard]] Statements parse(Tokens const& tokens) {
     auto state = ParserState{ tokens };
-    return AbstractSyntaxTree{ state.statements() };
+    return Statements{ state.statements() };
 }

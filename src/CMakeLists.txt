@@ -11,4 +11,8 @@ add_executable(
         interpreter.hpp
         source_location.hpp
         ostream_formatter.hpp
+        parser_error.hpp
+        lexer_error.hpp
+        expression.hpp
+        statement.hpp
 )

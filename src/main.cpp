@@ -1,6 +1,8 @@
 #include "interpreter.hpp"
 #include "lexer.hpp"
+#include "lexer_error.hpp"
 #include "parser.hpp"
+#include "parser_error.hpp"
 #include <exception>
 #include <filesystem>
 #include <format>
@@ -25,6 +27,10 @@ int main() try {
     auto const tokens = Tokens::tokenize(filename, source);
     auto const ast = parse(tokens);
     interpret(ast);
+} catch (LexerError const& error) {
+    std::cerr << error.what() << '\n';
+} catch (ParserError const& error) {
+    std::cerr << error.what() << '\n';
 } catch (std::exception const& exception) {
-    std::cerr << "failed to compile!\n" << exception.what() << '\n';
+    std::cerr << "unexpected error: " << exception.what() << '\n';
 }
