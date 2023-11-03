@@ -10,6 +10,7 @@ enum class TokenType {
     RightParenthesis,
     Semicolon,
     StringLiteral,
+    IntegerLiteral,
     Identifier,
     EndOfInput,
 };
@@ -37,7 +38,10 @@ struct Token final {
                 os << "Semicolon";
                 break;
             case StringLiteral:
-                os << "StringLiteral(" << token.lexeme() << ")";
+                os << "StringLiteral(" << token.lexeme() << ')';
+                break;
+            case IntegerLiteral:
+                os << "IntegerLiteral(" << token.lexeme() << ')';
                 break;
             case Identifier:
                 os << "Identifier(" << token.lexeme() << ')';

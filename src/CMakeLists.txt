@@ -7,7 +7,6 @@ add_executable(
         overloaded.hpp
         parser.cpp
         parser.hpp
-        interpreter.cpp
         interpreter.hpp
         source_location.hpp
         ostream_formatter.hpp
@@ -15,4 +14,5 @@ add_executable(
         lexer_error.hpp
         expression.hpp
         statement.hpp
+        value.hpp
 )

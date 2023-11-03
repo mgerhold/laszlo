@@ -24,12 +24,12 @@ public:
         return m_tokens[m_current_index + 1];
     }
 
-    void advance() {
-        ++m_current_index;
+    Token advance() {
+        return m_tokens[m_current_index++];
     }
 
-    [[nodiscard]] std::vector<Statement> statements() {
-        auto statements = std::vector<Statement>{};
+    [[nodiscard]] std::vector<std::unique_ptr<Statement>> statements() {
+        auto statements = Statements{};
 
         while (not is_at_end()) {
             statements.push_back(statement());
@@ -38,12 +38,13 @@ public:
         return statements;
     }
 
-    [[nodiscard]] Expression expression() {
+    [[nodiscard]] std::unique_ptr<Expression> expression() {
         switch (current().type) {
             case TokenType::StringLiteral: {
-                auto literal = current();
-                advance();
-                return StringLiteral{ literal };
+                return std::make_unique<StringLiteral>(advance());
+            }
+            case TokenType::IntegerLiteral: {
+                return std::make_unique<IntegerLiteral>(advance());
             }
             default:
                 throw ParserError{ UnexpectedToken{ current() } };
@@ -57,7 +58,7 @@ public:
         advance();
     }
 
-    [[nodiscard]] Statement statement() {
+    [[nodiscard]] std::unique_ptr<Statement> statement() {
         using enum TokenType;
         switch (current().type) {
             case Identifier:
@@ -67,7 +68,7 @@ public:
                     auto expr = expression();
                     expect(TokenType::RightParenthesis);
                     expect(TokenType::Semicolon);
-                    return Print{ expr };
+                    return std::make_unique<Print>(std::move(expr));
                 }
             default:
                 throw ParserError{ UnexpectedToken{ current() } };

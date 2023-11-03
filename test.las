@@ -1,3 +1,3 @@
 print("Laszlo!");
-print("This is my very own hello world program!");
+print(42);
 print("This is some crazy 💀-stuff! ÄÖÜß");

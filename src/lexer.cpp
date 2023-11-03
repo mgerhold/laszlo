@@ -111,6 +111,19 @@ public:
                     continue;
                 }
 
+                if (std::isdigit(static_cast<unsigned char>(current))) {
+                    auto const start = state.m_current_index;
+                    auto length = std::size_t{ 1 };
+                    state.advance();
+
+                    while (not state.is_at_end() and std::isdigit(static_cast<unsigned char>(state.current()))) {
+                        ++length;
+                        state.advance();
+                    }
+                    add_token(TokenType::IntegerLiteral, start, length);
+                    continue;
+                }
+
                 if (is_valid_identifier_start(current)) {
                     auto const start = state.m_current_index;
                     auto length = std::size_t{ 1 };

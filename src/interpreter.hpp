@@ -2,4 +2,8 @@
 
 #include "parser.hpp"
 
-void interpret(Statements const& program);
+inline void interpret(Statements const& program) {
+    for (auto const& statement : program) {
+        statement->execute();
+    }
+}
