@@ -63,5 +63,5 @@
     if (not other->is_integer_value()) {
         return BasicValue::assign(other->clone()); // throws
     }
-    return other->clone();
+    return other;
 }

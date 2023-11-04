@@ -1,6 +1,7 @@
 #pragma once
 
 #include "value.hpp"
+#include <list>
 #include <string>
 #include <unordered_map>
 #include <vector>
@@ -9,47 +10,51 @@ using Scope = std::unordered_map<std::string, Value>;
 
 class ScopeStack {
 private:
-    std::vector<std::unique_ptr<Scope>> m_scopes;
+    /* It's not possible to use an std::vector<Scope> here since MSVC's standard library
+     * implementation of std::unordered_map doesn't seem to have its constructors marked
+     * noexcept.
+     */
+    std::list<Scope> m_scopes;
 
 public:
     ScopeStack() {
-        m_scopes.push_back(std::make_unique<Scope>());
+        m_scopes.emplace_back();
     }
 
     [[nodiscard]] Scope& top() {
-        return *m_scopes.back();
+        return m_scopes.back();
     }
 
     [[nodiscard]] Scope const& top() const {
-        return *m_scopes.back();
+        return m_scopes.back();
     }
 
     void push(Scope scope) {
-        m_scopes.push_back(std::make_unique<Scope>(std::move(scope)));
+        m_scopes.push_back(std::move(scope));
     }
 
-    [[nodiscard]] std::unique_ptr<Scope> pop() {
+    [[nodiscard]] Scope pop() {
         auto result = std::move(m_scopes.back());
         m_scopes.pop_back();
-        return std::move(result);
+        return result;
     }
 
-    [[nodiscard]] Value* lookup(std::string const& name) const {
+    [[nodiscard]] Value* lookup(std::string const& name) {
         // todo: refactor return value to tl::optional<Value&>
-        for (auto it = m_scopes.crbegin(); it != m_scopes.crend(); ++it) {
-            auto const find_iterator = (*it)->find(name);
-            if (find_iterator != (*it)->end()) {
+        for (auto scope_iterator = m_scopes.rbegin(); scope_iterator != m_scopes.rend(); ++scope_iterator) {
+            auto find_iterator = scope_iterator->find(name);
+            if (find_iterator != scope_iterator->end()) {
                 return &find_iterator->second;
             }
         }
         return nullptr;
     }
 
-    [[nodiscard]] std::size_t const size() const {
+    [[nodiscard]] std::size_t size() const {
         return m_scopes.size();
     }
 
-    [[nodiscard]] void truncate(std::size_t const length) {
+    void truncate(std::size_t const length) {
         assert(length <= m_scopes.size());
         m_scopes.resize(length);
     }

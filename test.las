@@ -1,3 +1,7 @@
+let n = 10;
+n = n + 1;
+assert(n == 11);
+
 let a = 0;
 let b = 1;
 let num_iterations = 20;

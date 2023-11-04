@@ -16,7 +16,7 @@ protected:
 public:
     virtual ~Expression() = default;
 
-    [[nodiscard]] virtual Value evaluate(ScopeStack const& scope_stack) const = 0;
+    [[nodiscard]] virtual Value evaluate(ScopeStack& scope_stack) const = 0;
 
     [[nodiscard]] virtual SourceLocation source_location() const = 0;
 };
@@ -28,7 +28,7 @@ private:
 public:
     explicit IntegerLiteral(Token token) : m_token{ token } { }
 
-    [[nodiscard]] Value evaluate([[maybe_unused]] ScopeStack const& scope_stack) const override {
+    [[nodiscard]] Value evaluate([[maybe_unused]] ScopeStack& scope_stack) const override {
         auto stream = std::stringstream{};
         stream << m_token.lexeme();
         auto value = IntegerValue::ValueType{};
@@ -49,7 +49,7 @@ private:
 public:
     explicit StringLiteral(Token token) : m_token{ token } { }
 
-    [[nodiscard]] Value evaluate([[maybe_unused]] ScopeStack const& scope_stack) const override {
+    [[nodiscard]] Value evaluate([[maybe_unused]] ScopeStack& scope_stack) const override {
         return make_string_value(std::string{ m_token.lexeme().substr(1, m_token.lexeme().length() - 2) });
     }
 
@@ -65,7 +65,7 @@ private:
 public:
     explicit BoolLiteral(Token token) : m_token{ token } { }
 
-    [[nodiscard]] Value evaluate(ScopeStack const& scope_stack) const override {
+    [[nodiscard]] Value evaluate(ScopeStack& scope_stack) const override {
         if (m_token.lexeme() == "true") {
             return make_bool_value(true);
         } else if (m_token.lexeme() == "false") {
@@ -91,7 +91,7 @@ public:
         : m_operator_token{ operator_token },
           m_operand{ std::move(operand) } { }
 
-    [[nodiscard]] Value evaluate(ScopeStack const& scope_stack) const override {
+    [[nodiscard]] Value evaluate(ScopeStack& scope_stack) const override {
         switch (m_operator_token.type) {
             case TokenType::Plus:
                 return m_operand->evaluate(scope_stack)->unary_plus();
@@ -138,7 +138,7 @@ public:
           m_kind{ kind },
           m_right{ std::move(right) } { }
 
-    [[nodiscard]] Value evaluate(ScopeStack const& scope_stack) const override {
+    [[nodiscard]] Value evaluate(ScopeStack& scope_stack) const override {
         switch (m_kind) {
             case Kind::Plus:
                 return m_left->evaluate(scope_stack)->binary_plus(m_right->evaluate(scope_stack));
@@ -180,8 +180,8 @@ private:
 public:
     explicit Name(Token name) : m_name{ name } { }
 
-    [[nodiscard]] Value evaluate(ScopeStack const& scope_stack) const override {
-        auto const variable = scope_stack.lookup(std::string{ m_name.lexeme() });
+    [[nodiscard]] Value evaluate(ScopeStack& scope_stack) const override {
+        auto variable = scope_stack.lookup(std::string{ m_name.lexeme() });
         if (variable == nullptr) {
             throw UndefinedReference{ m_name };
         }

@@ -167,7 +167,8 @@ public:
     [[nodiscard]] Value less_than(Value const& other) const override;
 
     [[nodiscard]] Value less_or_equals(Value const& other) const override;
-    Value assign(Value other) const override;
+
+    [[nodiscard]] Value assign(Value other) const override;
 };
 
 class StringValue : public BasicValue {
