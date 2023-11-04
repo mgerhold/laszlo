@@ -90,6 +90,9 @@ public:
           m_initializer{ std::move(initializer) } { }
 
     void execute(ScopeStack& scope_stack) const override {
+        if (m_name.lexeme() == "_") {
+            return;
+        }
         auto const& [iterator, inserted] =
                 scope_stack.top().insert({ std::string{ m_name.lexeme() }, m_initializer->evaluate(scope_stack) });
         if (not inserted) {
@@ -232,7 +235,9 @@ public:
                 break;
             }
             auto loop_scope = Scope{};
-            loop_scope.insert({ std::string{ m_loop_variable.lexeme() }, std::move(value) });
+            if (m_loop_variable.lexeme() != "_") {
+                loop_scope.insert({ std::string{ m_loop_variable.lexeme() }, std::move(value) });
+            }
             scope_stack.push(std::move(loop_scope));
             current_iterator = std::move(iterator);
             try {

@@ -34,13 +34,13 @@ int main(int argc, const char** argv) try {
     auto const ast = parse(tokens);
     interpret(ast);
 } catch (LexerError const& error) {
-    std::cerr << error.what() << '\n';
+    std::cerr << '\n' << error.what() << '\n';
 } catch (ParserError const& error) {
-    std::cerr << error.what() << '\n';
+    std::cerr << '\n' << error.what() << '\n';
 } catch (RuntimeError const& error) {
-    std::cerr << error.what() << '\n';
+    std::cerr << '\n' << error.what() << '\n';
 } catch (ControlFlowException const& error) {
-    std::cerr << error.what() << '\n';
+    std::cerr << '\n' << error.what() << '\n';
 } catch (std::exception const& exception) {
-    std::cerr << "unexpected error: " << exception.what() << '\n';
+    std::cerr << "\nunexpected error: " << exception.what() << '\n';
 }
