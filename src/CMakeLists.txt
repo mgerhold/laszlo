@@ -15,4 +15,7 @@ add_executable(
         expression.hpp
         statement.hpp
         value.hpp
+        runtime_error.hpp
+        scope.hpp
+        value.cpp
 )

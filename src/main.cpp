@@ -3,6 +3,7 @@
 #include "lexer_error.hpp"
 #include "parser.hpp"
 #include "parser_error.hpp"
+#include "runtime_error.hpp"
 #include <exception>
 #include <filesystem>
 #include <format>
@@ -30,6 +31,8 @@ int main() try {
 } catch (LexerError const& error) {
     std::cerr << error.what() << '\n';
 } catch (ParserError const& error) {
+    std::cerr << error.what() << '\n';
+} catch (RuntimeError const& error) {
     std::cerr << error.what() << '\n';
 } catch (std::exception const& exception) {
     std::cerr << "unexpected error: " << exception.what() << '\n';

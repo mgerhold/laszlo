@@ -81,6 +81,66 @@ public:
                 add_token(TokenType::Semicolon);
                 state.advance();
                 break;
+            case '+':
+                add_token(TokenType::Plus);
+                state.advance();
+                break;
+            case '-':
+                add_token(TokenType::Minus);
+                state.advance();
+                break;
+            case '=': {
+                auto const start = state.m_current_index;
+                state.advance();
+                if (state.current() == '=') {
+                    state.advance();
+                    add_token(TokenType::EqualsEquals, start, 2);
+                } else {
+                    add_token(TokenType::Equals);
+                }
+                break;
+            }
+            case '{':
+                add_token(TokenType::LeftCurlyBracket);
+                state.advance();
+                break;
+            case '}':
+                add_token(TokenType::RightCurlyBracket);
+                state.advance();
+                break;
+            case '<': {
+                auto const start = state.m_current_index;
+                state.advance();
+                if (state.current() == '=') {
+                    state.advance();
+                    add_token(TokenType::LessOrEqual, start, 2);
+                } else {
+                    add_token(TokenType::LessThan, start, 1);
+                }
+                break;
+            }
+            case '>': {
+                auto const start = state.m_current_index;
+                state.advance();
+                if (state.current() == '=') {
+                    state.advance();
+                    add_token(TokenType::GreaterOrEqual, start, 2);
+                } else {
+                    add_token(TokenType::GreaterThan, start, 1);
+                }
+                break;
+            }
+            case '!': {
+                auto const start = state.m_current_index;
+                state.advance();
+                if (state.current() == '=') {
+                    state.advance();
+                    add_token(TokenType::ExclamationMarkEquals, start, 2);
+                } else {
+                    add_token(TokenType::ExclamationMark, start, 1);
+                }
+                break;
+            }
             case '"': {
                 auto const start = state.m_current_index;
                 auto length = 1;

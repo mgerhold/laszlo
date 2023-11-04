@@ -12,6 +12,18 @@ enum class TokenType {
     StringLiteral,
     IntegerLiteral,
     Identifier,
+    Plus,
+    Minus,
+    Equals,
+    LeftCurlyBracket,
+    RightCurlyBracket,
+    GreaterThan,
+    GreaterOrEqual,
+    LessThan,
+    LessOrEqual,
+    EqualsEquals,
+    ExclamationMarkEquals,
+    ExclamationMark,
     EndOfInput,
 };
 
@@ -29,30 +41,42 @@ struct Token final {
         using enum TokenType;
         switch (token.type) {
             case LeftParenthesis:
-                os << "LeftParenthesis";
-                break;
+                return os << "LeftParenthesis";
             case RightParenthesis:
-                os << "RightParenthesis";
-                break;
+                return os << "RightParenthesis";
             case Semicolon:
-                os << "Semicolon";
-                break;
+                return os << "Semicolon";
             case StringLiteral:
-                os << "StringLiteral(" << token.lexeme() << ')';
-                break;
+                return os << "StringLiteral(" << token.lexeme() << ')';
             case IntegerLiteral:
-                os << "IntegerLiteral(" << token.lexeme() << ')';
-                break;
+                return os << "IntegerLiteral(" << token.lexeme() << ')';
             case Identifier:
-                os << "Identifier(" << token.lexeme() << ')';
-                break;
+                return os << "Identifier(" << token.lexeme() << ')';
             case EndOfInput:
-                os << "EndOfInput";
-                break;
+                return os << "EndOfInput";
+            case Plus:
+                return os << "Plus";
+            case Minus:
+                return os << "Minus";
+            case Equals:
+                return os << "Equals";
+            case LeftCurlyBracket:
+                return os << "LeftCurlyBracket";
+            case RightCurlyBracket:
+                return os << "RightCurlyBracket";
+            case GreaterThan:
+                return os << "GreaterThan";
+            case GreaterOrEqual:
+                return os << "GreaterOrEqual";
+            case LessThan:
+                return os << "LessThan";
+            case LessOrEqual:
+                return os << "LessOrEqual";
+            case EqualsEquals:
+                return os << "EqualsEquals";
             default:
                 assert(false and "unreachable");
-                break;
+                return os;
         }
-        return os;
     }
 };
