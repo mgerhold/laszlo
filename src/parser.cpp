@@ -211,9 +211,10 @@ public:
     [[nodiscard]] std::unique_ptr<Expression> unary_operator() {
         switch (current().type) {
             case TokenType::Plus:
-                return std::make_unique<UnaryOperator>(advance(), expression());
-            case TokenType::Minus:
-                return std::make_unique<UnaryOperator>(advance(), expression());
+            case TokenType::Minus: {
+                auto const operator_token = advance();
+                return std::make_unique<UnaryOperator>(operator_token, primary());
+            }
             default:
                 return primary();
         }
