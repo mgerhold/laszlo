@@ -281,6 +281,8 @@ public:
     [[nodiscard]] std::unique_ptr<Statement> statement() {
         using enum TokenType;
         switch (current().type) {
+            case LeftCurlyBracket:
+                return block();
             case Identifier:
                 if (current().lexeme() == "print") {
                     advance(); // consume "print"
@@ -341,17 +343,19 @@ public:
                     auto iterator = expression();
                     auto body = block();
                     return std::make_unique<For>(loop_variable, std::move(iterator), std::move(body));
-                } else {
+                } else if (peek().type == TokenType::Equals) {
                     auto lvalue = advance();
                     expect(TokenType::Equals);
                     auto value = expression();
                     expect(TokenType::Semicolon);
                     return std::make_unique<Assignment>(lvalue, std::move(value));
                 }
-            case LeftCurlyBracket:
-                return block();
-            default:
-                throw ParserError{ UnexpectedToken{ current() } };
+                [[fallthrough]];
+            default: {
+                auto expr = expression();
+                expect(TokenType::Semicolon);
+                return std::make_unique<ExpressionStatement>(std::move(expr));
+            }
         }
     }
 

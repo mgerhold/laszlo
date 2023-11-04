@@ -17,6 +17,18 @@ public:
 
 using Statements = std::vector<std::unique_ptr<Statement>>;
 
+class ExpressionStatement final : public Statement {
+private:
+    std::unique_ptr<Expression> m_expression;
+
+public:
+    explicit ExpressionStatement(std::unique_ptr<Expression> expression) : m_expression{ std::move(expression) } { }
+
+    void execute(ScopeStack& scope_stack) const override {
+        std::ignore = m_expression->evaluate(scope_stack);
+    }
+};
+
 class Print final : public Statement {
 private:
     std::unique_ptr<Expression> m_expression;
