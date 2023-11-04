@@ -199,6 +199,13 @@ public:
                     expect(TokenType::RightParenthesis);
                     expect(TokenType::Semicolon);
                     return std::make_unique<Print>(std::move(expr));
+                } else if (current().lexeme() == "println") {
+                    advance(); // consume "print"
+                    expect(TokenType::LeftParenthesis);
+                    auto expr = expression();
+                    expect(TokenType::RightParenthesis);
+                    expect(TokenType::Semicolon);
+                    return std::make_unique<Println>(std::move(expr));
                 } else if (current().lexeme() == "let") {
                     advance(); // consume "let"
                     auto name = expect(TokenType::Identifier);
