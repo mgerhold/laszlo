@@ -197,6 +197,10 @@ public:
                 return m_left->evaluate(scope_stack)->logical_or(m_right->evaluate(scope_stack));
             case Kind::Mod:
                 return m_left->evaluate(scope_stack)->mod(m_right->evaluate(scope_stack));
+            case Kind::Multiply:
+                return m_left->evaluate(scope_stack)->multiply(m_right->evaluate(scope_stack));
+            case Kind::Divide:
+                return m_left->evaluate(scope_stack)->divide(m_right->evaluate(scope_stack));
             default:
                 assert(false and "unreachable");
                 return {};
