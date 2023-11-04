@@ -3,6 +3,7 @@
 #include "runtime_error.hpp"
 #include <cstdint>
 #include <format>
+#include <list>
 #include <memory>
 #include <optional>
 #include <string>
@@ -12,6 +13,7 @@ class BasicValue;
 class Integer;
 class String;
 class Bool;
+class Array;
 class Iterator;
 
 using Value = std::unique_ptr<BasicValue>;
@@ -58,6 +60,14 @@ public:
 
     [[nodiscard]] virtual Bool const& as_bool_value() const {
         throw InvalidValueCast{ "Bool" };
+    }
+
+    [[nodiscard]] virtual bool is_array() const {
+        return false;
+    }
+
+    [[nodiscard]] virtual Array const& as_array() const {
+        throw InvalidValueCast{ "Array" };
     }
 
     [[nodiscard]] virtual bool is_iterator() const {
@@ -142,7 +152,7 @@ public:
         throw OperationNotSupportedByType{ "range", type_name(), other->type_name() };
     }
 
-    [[nodiscard]] virtual char const* type_name() const = 0;
+    [[nodiscard]] virtual std::string type_name() const = 0;
 
     [[nodiscard]] virtual Value clone() const = 0;
 };
@@ -173,7 +183,7 @@ public:
         return std::to_string(value());
     }
 
-    [[nodiscard]] char const* type_name() const noexcept override {
+    [[nodiscard]] std::string type_name() const noexcept override {
         return "I32";
     }
 
@@ -242,7 +252,7 @@ public:
         return value();
     }
 
-    [[nodiscard]] char const* type_name() const noexcept override {
+    [[nodiscard]] std::string type_name() const noexcept override {
         return "String";
     }
 
@@ -275,7 +285,7 @@ public:
         }
     }
 
-    [[nodiscard]] char const* type_name() const override {
+    [[nodiscard]] std::string type_name() const override {
         return "Bool";
     }
 
@@ -300,6 +310,84 @@ public:
     [[nodiscard]] Value logical_or(Value const& other) const override;
 };
 
+class Array : public BasicValue {
+public:
+    using ValueType = std::vector<Value>;
+private:
+    ValueType m_elements;
+
+public:
+    explicit Array(std::vector<Value> elements) : m_elements{ std::move(elements) } { }
+
+    [[nodiscard]] bool is_array() const override {
+        return true;
+    }
+
+    [[nodiscard]] Array const& as_array() const override {
+        return *this;
+    }
+
+    [[nodiscard]] ValueType const& value() const {
+        return m_elements;
+    }
+
+    [[nodiscard]] std::string string_representation() const override {
+        auto result = std::string{ "[" };
+        for (std::size_t i = 0; i < m_elements.size(); ++i) {
+            result += m_elements.at(i)->string_representation();
+            if (i < m_elements.size() - 1) {
+                result += ", ";
+            }
+        }
+        return result + "]";
+    }
+
+    [[nodiscard]] std::string type_name() const override {
+        if (m_elements.empty()) {
+            return "Array(?)";
+        }
+        return std::format("Array({})", m_elements.front()->type_name());
+    }
+
+    [[nodiscard]] Value clone() const override {
+        auto values = std::vector<Value>{};
+        values.reserve(m_elements.size());
+        for (auto const& value : m_elements) {
+            values.push_back(value->clone());
+        }
+        return std::make_unique<Array>(std::move(values));
+    }
+
+    [[nodiscard]] Value binary_plus(Value const& other) const override {
+        if (not other->is_array()) {
+            return BasicValue::binary_plus(other); // throws
+        }
+
+        if (value().empty()) {
+            return other->clone();
+        }
+
+        if (other->as_array().value().empty()) {
+            return clone();
+        }
+
+        if (type_name() != other->type_name()) {
+            return BasicValue::binary_plus(other); // throws
+        }
+
+        auto values = ValueType{};
+        values.reserve(value().size() + other->as_array().value().size());
+        for (const auto& current : value()) {
+            values.push_back(current->clone());
+        }
+        for (const auto& current : other->as_array().value()) {
+            values.push_back(current->clone());
+        }
+
+        return std::make_unique<Array>(std::move(values));
+    }
+};
+
 class Iterator : public BasicValue {
 public:
     [[nodiscard]] bool is_iterator() const final {
@@ -321,7 +409,7 @@ public:
         return "Sentinel";
     }
 
-    [[nodiscard]] char const* type_name() const override {
+    [[nodiscard]] std::string type_name() const override {
         return "Sentinel";
     }
 
@@ -375,7 +463,7 @@ public:
         return std::format("{}..{}", m_start->string_representation(), m_end->string_representation());
     }
 
-    [[nodiscard]] char const* type_name() const override {
+    [[nodiscard]] std::string type_name() const override {
         return "Range";
     }
 

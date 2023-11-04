@@ -81,6 +81,10 @@ public:
                 add_token(TokenType::Semicolon);
                 state.advance();
                 break;
+            case ',':
+                add_token(TokenType::Comma);
+                state.advance();
+                break;
             case '+':
                 add_token(TokenType::Plus);
                 state.advance();
@@ -106,6 +110,14 @@ public:
                 break;
             case '}':
                 add_token(TokenType::RightCurlyBracket);
+                state.advance();
+                break;
+            case '[':
+                add_token(TokenType::LeftSquareBracket);
+                state.advance();
+                break;
+            case ']':
+                add_token(TokenType::RightSquareBracket);
                 state.advance();
                 break;
             case '<': {

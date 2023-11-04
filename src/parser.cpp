@@ -223,11 +223,16 @@ public:
         switch (current().type) {
             case TokenType::StringLiteral:
                 return std::make_unique<StringLiteral>(advance());
-            case TokenType::IntegerLiteral: {
+            case TokenType::IntegerLiteral:
                 return std::make_unique<IntegerLiteral>(advance());
+            case TokenType::LeftSquareBracket: {
+                auto const opening_bracket = advance(); // consume "["
+                auto values = expression_list(TokenType::RightSquareBracket);
+                auto const closing_bracket = advance(); // consume "]"
+                return std::make_unique<ArrayLiteral>(opening_bracket, std::move(values), closing_bracket);
             }
             case TokenType::LeftParenthesis: {
-                advance();
+                advance(); // consume "("
                 auto expr = expression();
                 expect(TokenType::RightParenthesis);
                 return expr;
@@ -242,6 +247,18 @@ public:
             default:
                 throw ParserError{ UnexpectedToken{ current() } };
         }
+    }
+
+    [[nodiscard]] std::vector<std::unique_ptr<Expression>> expression_list(TokenType const terminating_token) {
+        auto expressions = std::vector<std::unique_ptr<Expression>>{};
+        while (not is_at_end() and current().type != terminating_token) {
+            expressions.push_back(expression());
+            if (current().type != TokenType::Comma) {
+                break;
+            }
+            advance(); // consume ","
+        }
+        return expressions;
     }
 
     Token expect(TokenType type) {
@@ -279,9 +296,9 @@ public:
                 } else if (current().lexeme() == "println") {
                     advance(); // consume "print"
                     expect(TokenType::LeftParenthesis);
-                    auto expr = std::unique_ptr<Expression>{
-                        current().type == TokenType::RightParenthesis ? nullptr : expression()
-                    };
+                    auto expr =
+                            std::unique_ptr<Expression>{ current().type == TokenType::RightParenthesis ? nullptr
+                                                                                                       : expression() };
                     expect(TokenType::RightParenthesis);
                     expect(TokenType::Semicolon);
                     return std::make_unique<Println>(std::move(expr));

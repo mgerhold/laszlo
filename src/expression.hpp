@@ -76,6 +76,47 @@ public:
     }
 };
 
+class ArrayLiteral final : public Expression {
+private:
+    Token m_opening_bracket;
+    std::vector<std::unique_ptr<Expression>> m_values;
+    Token m_closing_bracket;
+
+public:
+    ArrayLiteral(
+            Token const opening_bracket,
+            std::vector<std::unique_ptr<Expression>> values,
+            Token const closing_bracket
+    )
+        : m_opening_bracket{ opening_bracket },
+          m_values{ std::move(values) },
+          m_closing_bracket{ closing_bracket } { }
+
+    [[nodiscard]] Value evaluate(ScopeStack& scope_stack) const override {
+        auto elements = std::vector<Value>{};
+        elements.reserve(m_values.size());
+        for (auto const& value : m_values) {
+            elements.push_back(value->evaluate(scope_stack));
+        }
+
+        if (not elements.empty()) {
+            for (std::size_t i = 1; i < elements.size(); ++i) {
+                if (elements.at(i)->type_name() != elements.front()->type_name()) {
+                    throw TypeMismatch{ m_values.at(i)->source_location(),
+                                        elements.front()->type_name(),
+                                        elements.at(i)->type_name() };
+                }
+            }
+        }
+
+        return std::make_unique<Array>(std::move(elements));
+    }
+
+    [[nodiscard]] SourceLocation source_location() const override {
+        return SourceLocation::from_range(m_opening_bracket.source_location, m_closing_bracket.source_location);
+    }
+};
+
 class UnaryOperator final : public Expression {
 private:
     Token m_operator_token;

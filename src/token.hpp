@@ -9,6 +9,7 @@ enum class TokenType {
     LeftParenthesis,
     RightParenthesis,
     Semicolon,
+    Comma,
     StringLiteral,
     IntegerLiteral,
     Identifier,
@@ -19,6 +20,8 @@ enum class TokenType {
     Equals,
     LeftCurlyBracket,
     RightCurlyBracket,
+    LeftSquareBracket,
+    RightSquareBracket,
     GreaterThan,
     GreaterOrEqual,
     LessThan,
@@ -52,42 +55,59 @@ struct Token final {
     }
 
     friend std::ostream& operator<<(std::ostream& os, Token token) {
-        using enum TokenType;
         switch (token.type) {
-            case LeftParenthesis:
+            case TokenType::LeftParenthesis:
                 return os << "LeftParenthesis";
-            case RightParenthesis:
+            case TokenType::RightParenthesis:
                 return os << "RightParenthesis";
-            case Semicolon:
+            case TokenType::Semicolon:
                 return os << "Semicolon";
-            case StringLiteral:
+            case TokenType::Comma:
+                return os << "Comma";
+            case TokenType::StringLiteral:
                 return os << "StringLiteral(" << token.lexeme() << ')';
-            case IntegerLiteral:
+            case TokenType::IntegerLiteral:
                 return os << "IntegerLiteral(" << token.lexeme() << ')';
-            case Identifier:
+            case TokenType::Identifier:
                 return os << "Identifier(" << token.lexeme() << ')';
-            case EndOfInput:
+            case TokenType::EndOfInput:
                 return os << "EndOfInput";
-            case Plus:
+            case TokenType::Plus:
                 return os << "Plus";
-            case Minus:
+            case TokenType::Minus:
                 return os << "Minus";
-            case Equals:
+            case TokenType::Equals:
                 return os << "Equals";
-            case LeftCurlyBracket:
+            case TokenType::LeftCurlyBracket:
                 return os << "LeftCurlyBracket";
-            case RightCurlyBracket:
+            case TokenType::RightCurlyBracket:
                 return os << "RightCurlyBracket";
-            case GreaterThan:
+            case TokenType::GreaterThan:
                 return os << "GreaterThan";
-            case GreaterOrEqual:
+            case TokenType::GreaterOrEqual:
                 return os << "GreaterOrEqual";
-            case LessThan:
+            case TokenType::LessThan:
                 return os << "LessThan";
-            case LessOrEqual:
+            case TokenType::LessOrEqual:
                 return os << "LessOrEqual";
-            case EqualsEquals:
+            case TokenType::EqualsEquals:
                 return os << "EqualsEquals";
+            case TokenType::Asterisk:
+                return os << "Asterisk";
+            case TokenType::Slash:
+                return os << "Slash";
+            case TokenType::LeftSquareBracket:
+                return os << "LeftSquareBracket";
+            case TokenType::RightSquareBracket:
+                return os << "RightSquareBracket";
+            case TokenType::ExclamationMarkEquals:
+                return os << "ExclamationMarkEquals";
+            case TokenType::ExclamationMark:
+                return os << "ExclamationMark";
+            case TokenType::Dot:
+                return os << "Dot";
+            case TokenType::DotDot:
+                return os << "DotDot";
             default:
                 assert(false and "unreachable");
                 return os;
