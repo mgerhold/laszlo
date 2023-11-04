@@ -268,14 +268,20 @@ public:
                 if (current().lexeme() == "print") {
                     advance(); // consume "print"
                     expect(TokenType::LeftParenthesis);
-                    auto expr = expression();
+                    // clang-format off
+                    auto expr = std::unique_ptr<Expression>{
+                            current().type == TokenType::RightParenthesis ? nullptr : expression()
+                        };
+                    // clang-format on
                     expect(TokenType::RightParenthesis);
                     expect(TokenType::Semicolon);
                     return std::make_unique<Print>(std::move(expr));
                 } else if (current().lexeme() == "println") {
                     advance(); // consume "print"
                     expect(TokenType::LeftParenthesis);
-                    auto expr = expression();
+                    auto expr = std::unique_ptr<Expression>{
+                        current().type == TokenType::RightParenthesis ? nullptr : expression()
+                    };
                     expect(TokenType::RightParenthesis);
                     expect(TokenType::Semicolon);
                     return std::make_unique<Println>(std::move(expr));

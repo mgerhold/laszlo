@@ -25,6 +25,9 @@ public:
     explicit Print(std::unique_ptr<Expression> expression) : m_expression{ std::move(expression) } { }
 
     void execute(ScopeStack& scope_stack) const override {
+        if (m_expression == nullptr) {
+            return;
+        }
         std::cout << m_expression->evaluate(scope_stack)->string_representation();
     }
 };
@@ -37,6 +40,10 @@ public:
     explicit Println(std::unique_ptr<Expression> expression) : m_expression{ std::move(expression) } { }
 
     void execute(ScopeStack& scope_stack) const override {
+        if (m_expression == nullptr) {
+            std::cout << '\n';
+            return;
+        }
         std::cout << m_expression->evaluate(scope_stack)->string_representation() << '\n';
     }
 };
