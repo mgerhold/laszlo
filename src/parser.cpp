@@ -299,9 +299,11 @@ public:
                 } else if (current().lexeme() == "println") {
                     advance(); // consume "print"
                     expect(TokenType::LeftParenthesis);
-                    auto expr =
-                            std::unique_ptr<Expression>{ current().type == TokenType::RightParenthesis ? nullptr
-                                                                                                       : expression() };
+                    // clang-format off
+                    auto expr = std::unique_ptr<Expression>{
+                            current().type == TokenType::RightParenthesis ? nullptr : expression()
+                        };
+                    // clang-format on                                                                                                       : expression() };
                     expect(TokenType::RightParenthesis);
                     expect(TokenType::Semicolon);
                     return std::make_unique<Println>(std::move(expr));
