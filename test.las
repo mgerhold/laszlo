@@ -8,7 +8,10 @@ let num_iterations = 20;
 let i = 0;
 
 println("The first " + num_iterations + " numbers of the Fibonacci sequence:");
-while i < num_iterations {
+while true {
+    if i >= num_iterations {
+        break;
+    }
     if i < 9 {
         print(" ");
     }
@@ -17,4 +20,8 @@ while i < num_iterations {
     a = b;
     b = next;
     i = i + 1;
+}
+
+for i in 0..10 {
+
 }

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "control_flow.hpp"
 #include "expression.hpp"
 #include "scope.hpp"
 #include <list>
@@ -162,7 +163,37 @@ public:
             if (not condition->as_bool_value().value()) {
                 break;
             }
-            m_body->execute(scope_stack);
+            try {
+                m_body->execute(scope_stack);
+            } catch (BreakException const&) {
+                break;
+            } catch (ContinueException const&) {
+                // do nothing -> loop once more
+            }
         }
+    }
+};
+
+class Break : public Statement {
+private:
+    Token m_break_token;
+
+public:
+    explicit Break(Token const break_token) : m_break_token{ break_token } { }
+
+    void execute(ScopeStack& scope_stack) const override {
+        throw BreakException{ m_break_token };
+    }
+};
+
+class Continue : public Statement {
+private:
+    Token m_continue_token;
+
+public:
+    explicit Continue(Token const continue_token) : m_continue_token{ continue_token } { }
+
+    void execute(ScopeStack& scope_stack) const override {
+        throw BreakException{ m_continue_token };
     }
 };

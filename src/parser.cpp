@@ -227,6 +227,14 @@ public:
                     auto condition = expression();
                     auto body = block();
                     return std::make_unique<While>(std::move(condition), std::move(body));
+                } else if (current().lexeme() == "break") {
+                    auto const break_token = advance();
+                    expect(TokenType::Semicolon);
+                    return std::make_unique<Break>(break_token);
+                } else if (current().lexeme() == "continue") {
+                    auto const continue_token = advance();
+                    expect(TokenType::Semicolon);
+                    return std::make_unique<Continue>(continue_token);
                 } else {
                     auto lvalue = advance();
                     expect(TokenType::Equals);

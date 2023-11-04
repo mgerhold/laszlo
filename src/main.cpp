@@ -34,6 +34,8 @@ int main() try {
     std::cerr << error.what() << '\n';
 } catch (RuntimeError const& error) {
     std::cerr << error.what() << '\n';
+} catch (ControlFlowException const& error) {
+    std::cerr << error.what() << '\n';
 } catch (std::exception const& exception) {
     std::cerr << "unexpected error: " << exception.what() << '\n';
 }
