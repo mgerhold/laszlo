@@ -14,6 +14,8 @@ enum class TokenType {
     Identifier,
     Plus,
     Minus,
+    Asterisk,
+    Slash,
     Equals,
     LeftCurlyBracket,
     RightCurlyBracket,
@@ -24,6 +26,8 @@ enum class TokenType {
     EqualsEquals,
     ExclamationMarkEquals,
     ExclamationMark,
+    Dot,
+    DotDot,
     EndOfInput,
 };
 
@@ -35,6 +39,16 @@ struct Token final {
 
     [[nodiscard]] std::string_view lexeme() const {
         return source_location.text();
+    }
+
+    [[nodiscard]] std::int32_t parse_integer() const {
+        assert(type == TokenType::IntegerLiteral);
+        auto stream = std::stringstream{};
+        stream << lexeme();
+        auto result = std::int32_t{};
+        stream >> result;
+        assert(stream);
+        return result;
     }
 
     friend std::ostream& operator<<(std::ostream& os, Token token) {
@@ -80,3 +94,6 @@ struct Token final {
         }
     }
 };
+
+template<>
+struct std::formatter<Token> : ostream_formatter { };

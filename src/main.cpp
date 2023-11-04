@@ -22,8 +22,13 @@
     return std::move(stream).str();
 }
 
-int main() try {
-    auto filename = std::string_view{ "test.las" };
+int main(int argc, const char** argv) try {
+    assert(argc >= 1);
+    if (argc != 2) {
+        std::cerr << std::format("error: no input file\nusage: {} <INPUT_FILENAME>\n", argv[0]);
+        return EXIT_FAILURE;
+    }
+    auto filename = std::string_view{ argv[1] };
     auto const source = read_file(filename);
     auto const tokens = Tokens::tokenize(filename, source);
     auto const ast = parse(tokens);

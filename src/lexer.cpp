@@ -141,6 +141,35 @@ public:
                 }
                 break;
             }
+            case '.': {
+                auto const start = state.m_current_index;
+                state.advance();
+                if (state.current() == '.') {
+                    state.advance();
+                    add_token(TokenType::DotDot, start, 2);
+                } else {
+                    add_token(TokenType::Dot, start, 1);
+                }
+                break;
+            }
+            case '*':
+                add_token(TokenType::Asterisk);
+                state.advance();
+                break;
+            case '/': {
+                auto const start = state.m_current_index;
+                state.advance();
+                if (state.current() == '/') {
+                    // one line comment
+                    while (not state.is_at_end() and state.current() != '\n') {
+                        state.advance();
+                    }
+                    break;
+                }
+
+                add_token(TokenType::Slash, start, 1);
+                break;
+            }
             case '"': {
                 auto const start = state.m_current_index;
                 auto length = 1;

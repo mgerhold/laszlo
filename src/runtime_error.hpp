@@ -65,7 +65,7 @@ public:
 
 class FailedAssertion : public RuntimeError {
 public:
-    FailedAssertion(SourceLocation const source_location)
+    explicit FailedAssertion(SourceLocation const source_location)
         : RuntimeError{
               std::format("{}: assertion failed, '{}' did not hold true", source_location, source_location.text())
           } { }

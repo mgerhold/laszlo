@@ -29,12 +29,7 @@ public:
     explicit IntegerLiteral(Token token) : m_token{ token } { }
 
     [[nodiscard]] Value evaluate([[maybe_unused]] ScopeStack& scope_stack) const override {
-        auto stream = std::stringstream{};
-        stream << m_token.lexeme();
-        auto value = IntegerValue::ValueType{};
-        stream >> value;
-        assert(stream);
-        return make_integer_value(value);
+        return make_integer_value(m_token.parse_integer());
     }
 
     [[nodiscard]] SourceLocation source_location() const override {
@@ -104,13 +99,7 @@ public:
     }
 
     [[nodiscard]] SourceLocation source_location() const override {
-        auto const first_offset = m_operator_token.source_location.byte_offset;
-        auto const last_offset = m_operand->source_location().byte_offset + m_operand->source_location().num_bytes;
-        auto const length = last_offset - first_offset;
-        return SourceLocation{ m_operator_token.source_location.filename,
-                               m_operator_token.source_location.source,
-                               first_offset,
-                               length };
+        return SourceLocation::from_range(m_operator_token.source_location, m_operand->source_location());
     }
 };
 
@@ -125,6 +114,11 @@ public:
         LessOrEqual,
         GreaterThan,
         GreaterOrEqual,
+        And,
+        Or,
+        Mod,
+        Multiply,
+        Divide,
     };
 
 private:
@@ -156,6 +150,12 @@ public:
                 return m_left->evaluate(scope_stack)->greater_than(m_right->evaluate(scope_stack));
             case Kind::GreaterOrEqual:
                 return m_left->evaluate(scope_stack)->greater_or_equals(m_right->evaluate(scope_stack));
+            case Kind::And:
+                return m_left->evaluate(scope_stack)->logical_and(m_right->evaluate(scope_stack));
+            case Kind::Or:
+                return m_left->evaluate(scope_stack)->logical_or(m_right->evaluate(scope_stack));
+            case Kind::Mod:
+                return m_left->evaluate(scope_stack)->mod(m_right->evaluate(scope_stack));
             default:
                 assert(false and "unreachable");
                 return {};
@@ -163,13 +163,7 @@ public:
     }
 
     [[nodiscard]] SourceLocation source_location() const override {
-        auto const first_offset = m_left->source_location().byte_offset;
-        auto const last_offset = m_right->source_location().byte_offset + m_right->source_location().num_bytes;
-        auto const length = last_offset - first_offset;
-        return SourceLocation{ m_left->source_location().filename,
-                               m_left->source_location().source,
-                               first_offset,
-                               length };
+        return SourceLocation::from_range(m_left->source_location(), m_right->source_location());
     }
 };
 
@@ -190,5 +184,26 @@ public:
 
     [[nodiscard]] SourceLocation source_location() const override {
         return m_name.source_location;
+    }
+};
+
+class Range : public Expression {
+private:
+    std::unique_ptr<Expression> m_start;
+    bool m_end_is_inclusive;
+    std::unique_ptr<Expression> m_end;
+
+public:
+    Range(std::unique_ptr<Expression> start, bool const end_is_inclusive, std::unique_ptr<Expression> end)
+        : m_start{ std::move(start) },
+          m_end_is_inclusive{ end_is_inclusive },
+          m_end{ std::move(end) } { }
+
+    [[nodiscard]] Value evaluate(ScopeStack& scope_stack) const override {
+        return m_start->evaluate(scope_stack)->range(m_end->evaluate(scope_stack), m_end_is_inclusive);
+    }
+
+    [[nodiscard]] SourceLocation source_location() const override {
+        return SourceLocation::from_range(m_start->source_location(), m_end->source_location());
     }
 };

@@ -39,7 +39,44 @@ public:
     }
 
     [[nodiscard]] std::unique_ptr<Expression> expression() {
-        return equals_or_unequals();
+        return range();
+    }
+
+    [[nodiscard]] std::unique_ptr<Expression> range() {
+        auto start = logical_or();
+        if (current().type == TokenType::DotDot) {
+            advance(); // consume ".."
+            auto const end_is_inclusive = (current().type == TokenType::Equals);
+            if (end_is_inclusive) {
+                advance(); // consume "="
+            }
+            auto end = logical_or();
+            return std::make_unique<Range>(std::move(start), end_is_inclusive, std::move(end));
+        }
+        return start;
+    }
+
+    [[nodiscard]] std::unique_ptr<Expression> logical_or() {
+        auto accumulator = logical_and();
+        while (current().type == TokenType::Identifier and current().lexeme() == "or") {
+            advance(); // consume "or"
+            accumulator =
+                    std::make_unique<BinaryOperator>(std::move(accumulator), BinaryOperator::Kind::Or, logical_and());
+        }
+        return accumulator;
+    }
+
+    [[nodiscard]] std::unique_ptr<Expression> logical_and() {
+        auto accumulator = equals_or_unequals();
+        while (current().type == TokenType::Identifier and current().lexeme() == "and") {
+            advance(); // consume "and"
+            accumulator = std::make_unique<BinaryOperator>(
+                    std::move(accumulator),
+                    BinaryOperator::Kind::And,
+                    equals_or_unequals()
+            );
+        }
+        return accumulator;
     }
 
     [[nodiscard]] std::unique_ptr<Expression> equals_or_unequals() {
@@ -69,7 +106,7 @@ public:
     }
 
     [[nodiscard]] std::unique_ptr<Expression> relational_operator() {
-        auto accumulator = binary_operator();
+        auto accumulator = sum();
         while (true) {
             switch (current().type) {
                 case TokenType::LessThan:
@@ -77,7 +114,7 @@ public:
                     accumulator = std::make_unique<BinaryOperator>(
                             std::move(accumulator),
                             BinaryOperator::Kind::LessThan,
-                            binary_operator()
+                            sum()
                     );
                     break;
                 case TokenType::LessOrEqual:
@@ -85,7 +122,7 @@ public:
                     accumulator = std::make_unique<BinaryOperator>(
                             std::move(accumulator),
                             BinaryOperator::Kind::LessOrEqual,
-                            binary_operator()
+                            sum()
                     );
                     break;
                 case TokenType::GreaterThan:
@@ -93,7 +130,7 @@ public:
                     accumulator = std::make_unique<BinaryOperator>(
                             std::move(accumulator),
                             BinaryOperator::Kind::GreaterThan,
-                            binary_operator()
+                            sum()
                     );
                     break;
                 case TokenType::GreaterOrEqual:
@@ -101,7 +138,7 @@ public:
                     accumulator = std::make_unique<BinaryOperator>(
                             std::move(accumulator),
                             BinaryOperator::Kind::GreaterOrEqual,
-                            binary_operator()
+                            sum()
                     );
                     break;
                 default:
@@ -110,8 +147,8 @@ public:
         }
     }
 
-    [[nodiscard]] std::unique_ptr<Expression> binary_operator() {
-        auto accumulator = unary_operator();
+    [[nodiscard]] std::unique_ptr<Expression> sum() {
+        auto accumulator = product();
         while (true) {
             switch (current().type) {
                 case TokenType::Plus:
@@ -119,7 +156,7 @@ public:
                     accumulator = std::make_unique<BinaryOperator>(
                             std::move(accumulator),
                             BinaryOperator::Kind::Plus,
-                            unary_operator()
+                            product()
                     );
                     break;
                 case TokenType::Minus:
@@ -127,10 +164,45 @@ public:
                     accumulator = std::make_unique<BinaryOperator>(
                             std::move(accumulator),
                             BinaryOperator::Kind::Minus,
+                            product()
+                    );
+                    break;
+                default:
+                    return accumulator;
+            }
+        }
+    }
+
+    [[nodiscard]] std::unique_ptr<Expression> product() {
+        auto accumulator = unary_operator();
+        while (true) {
+            switch (current().type) {
+                case TokenType::Asterisk:
+                    advance();
+                    accumulator = std::make_unique<BinaryOperator>(
+                            std::move(accumulator),
+                            BinaryOperator::Kind::Multiply,
+                            unary_operator()
+                    );
+                    break;
+                case TokenType::Slash:
+                    advance();
+                    accumulator = std::make_unique<BinaryOperator>(
+                            std::move(accumulator),
+                            BinaryOperator::Kind::Divide,
                             unary_operator()
                     );
                     break;
                 default:
+                    if (current().type == TokenType::Identifier and current().lexeme() == "mod") {
+                        advance(); // consume "mod"
+                        accumulator = std::make_unique<BinaryOperator>(
+                                std::move(accumulator),
+                                BinaryOperator::Kind::Mod,
+                                unary_operator()
+                        );
+                        break;
+                    }
                     return accumulator;
             }
         }
@@ -151,8 +223,9 @@ public:
         switch (current().type) {
             case TokenType::StringLiteral:
                 return std::make_unique<StringLiteral>(advance());
-            case TokenType::IntegerLiteral:
+            case TokenType::IntegerLiteral: {
                 return std::make_unique<IntegerLiteral>(advance());
+            }
             case TokenType::LeftParenthesis: {
                 advance();
                 auto expr = expression();
@@ -235,6 +308,16 @@ public:
                     auto const continue_token = advance();
                     expect(TokenType::Semicolon);
                     return std::make_unique<Continue>(continue_token);
+                } else if (current().lexeme() == "for") {
+                    advance(); // consume "for"
+                    auto const loop_variable = expect(TokenType::Identifier);
+                    if (current().type != TokenType::Identifier or current().lexeme() != "in") {
+                        throw ParserError{ UnexpectedToken{ current() } };
+                    }
+                    advance(); // consume "in"
+                    auto iterator = expression();
+                    auto body = block();
+                    return std::make_unique<For>(loop_variable, std::move(iterator), std::move(body));
                 } else {
                     auto lvalue = advance();
                     expect(TokenType::Equals);

@@ -10,9 +10,7 @@ private:
 
 public:
     explicit UnexpectedToken(Token token) {
-        auto stream = std::stringstream{};
-        stream << token.source_location << ": unexpected token '" << token << '\'';
-        m_message = std::move(stream).str();
+        m_message = std::format("{}: unexpected token '{}'", token.source_location, token);
     }
 
     friend class ParserError;

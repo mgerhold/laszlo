@@ -197,3 +197,45 @@ public:
         throw BreakException{ m_continue_token };
     }
 };
+
+class For : public Statement {
+private:
+    Token m_loop_variable;
+    std::unique_ptr<Expression> m_iterator;
+    std::unique_ptr<Statement> m_body;
+
+public:
+    For(Token const loop_variable, std::unique_ptr<Expression> iterator, std::unique_ptr<Statement> body)
+        : m_loop_variable{ loop_variable },
+          m_iterator{ std::move(iterator) },
+          m_body{ std::move(body) } { }
+
+    void execute(ScopeStack& scope_stack) const override {
+        auto const num_scopes = scope_stack.size();
+
+        auto current_iterator = m_iterator->evaluate(scope_stack);
+        if (not current_iterator->is_iterator()) {
+            throw TypeMismatch{ m_iterator->source_location(), "Iterator", current_iterator->type_name() };
+        }
+
+        while (true) {
+            scope_stack.truncate(num_scopes);
+            auto&& [iterator, value] = current_iterator->as_iterator().next();
+            if (value->is_sentinel()) {
+                break;
+            }
+            auto loop_scope = Scope{};
+            loop_scope.insert({ std::string{ m_loop_variable.lexeme() }, std::move(value) });
+            scope_stack.push(std::move(loop_scope));
+            current_iterator = std::move(iterator);
+            try {
+                m_body->execute(scope_stack);
+            } catch (BreakException const&) {
+                break;
+            } catch (ContinueException const&) {
+                // do nothing -> loop again
+            }
+        }
+        scope_stack.truncate(num_scopes);
+    }
+};
