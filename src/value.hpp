@@ -152,6 +152,10 @@ public:
         throw OperationNotSupportedByType{ "range", type_name(), other->type_name() };
     }
 
+    [[nodiscard]] virtual Value subscript(Value const& index) const {
+        throw OperationNotSupportedByType{ "subscript", type_name(), index->type_name() };
+    }
+
     [[nodiscard]] virtual std::string type_name() const = 0;
 
     [[nodiscard]] virtual Value clone() const = 0;
@@ -313,6 +317,7 @@ public:
 class Array : public BasicValue {
 public:
     using ValueType = std::vector<Value>;
+
 private:
     ValueType m_elements;
 
@@ -377,14 +382,25 @@ public:
 
         auto values = ValueType{};
         values.reserve(value().size() + other->as_array().value().size());
-        for (const auto& current : value()) {
+        for (auto const& current : value()) {
             values.push_back(current->clone());
         }
-        for (const auto& current : other->as_array().value()) {
+        for (auto const& current : other->as_array().value()) {
             values.push_back(current->clone());
         }
 
         return std::make_unique<Array>(std::move(values));
+    }
+
+    [[nodiscard]] Value subscript(Value const& index) const override {
+        if (not index->is_integer_value()) {
+            throw UnableToSubscript{ index->type_name(), type_name() };
+        }
+        if (index->as_integer_value().value() < 0 or index->as_integer_value().value() >= m_elements.size()) {
+            throw IndexOutOfBounds{ index->as_integer_value().value(),
+                                    static_cast<Integer::ValueType>(m_elements.size()) };
+        }
+        return m_elements.at(index->as_integer_value().value())->clone();
     }
 };
 

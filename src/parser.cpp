@@ -213,10 +213,24 @@ public:
             case TokenType::Plus:
             case TokenType::Minus: {
                 auto const operator_token = advance();
-                return std::make_unique<UnaryOperator>(operator_token, primary());
+                return std::make_unique<UnaryOperator>(operator_token, postfix_operator());
             }
             default:
-                return primary();
+                return postfix_operator();
+        }
+    }
+
+    [[nodiscard]] std::unique_ptr<Expression> postfix_operator() {
+        auto expression = primary();
+        switch (current().type) {
+            case TokenType::LeftSquareBracket: {
+                advance(); // consume "["
+                auto index = primary();
+                auto const closing_bracket = expect(TokenType::RightSquareBracket);
+                return std::make_unique<Subscript>(std::move(expression), std::move(index), closing_bracket);
+            }
+            default:
+                return expression;
         }
     }
 

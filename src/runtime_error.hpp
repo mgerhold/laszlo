@@ -5,7 +5,10 @@
 #include <format>
 #include <numeric>
 #include <stdexcept>
+#include <string_view>
 #include <vector>
+
+class Expression;
 
 class RuntimeError : public std::exception {
 private:
@@ -69,4 +72,20 @@ public:
         : RuntimeError{
               std::format("{}: assertion failed, '{}' did not hold true", source_location, source_location.text())
           } { }
+};
+
+class UnableToSubscript : public RuntimeError {
+public:
+    UnableToSubscript(std::string_view const index_type, std::string_view const expression_type)
+        : RuntimeError{ std::format(
+                  "expression of type '{}' cannot be used to subscript object of type '{}'",
+                  index_type,
+                  expression_type
+          ) } { }
+};
+
+class IndexOutOfBounds : public RuntimeError {
+public:
+    IndexOutOfBounds(std::int32_t const index, std::int32_t const size)
+        : RuntimeError{ std::format("index '{}' is out of bounds for array of size '{}'", index, size) } { }
 };
