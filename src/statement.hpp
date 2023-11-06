@@ -3,6 +3,7 @@
 #include "control_flow.hpp"
 #include "expression.hpp"
 #include "scope.hpp"
+#include "values/iterator.hpp"
 #include <list>
 
 class Statement {
@@ -105,8 +106,10 @@ public:
         if (m_name.lexeme() == "_") {
             return;
         }
+        auto value = m_initializer->evaluate(scope_stack)->as_rvalue();
+        value->promote_to_lvalue();
         auto const& [iterator, inserted] =
-                scope_stack.top().insert({ std::string{ m_name.lexeme() }, m_initializer->evaluate(scope_stack) });
+                scope_stack.top().insert({ std::string{ m_name.lexeme() }, std::move(value) });
         if (not inserted) {
             throw VariableRedefinition{ m_name };
         }
@@ -150,19 +153,16 @@ public:
 
 class Assignment final : public Statement {
 private:
-    Token m_lvalue;
-    std::unique_ptr<Expression> m_value;
+    std::unique_ptr<Expression> m_lvalue;
+    std::unique_ptr<Expression> m_rvalue;
 
 public:
-    Assignment(Token lvalue, std::unique_ptr<Expression> value) : m_lvalue{ lvalue }, m_value{ std::move(value) } { }
+    Assignment(std::unique_ptr<Expression> lvalue, std::unique_ptr<Expression> rvalue)
+        : m_lvalue{ std::move(lvalue) },
+          m_rvalue{ std::move(rvalue) } { }
 
     void execute(ScopeStack& scope_stack) const override {
-        auto const variable = scope_stack.lookup(std::string{ m_lvalue.lexeme() });
-        if (variable == nullptr) {
-            throw UndefinedReference{ m_lvalue };
-        }
-        auto new_value = m_value->evaluate(scope_stack);
-        *variable = (*variable)->assign(std::move(new_value));
+        m_lvalue->evaluate(scope_stack)->assign(m_rvalue->evaluate(scope_stack));
     }
 };
 

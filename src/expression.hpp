@@ -2,7 +2,10 @@
 
 #include "scope.hpp"
 #include "token.hpp"
-#include "value.hpp"
+#include "values/array.hpp"
+#include "values/bool.hpp"
+#include "values/integer.hpp"
+#include "values/string.hpp"
 #include <variant>
 
 class StringLiteral;
@@ -29,7 +32,7 @@ public:
     explicit IntegerLiteral(Token token) : m_token{ token } { }
 
     [[nodiscard]] Value evaluate([[maybe_unused]] ScopeStack& scope_stack) const override {
-        return make_integer_value(m_token.parse_integer());
+        return Integer::make(m_token.parse_integer(), ValueCategory::Rvalue);
     }
 
     [[nodiscard]] SourceLocation source_location() const override {
@@ -45,7 +48,10 @@ public:
     explicit StringLiteral(Token token) : m_token{ token } { }
 
     [[nodiscard]] Value evaluate([[maybe_unused]] ScopeStack& scope_stack) const override {
-        return make_string_value(std::string{ m_token.lexeme().substr(1, m_token.lexeme().length() - 2) });
+        return String::make(
+                std::string{ m_token.lexeme().substr(1, m_token.lexeme().length() - 2) },
+                ValueCategory::Rvalue
+        );
     }
 
     [[nodiscard]] SourceLocation source_location() const override {
@@ -62,9 +68,9 @@ public:
 
     [[nodiscard]] Value evaluate(ScopeStack& scope_stack) const override {
         if (m_token.lexeme() == "true") {
-            return make_bool_value(true);
+            return Bool::make(true, ValueCategory::Rvalue);
         } else if (m_token.lexeme() == "false") {
-            return make_bool_value(false);
+            return Bool::make(false, ValueCategory::Rvalue);
         } else {
             assert(false and "unreachable");
             return {};
@@ -96,7 +102,13 @@ public:
         auto elements = std::vector<Value>{};
         elements.reserve(m_values.size());
         for (auto const& value : m_values) {
-            elements.push_back(value->evaluate(scope_stack));
+            auto evaluated = value->evaluate(scope_stack);
+            if (evaluated->is_lvalue()) {
+                evaluated = evaluated->clone();
+            } else {
+                evaluated->promote_to_lvalue();
+            }
+            elements.push_back(std::move(evaluated));
         }
 
         if (not elements.empty()) {
@@ -109,7 +121,11 @@ public:
             }
         }
 
-        return std::make_unique<Array>(std::move(elements));
+        for ([[maybe_unused]] auto const& element : elements) {
+            assert(element->is_lvalue());
+        }
+
+        return Array::make(std::move(elements), ValueCategory::Rvalue);
     }
 
     [[nodiscard]] SourceLocation source_location() const override {
@@ -224,7 +240,7 @@ public:
         if (variable == nullptr) {
             throw UndefinedReference{ m_name };
         }
-        return (*variable)->clone();
+        return *variable;
     }
 
     [[nodiscard]] SourceLocation source_location() const override {

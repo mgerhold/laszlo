@@ -89,3 +89,15 @@ public:
     IndexOutOfBounds(std::int32_t const index, std::int32_t const size)
         : RuntimeError{ std::format("index '{}' is out of bounds for array of size '{}'", index, size) } { }
 };
+
+class InvalidValueCast : public RuntimeError {
+public:
+    explicit InvalidValueCast(std::string_view const target_type)
+        : RuntimeError{ std::format("unable to cast value to target type '{}'", target_type) } { }
+};
+
+class LvalueRequired : public RuntimeError {
+public:
+    explicit LvalueRequired()
+        : RuntimeError{ std::format("got an rvalue where an lvalue is required") } { }
+};

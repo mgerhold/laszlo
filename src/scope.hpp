@@ -1,6 +1,6 @@
 #pragma once
 
-#include "value.hpp"
+#include "values/value.hpp"
 #include <list>
 #include <string>
 #include <unordered_map>
@@ -13,6 +13,7 @@ private:
     /* It's not possible to use an std::vector<Scope> here since MSVC's standard library
      * implementation of std::unordered_map doesn't seem to have its constructors marked
      * noexcept.
+     * todo: review if this is now possible that we use std::shared_ptr instead of std::unique_ptr
      */
     std::list<Scope> m_scopes;
 

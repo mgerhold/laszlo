@@ -14,9 +14,17 @@ add_executable(
         lexer_error.hpp
         expression.hpp
         statement.hpp
-        value.hpp
         runtime_error.hpp
         scope.hpp
-        value.cpp
         control_flow.hpp
+        values/value.hpp
+        values/integer.hpp
+        values/string.hpp
+        values/bool.hpp
+        values/Array.hpp
+        values/invalid_value_cast.hpp
+        values/iterator.hpp
+        values/sentinel.hpp
+        values/range_interator.hpp
+        values/integer.cpp
 )
