@@ -12,12 +12,12 @@ for _ in 0..600 {
     results = results + [current mod 6 + 1];
 }
 
-for i in 1..=6 {
+for dice_roll_result in 1..=6 {
     let count = 0;
     for j in 0..600 {
-        if results[j] == i {
+        if results[j] == dice_roll_result {
             count = count + 1;
         }
     }
-    println(i + ": " + count);
+    println(dice_roll_result + ": " + count);
 }

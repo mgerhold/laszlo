@@ -19,7 +19,7 @@ def run_test(laszlo_path: str, source_path: str, expected_output: str) -> bool:
             actual_output.splitlines(True),
             expected_output.splitlines(True),
         )
-        logging.error(f"\noutput does not match the expected output")
+        logging.error(f"output does not match the expected output")
         logging.error("".join(diff))
         return False
     logging.debug("success")
