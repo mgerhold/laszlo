@@ -67,4 +67,25 @@ public:
         }
         return String::make(string_representation() + other->string_representation(), ValueCategory::Rvalue);
     }
+
+    [[nodiscard]] Value equals(Value const& other) const override {
+        if (not other->is_bool_value()) {
+            return BasicValue::equals(other); // throws
+        }
+        return make(value() == other->as_bool_value().value(), ValueCategory::Rvalue);
+    }
+
+    [[nodiscard]] Value not_equals(Value const& other) const override {
+        if (not other->is_bool_value()) {
+            return BasicValue::not_equals(other); // throws
+        }
+        return make(value() != other->as_bool_value().value(), ValueCategory::Rvalue);
+    }
+
+    void assign(Value const& other) override {
+        if (not other->is_bool_value()) {
+            BasicValue::assign(other); // throws
+        }
+        m_value = other->as_bool_value().value();
+    }
 };

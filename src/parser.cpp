@@ -221,16 +221,16 @@ public:
     }
 
     [[nodiscard]] std::unique_ptr<Expression> postfix_operator() {
-        auto expression = primary();
+        auto lvalue = primary();
         switch (current().type) {
             case TokenType::LeftSquareBracket: {
                 advance(); // consume "["
-                auto index = primary();
+                auto index = expression();
                 auto const closing_bracket = expect(TokenType::RightSquareBracket);
-                return std::make_unique<Subscript>(std::move(expression), std::move(index), closing_bracket);
+                return std::make_unique<Subscript>(std::move(lvalue), std::move(index), closing_bracket);
             }
             default:
-                return expression;
+                return lvalue;
         }
     }
 
