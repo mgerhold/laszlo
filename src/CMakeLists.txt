@@ -22,9 +22,11 @@ add_executable(
         values/string.hpp
         values/bool.hpp
         values/Array.hpp
-        values/invalid_value_cast.hpp
         values/iterator.hpp
         values/sentinel.hpp
         values/range_interator.hpp
         values/integer.cpp
+        values/array_iterator.hpp
+        values/range.hpp
+        values/array.cpp
 )

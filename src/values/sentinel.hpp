@@ -2,27 +2,31 @@
 
 #include "value.hpp"
 
-class Sentinel : public BasicValue {
-public:
-    explicit Sentinel(ValueCategory const value_category) : BasicValue{ value_category } { }
+namespace values {
 
-    [[nodiscard]] static Value make(ValueCategory const value_category) {
-        return std::make_shared<Sentinel>(value_category);
-    }
+    class Sentinel final : public BasicValue {
+    public:
+        explicit Sentinel(ValueCategory const value_category) : BasicValue{ value_category } { }
 
-    [[nodiscard]] bool is_sentinel() const override {
-        return true;
-    }
+        [[nodiscard]] static Value make(ValueCategory const value_category) {
+            return std::make_shared<Sentinel>(value_category);
+        }
 
-    [[nodiscard]] std::string string_representation() const override {
-        return "Sentinel";
-    }
+        [[nodiscard]] bool is_sentinel() const override {
+            return true;
+        }
 
-    [[nodiscard]] std::string type_name() const override {
-        return "Sentinel";
-    }
+        [[nodiscard]] std::string string_representation() const override {
+            return "Sentinel";
+        }
 
-    [[nodiscard]] Value clone() const override {
-        return make(value_category());
-    }
-};
+        [[nodiscard]] std::string type_name() const override {
+            return "Sentinel";
+        }
+
+        [[nodiscard]] Value clone() const override {
+            return make(value_category());
+        }
+    };
+
+} // namespace values

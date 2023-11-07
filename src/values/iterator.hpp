@@ -2,16 +2,22 @@
 
 #include "value.hpp"
 
-class Iterator : public BasicValue {
-protected:
-    explicit Iterator(ValueCategory const value_category) : BasicValue{ value_category } { }
+namespace values {
 
-public:
-    [[nodiscard]] bool is_iterator() const final {
-        return true;
-    }
+    class Iterator : public BasicValue {
+    protected:
+        explicit Iterator(ValueCategory const value_category) : BasicValue{ value_category } { }
 
-    [[nodiscard]] Iterator const& as_iterator() const override = 0;
+    public:
+        [[nodiscard]] bool is_iterator() const final {
+            return true;
+        }
 
-    [[nodiscard]] virtual std::pair<Value, Value> next() const = 0;
-};
+        [[nodiscard]] Iterator& as_iterator() override {
+            return *this;
+        }
+
+        [[nodiscard]] virtual Value next() = 0;
+    };
+
+} // namespace values

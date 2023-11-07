@@ -6,7 +6,7 @@
 #include <unordered_map>
 #include <vector>
 
-using Scope = std::unordered_map<std::string, Value>;
+using Scope = std::unordered_map<std::string, values::Value>;
 
 class ScopeStack {
 private:
@@ -40,7 +40,7 @@ public:
         return result;
     }
 
-    [[nodiscard]] Value* lookup(std::string const& name) {
+    [[nodiscard]] values::Value* lookup(std::string const& name) {
         // todo: refactor return value to tl::optional<Value&>
         for (auto scope_iterator = m_scopes.rbegin(); scope_iterator != m_scopes.rend(); ++scope_iterator) {
             auto find_iterator = scope_iterator->find(name);

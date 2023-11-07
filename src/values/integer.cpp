@@ -1,26 +1,13 @@
 #include "integer.hpp"
-#include "range_interator.hpp"
+#include "range.hpp"
 
-[[nodiscard]] Value Integer::range(Value const& other, bool end_is_inclusive) const {
-    if (not other->is_integer_value()) {
-        return BasicValue::range(other->clone(), end_is_inclusive); // throws
-    }
-    auto start = clone();
-    if (start->is_rvalue()) {
-        start->promote_to_lvalue();
+namespace values {
+
+    [[nodiscard]] Value Integer::range(Value const& other, bool end_is_inclusive) const {
+        if (not other->is_integer_value()) {
+            return BasicValue::range(other->clone(), end_is_inclusive); // throws
+        }
+        return Range::make(as_rvalue(), end_is_inclusive, other->as_rvalue(), ValueCategory::Rvalue);
     }
 
-    auto current = start->clone();
-
-    auto end = other->clone();
-    if (end->is_rvalue()) {
-        end->promote_to_lvalue();
-    }
-    return RangeIterator::make(
-            std::move(start),
-            end_is_inclusive,
-            std::move(end),
-            std::move(current),
-            ValueCategory::Rvalue
-    );
-}
+} // namespace values

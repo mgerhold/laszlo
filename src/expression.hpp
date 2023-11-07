@@ -19,7 +19,7 @@ protected:
 public:
     virtual ~Expression() = default;
 
-    [[nodiscard]] virtual Value evaluate(ScopeStack& scope_stack) const = 0;
+    [[nodiscard]] virtual values::Value evaluate(ScopeStack& scope_stack) const = 0;
 
     [[nodiscard]] virtual SourceLocation source_location() const = 0;
 };
@@ -31,8 +31,8 @@ private:
 public:
     explicit IntegerLiteral(Token token) : m_token{ token } { }
 
-    [[nodiscard]] Value evaluate([[maybe_unused]] ScopeStack& scope_stack) const override {
-        return Integer::make(m_token.parse_integer(), ValueCategory::Rvalue);
+    [[nodiscard]] values::Value evaluate([[maybe_unused]] ScopeStack& scope_stack) const override {
+        return values::Integer::make(m_token.parse_integer(), values::ValueCategory::Rvalue);
     }
 
     [[nodiscard]] SourceLocation source_location() const override {
@@ -47,10 +47,10 @@ private:
 public:
     explicit StringLiteral(Token token) : m_token{ token } { }
 
-    [[nodiscard]] Value evaluate([[maybe_unused]] ScopeStack& scope_stack) const override {
-        return String::make(
+    [[nodiscard]] values::Value evaluate([[maybe_unused]] ScopeStack& scope_stack) const override {
+        return values::String::make(
                 std::string{ m_token.lexeme().substr(1, m_token.lexeme().length() - 2) },
-                ValueCategory::Rvalue
+                values::ValueCategory::Rvalue
         );
     }
 
@@ -66,11 +66,11 @@ private:
 public:
     explicit BoolLiteral(Token token) : m_token{ token } { }
 
-    [[nodiscard]] Value evaluate(ScopeStack& scope_stack) const override {
+    [[nodiscard]] values::Value evaluate(ScopeStack& scope_stack) const override {
         if (m_token.lexeme() == "true") {
-            return Bool::make(true, ValueCategory::Rvalue);
+            return values::Bool::make(true, values::ValueCategory::Rvalue);
         } else if (m_token.lexeme() == "false") {
-            return Bool::make(false, ValueCategory::Rvalue);
+            return values::Bool::make(false, values::ValueCategory::Rvalue);
         } else {
             assert(false and "unreachable");
             return {};
@@ -98,8 +98,8 @@ public:
           m_values{ std::move(values) },
           m_closing_bracket{ closing_bracket } { }
 
-    [[nodiscard]] Value evaluate(ScopeStack& scope_stack) const override {
-        auto elements = std::vector<Value>{};
+    [[nodiscard]] values::Value evaluate(ScopeStack& scope_stack) const override {
+        auto elements = std::vector<values::Value>{};
         elements.reserve(m_values.size());
         for (auto const& value : m_values) {
             auto evaluated = value->evaluate(scope_stack);
@@ -125,7 +125,7 @@ public:
             assert(element->is_lvalue());
         }
 
-        return Array::make(std::move(elements), ValueCategory::Rvalue);
+        return values::Array::make(std::move(elements), values::ValueCategory::Rvalue);
     }
 
     [[nodiscard]] SourceLocation source_location() const override {
@@ -143,7 +143,7 @@ public:
         : m_operator_token{ operator_token },
           m_operand{ std::move(operand) } { }
 
-    [[nodiscard]] Value evaluate(ScopeStack& scope_stack) const override {
+    [[nodiscard]] values::Value evaluate(ScopeStack& scope_stack) const override {
         switch (m_operator_token.type) {
             case TokenType::Plus:
                 return m_operand->evaluate(scope_stack)->unary_plus();
@@ -189,7 +189,7 @@ public:
           m_kind{ kind },
           m_right{ std::move(right) } { }
 
-    [[nodiscard]] Value evaluate(ScopeStack& scope_stack) const override {
+    [[nodiscard]] values::Value evaluate(ScopeStack& scope_stack) const override {
         switch (m_kind) {
             case Kind::Plus:
                 return m_left->evaluate(scope_stack)->binary_plus(m_right->evaluate(scope_stack));
@@ -235,7 +235,7 @@ private:
 public:
     explicit Name(Token name) : m_name{ name } { }
 
-    [[nodiscard]] Value evaluate(ScopeStack& scope_stack) const override {
+    [[nodiscard]] values::Value evaluate(ScopeStack& scope_stack) const override {
         auto variable = scope_stack.lookup(std::string{ m_name.lexeme() });
         if (variable == nullptr) {
             throw UndefinedReference{ m_name };
@@ -260,7 +260,7 @@ public:
           m_end_is_inclusive{ end_is_inclusive },
           m_end{ std::move(end) } { }
 
-    [[nodiscard]] Value evaluate(ScopeStack& scope_stack) const override {
+    [[nodiscard]] values::Value evaluate(ScopeStack& scope_stack) const override {
         return m_start->evaluate(scope_stack)->range(m_end->evaluate(scope_stack), m_end_is_inclusive);
     }
 
@@ -285,7 +285,7 @@ public:
           m_subscript{ std::move(subscript) },
           m_closing_bracket{ closing_bracket } { }
 
-    [[nodiscard]] Value evaluate(ScopeStack& scope_stack) const override {
+    [[nodiscard]] values::Value evaluate(ScopeStack& scope_stack) const override {
         return m_expression->evaluate(scope_stack)->subscript(m_subscript->evaluate(scope_stack));
     }
 
