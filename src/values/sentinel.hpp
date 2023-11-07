@@ -20,8 +20,8 @@ namespace values {
             return "Sentinel";
         }
 
-        [[nodiscard]] std::string type_name() const override {
-            return "Sentinel";
+        [[nodiscard]] types::Type type() const override {
+            return std::make_unique<types::Sentinel>();
         }
 
         [[nodiscard]] Value clone() const override {

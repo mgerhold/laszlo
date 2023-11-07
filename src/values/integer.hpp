@@ -40,8 +40,8 @@ namespace values {
             return std::to_string(value());
         }
 
-        [[nodiscard]] std::string type_name() const noexcept override {
-            return "I32";
+        [[nodiscard]] types::Type type() const noexcept override {
+            return std::make_unique<types::I32>();
         }
 
         [[nodiscard]] Value clone() const override {

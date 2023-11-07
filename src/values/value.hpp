@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../runtime_error.hpp"
+#include "../types.hpp"
 #include <format>
 #include <memory>
 #include <stdexcept>
@@ -56,7 +57,7 @@ namespace values {
 
         [[nodiscard]] virtual std::string string_representation() const = 0;
 
-        [[nodiscard]] virtual std::string type_name() const = 0;
+        [[nodiscard]] virtual types::Type type() const = 0;
 
         [[nodiscard]] virtual Value clone() const = 0;
 
@@ -105,79 +106,79 @@ namespace values {
         }
 
         [[nodiscard]] virtual Value unary_plus() const {
-            throw OperationNotSupportedByType{ "unary_plus", type_name() };
+            throw OperationNotSupportedByType{ "unary_plus", type() };
         }
 
         [[nodiscard]] virtual Value unary_minus() const {
-            throw OperationNotSupportedByType{ "unary_minus", type_name() };
+            throw OperationNotSupportedByType{ "unary_minus", type() };
         }
 
         [[nodiscard]] virtual Value binary_plus(Value const& other) const {
-            throw OperationNotSupportedByType{ "binary_plus", type_name(), other->type_name() };
+            throw OperationNotSupportedByType{ "binary_plus", type(), other->type() };
         }
 
         [[nodiscard]] virtual Value binary_minus(Value const& other) const {
-            throw OperationNotSupportedByType{ "binary_minus", type_name(), other->type_name() };
+            throw OperationNotSupportedByType{ "binary_minus", type(), other->type() };
         }
 
         [[nodiscard]] virtual Value multiply(Value const& other) const {
-            throw OperationNotSupportedByType{ "multiply", type_name(), other->type_name() };
+            throw OperationNotSupportedByType{ "multiply", type(), other->type() };
         }
 
         [[nodiscard]] virtual Value divide(Value const& other) const {
-            throw OperationNotSupportedByType{ "multiply", type_name(), other->type_name() };
+            throw OperationNotSupportedByType{ "multiply", type(), other->type() };
         }
 
         [[nodiscard]] virtual Value equals(Value const& other) const {
-            throw OperationNotSupportedByType{ "equals", type_name(), other->type_name() };
+            throw OperationNotSupportedByType{ "equals", type(), other->type() };
         }
 
         [[nodiscard]] virtual Value not_equals(Value const& other) const {
-            throw OperationNotSupportedByType{ "not_equals", type_name(), other->type_name() };
+            throw OperationNotSupportedByType{ "not_equals", type(), other->type() };
         }
 
         [[nodiscard]] virtual Value greater_than(Value const& other) const {
-            throw OperationNotSupportedByType{ "greater_than", type_name(), other->type_name() };
+            throw OperationNotSupportedByType{ "greater_than", type(), other->type() };
         }
 
         [[nodiscard]] virtual Value greater_or_equals(Value const& other) const {
-            throw OperationNotSupportedByType{ "greater_or_equals", type_name(), other->type_name() };
+            throw OperationNotSupportedByType{ "greater_or_equals", type(), other->type() };
         }
 
         [[nodiscard]] virtual Value logical_and(Value const& other) const {
-            throw OperationNotSupportedByType{ "logical_and", type_name(), other->type_name() };
+            throw OperationNotSupportedByType{ "logical_and", type(), other->type() };
         }
 
         [[nodiscard]] virtual Value logical_or(Value const& other) const {
-            throw OperationNotSupportedByType{ "logical_or", type_name(), other->type_name() };
+            throw OperationNotSupportedByType{ "logical_or", type(), other->type() };
         }
 
         [[nodiscard]] virtual Value mod(Value const& other) const {
-            throw OperationNotSupportedByType{ "mod", type_name(), other->type_name() };
+            throw OperationNotSupportedByType{ "mod", type(), other->type() };
         }
 
         [[nodiscard]] virtual Value less_than(Value const& other) const {
-            throw OperationNotSupportedByType{ "less_than", type_name(), other->type_name() };
+            throw OperationNotSupportedByType{ "less_than", type(), other->type() };
         }
 
         [[nodiscard]] virtual Value less_or_equals(Value const& other) const {
-            throw OperationNotSupportedByType{ "less_or_equals", type_name(), other->type_name() };
+            throw OperationNotSupportedByType{ "less_or_equals", type(), other->type() };
         }
 
         [[nodiscard]] virtual Value range(Value const& other, bool end_is_inclusive) const {
-            throw OperationNotSupportedByType{ "range", type_name(), other->type_name() };
+            throw OperationNotSupportedByType{ "range", type(), other->type() };
         }
 
         [[nodiscard]] virtual Value subscript(Value const& index) const {
-            throw OperationNotSupportedByType{ "subscript", type_name(), index->type_name() };
+            throw OperationNotSupportedByType{ "subscript", type(), index->type() };
         }
 
         virtual void assign(Value const& other) {
-            throw OperationNotSupportedByType{ "assignment", type_name(), other->type_name() };
+            throw OperationNotSupportedByType{ "assignment", type(), other->type() };
         }
 
         [[nodiscard]] virtual Value iterator() {
-            throw OperationNotSupportedByType{ "iterator", type_name() };
+            throw OperationNotSupportedByType{ "iterator", type() };
         }
     };
 

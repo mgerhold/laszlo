@@ -36,8 +36,8 @@ namespace values {
             return value();
         }
 
-        [[nodiscard]] std::string type_name() const noexcept override {
-            return "String";
+        [[nodiscard]] types::Type type() const noexcept override {
+            return std::make_unique<types::String>();
         }
 
         [[nodiscard]] Value binary_plus(Value const& other) const override {

@@ -44,11 +44,11 @@ namespace values {
             return result + "]";
         }
 
-        [[nodiscard]] std::string type_name() const override {
+        [[nodiscard]] types::Type type() const override {
             if (m_elements.empty()) {
-                return "Array(?)";
+                return std::make_unique<types::Array>(std::make_unique<types::Unspecified>());
             }
-            return std::format("Array({})", m_elements.front()->type_name());
+            return std::make_unique<types::Array>(m_elements.front()->type());
         }
 
         [[nodiscard]] Value clone() const override {
@@ -61,10 +61,6 @@ namespace values {
         }
 
         [[nodiscard]] Value binary_plus(Value const& other) const override {
-            if (not other->is_array()) {
-                return BasicValue::binary_plus(other); // throws
-            }
-
             if (value().empty()) {
                 return other->as_rvalue();
             }
@@ -73,7 +69,7 @@ namespace values {
                 return as_rvalue();
             }
 
-            if (type_name() != other->type_name()) {
+            if (type() != other->type()) {
                 return BasicValue::binary_plus(other); // throws
             }
 
@@ -91,16 +87,16 @@ namespace values {
             }
 
             /* The resulting array itself is an rvalue (containing lvalues), so assigning to a
-         * temporary array (e.g. array literal) is possible, but has no effect.
-         * But this has the benefit of not having to recursively promote all values of an
-         * array to lvalues when the value itself becomes an lvalue (e.g. when being assigned
-         * to a variable. */
+             * temporary array (e.g. array literal) is possible, but has no effect.
+             * But this has the benefit of not having to recursively promote all values of an
+             * array to lvalues when the value itself becomes an lvalue (e.g. when being assigned
+             * to a variable. */
             return make(std::move(values), ValueCategory::Rvalue);
         }
 
         [[nodiscard]] Value subscript(Value const& index) const override {
             if (not index->is_integer_value()) {
-                throw UnableToSubscript{ index->type_name(), type_name() };
+                throw UnableToSubscript{ index->type(), type() };
             }
             if (index->as_integer_value().value() < 0 or index->as_integer_value().value() >= m_elements.size()) {
                 throw IndexOutOfBounds{ index->as_integer_value().value(),

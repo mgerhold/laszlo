@@ -1,6 +1,7 @@
 #pragma once
 
 #include "token.hpp"
+#include "types.hpp"
 #include <concepts>
 #include <format>
 #include <numeric>
@@ -25,11 +26,13 @@ public:
 
 class OperationNotSupportedByType : public RuntimeError {
 public:
-    template<std::convertible_to<std::string_view>... Types>
+    template<std::convertible_to<types::Type>... Types>
     explicit OperationNotSupportedByType(std::string_view const operation, Types... types)
-        : RuntimeError{
-              std::format("operation '{}' cannot be applied to type(s) '{}'", operation, join(", ", types...))
-          } { }
+        : RuntimeError{ std::format(
+                  "operation '{}' cannot be applied to type(s) '{}'",
+                  operation,
+                  join(", ", types->to_string()...)
+          ) } { }
 
 private:
     template<std::convertible_to<std::string_view> First, std::convertible_to<std::string_view>... Strings>
@@ -61,9 +64,13 @@ public:
 
 class TypeMismatch : public RuntimeError {
 public:
-    TypeMismatch(SourceLocation const source_location, std::string_view const expected, std::string_view const actual)
-        : RuntimeError{ std::format("{}: type mismatch: expected '{}', got '{}'", source_location, expected, actual) } {
-    }
+    TypeMismatch(SourceLocation const source_location, types::Type const& expected, types::Type const& actual)
+        : RuntimeError{ std::format(
+                  "{}: type mismatch: expected '{}', got '{}'",
+                  source_location,
+                  expected->to_string(),
+                  actual->to_string()
+          ) } { }
 };
 
 class FailedAssertion : public RuntimeError {
@@ -76,11 +83,11 @@ public:
 
 class UnableToSubscript : public RuntimeError {
 public:
-    UnableToSubscript(std::string_view const index_type, std::string_view const expression_type)
+    UnableToSubscript(types::Type const& index_type, types::Type const& expression_type)
         : RuntimeError{ std::format(
                   "expression of type '{}' cannot be used to subscript object of type '{}'",
-                  index_type,
-                  expression_type
+                  index_type->to_string(),
+                  expression_type->to_string()
           ) } { }
 };
 
@@ -98,6 +105,5 @@ public:
 
 class LvalueRequired : public RuntimeError {
 public:
-    explicit LvalueRequired()
-        : RuntimeError{ std::format("got an rvalue where an lvalue is required") } { }
+    explicit LvalueRequired() : RuntimeError{ std::format("got an rvalue where an lvalue is required") } { }
 };

@@ -66,8 +66,8 @@ namespace values {
             return std::format("{}..{}", m_start->string_representation(), m_end->string_representation());
         }
 
-        [[nodiscard]] std::string type_name() const override {
-            return "Range";
+        [[nodiscard]] types::Type type() const override {
+            return types::make_range();
         }
 
         [[nodiscard]] Value clone() const override {

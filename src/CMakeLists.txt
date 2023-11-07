@@ -38,4 +38,6 @@ add_executable(
         expressions/name.hpp
         expressions/range.hpp
         expressions/subscript.hpp
+        types.hpp
+        expressions/typeof.hpp
 )

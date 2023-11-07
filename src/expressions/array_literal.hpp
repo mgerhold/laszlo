@@ -35,10 +35,10 @@ namespace expressions {
 
             if (not elements.empty()) {
                 for (std::size_t i = 1; i < elements.size(); ++i) {
-                    if (elements.at(i)->type_name() != elements.front()->type_name()) {
+                    if (elements.at(i)->type() != elements.front()->type()) {
                         throw TypeMismatch{ m_values.at(i)->source_location(),
-                                            elements.front()->type_name(),
-                                            elements.at(i)->type_name() };
+                                            elements.front()->type(),
+                                            elements.at(i)->type() };
                     }
                 }
             }

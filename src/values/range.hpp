@@ -40,8 +40,8 @@ namespace values {
             );
         }
 
-        [[nodiscard]] std::string type_name() const override {
-            return std::format("Range({}..{})", m_start->type_name(), m_end->type_name());
+        [[nodiscard]] types::Type type() const override {
+            return std::make_unique<types::Range>();
         }
 
         [[nodiscard]] Value clone() const override {

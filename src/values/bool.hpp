@@ -37,8 +37,8 @@ namespace values {
             }
         }
 
-        [[nodiscard]] std::string type_name() const override {
-            return "Bool";
+        [[nodiscard]] types::Type type() const override {
+            return std::make_unique<types::Bool>();
         }
 
         [[nodiscard]] Value clone() const override {

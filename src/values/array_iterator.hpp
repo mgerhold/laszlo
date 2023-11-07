@@ -39,8 +39,8 @@ namespace values {
             );
         }
 
-        [[nodiscard]] std::string type_name() const override {
-            return std::format("ArrayIterator({})", m_array->type_name());
+        [[nodiscard]] types::Type type() const override {
+            return types::make_array_iterator(m_array->type());
         }
 
         [[nodiscard]] Value clone() const override {

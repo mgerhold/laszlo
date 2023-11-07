@@ -83,7 +83,7 @@ public:
     void execute(ScopeStack& scope_stack) const override {
         auto const condition = m_condition->evaluate(scope_stack);
         if (not condition->is_bool_value()) {
-            throw TypeMismatch{ m_if_token.source_location, "Bool", condition->type_name() };
+            throw TypeMismatch{ m_if_token.source_location, std::make_unique<types::Bool>(), condition->type() };
         }
         auto const evaluated = condition->as_bool_value().value();
         if (evaluated) {
@@ -145,7 +145,7 @@ public:
     void execute(ScopeStack& scope_stack) const override {
         auto const evaluated = m_expression->evaluate(scope_stack);
         if (not evaluated->is_bool_value()) {
-            throw TypeMismatch{ m_expression->source_location(), "Bool", evaluated->type_name() };
+            throw TypeMismatch{ m_expression->source_location(), types::make_bool(), evaluated->type() };
         }
         if (not evaluated->as_bool_value().value()) {
             throw FailedAssertion{ m_expression->source_location() };
@@ -182,7 +182,7 @@ public:
         while (true) {
             auto const condition = m_condition->evaluate(scope_stack);
             if (not condition->is_bool_value()) {
-                throw TypeMismatch{ m_condition->source_location(), "Bool", condition->type_name() };
+                throw TypeMismatch{ m_condition->source_location(), types::make_bool(), condition->type() };
             }
             if (not condition->as_bool_value().value()) {
                 break;

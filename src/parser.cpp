@@ -7,6 +7,7 @@
 #include "expressions/range.hpp"
 #include "expressions/string_literal.hpp"
 #include "expressions/subscript.hpp"
+#include "expressions/typeof.hpp"
 #include "expressions/unary_operator.hpp"
 #include "parser_error.hpp"
 
@@ -265,9 +266,14 @@ public:
                 return expr;
             }
             case TokenType::Identifier: {
-                auto token = advance();
+                auto const token = advance();
                 if (token.lexeme() == "true" or token.lexeme() == "false") {
                     return std::make_unique<expressions::BoolLiteral>(token);
+                } else if (token.lexeme() == "typeof") {
+                    expect(TokenType::LeftParenthesis);
+                    auto expr = expression();
+                    auto const closing_parenthesis = expect(TokenType::RightParenthesis);
+                    return std::make_unique<expressions::TypeOf>(token, std::move(expr), closing_parenthesis);
                 }
                 return std::make_unique<expressions::Name>(token);
             }
