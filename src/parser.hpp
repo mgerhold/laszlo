@@ -1,6 +1,6 @@
 #pragma once
 
-#include "expression.hpp"
+#include "expressions/expression.hpp"
 #include "lexer.hpp"
 #include "statement.hpp"
 #include <sstream>

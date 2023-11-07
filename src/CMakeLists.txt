@@ -12,7 +12,6 @@ add_executable(
         ostream_formatter.hpp
         parser_error.hpp
         lexer_error.hpp
-        expression.hpp
         statement.hpp
         runtime_error.hpp
         scope.hpp
@@ -29,4 +28,14 @@ add_executable(
         values/array_iterator.hpp
         values/range.hpp
         values/array.cpp
+        expressions/expression.hpp
+        expressions/integer_literal.hpp
+        expressions/string_literal.hpp
+        expressions/bool_literal.hpp
+        expressions/array_literal.hpp
+        expressions/unary_operator.hpp
+        expressions/binary_operator.hpp
+        expressions/name.hpp
+        expressions/range.hpp
+        expressions/subscript.hpp
 )

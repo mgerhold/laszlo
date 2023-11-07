@@ -1,8 +1,9 @@
 #pragma once
 
 #include "control_flow.hpp"
-#include "expression.hpp"
+#include "expressions/expression.hpp"
 #include "scope.hpp"
+#include "values/bool.hpp"
 #include "values/iterator.hpp"
 #include <list>
 
@@ -20,10 +21,11 @@ using Statements = std::vector<std::unique_ptr<Statement>>;
 
 class ExpressionStatement final : public Statement {
 private:
-    std::unique_ptr<Expression> m_expression;
+    std::unique_ptr<expressions::Expression> m_expression;
 
 public:
-    explicit ExpressionStatement(std::unique_ptr<Expression> expression) : m_expression{ std::move(expression) } { }
+    explicit ExpressionStatement(std::unique_ptr<expressions::Expression> expression)
+        : m_expression{ std::move(expression) } { }
 
     void execute(ScopeStack& scope_stack) const override {
         std::ignore = m_expression->evaluate(scope_stack);
@@ -32,10 +34,10 @@ public:
 
 class Print final : public Statement {
 private:
-    std::unique_ptr<Expression> m_expression;
+    std::unique_ptr<expressions::Expression> m_expression;
 
 public:
-    explicit Print(std::unique_ptr<Expression> expression) : m_expression{ std::move(expression) } { }
+    explicit Print(std::unique_ptr<expressions::Expression> expression) : m_expression{ std::move(expression) } { }
 
     void execute(ScopeStack& scope_stack) const override {
         if (m_expression == nullptr) {
@@ -47,10 +49,10 @@ public:
 
 class Println final : public Statement {
 private:
-    std::unique_ptr<Expression> m_expression;
+    std::unique_ptr<expressions::Expression> m_expression;
 
 public:
-    explicit Println(std::unique_ptr<Expression> expression) : m_expression{ std::move(expression) } { }
+    explicit Println(std::unique_ptr<expressions::Expression> expression) : m_expression{ std::move(expression) } { }
 
     void execute(ScopeStack& scope_stack) const override {
         if (m_expression == nullptr) {
@@ -64,13 +66,13 @@ public:
 class If final : public Statement {
 private:
     Token m_if_token;
-    std::unique_ptr<Expression> m_condition;
+    std::unique_ptr<expressions::Expression> m_condition;
     std::unique_ptr<Statement> m_then;
     std::unique_ptr<Statement> m_else;
 
 public:
     If(Token if_token,
-       std::unique_ptr<Expression> condition,
+       std::unique_ptr<expressions::Expression> condition,
        std::unique_ptr<Statement> then,
        std::unique_ptr<Statement> else_)
         : m_if_token{ if_token },
@@ -95,10 +97,10 @@ public:
 class VariableDefinition final : public Statement {
 private:
     Token m_name;
-    std::unique_ptr<Expression> m_initializer;
+    std::unique_ptr<expressions::Expression> m_initializer;
 
 public:
-    VariableDefinition(Token const name, std::unique_ptr<Expression> initializer)
+    VariableDefinition(Token const name, std::unique_ptr<expressions::Expression> initializer)
         : m_name{ name },
           m_initializer{ std::move(initializer) } { }
 
@@ -135,10 +137,10 @@ public:
 
 class Assert final : public Statement {
 private:
-    std::unique_ptr<Expression> m_expression;
+    std::unique_ptr<expressions::Expression> m_expression;
 
 public:
-    explicit Assert(std::unique_ptr<Expression> expression) : m_expression{ std::move(expression) } { }
+    explicit Assert(std::unique_ptr<expressions::Expression> expression) : m_expression{ std::move(expression) } { }
 
     void execute(ScopeStack& scope_stack) const override {
         auto const evaluated = m_expression->evaluate(scope_stack);
@@ -153,11 +155,11 @@ public:
 
 class Assignment final : public Statement {
 private:
-    std::unique_ptr<Expression> m_lvalue;
-    std::unique_ptr<Expression> m_rvalue;
+    std::unique_ptr<expressions::Expression> m_lvalue;
+    std::unique_ptr<expressions::Expression> m_rvalue;
 
 public:
-    Assignment(std::unique_ptr<Expression> lvalue, std::unique_ptr<Expression> rvalue)
+    Assignment(std::unique_ptr<expressions::Expression> lvalue, std::unique_ptr<expressions::Expression> rvalue)
         : m_lvalue{ std::move(lvalue) },
           m_rvalue{ std::move(rvalue) } { }
 
@@ -168,11 +170,11 @@ public:
 
 class While final : public Statement {
 private:
-    std::unique_ptr<Expression> m_condition;
+    std::unique_ptr<expressions::Expression> m_condition;
     std::unique_ptr<Statement> m_body;
 
 public:
-    While(std::unique_ptr<Expression> condition, std::unique_ptr<Statement> body)
+    While(std::unique_ptr<expressions::Expression> condition, std::unique_ptr<Statement> body)
         : m_condition{ std::move(condition) },
           m_body{ std::move(body) } { }
 
@@ -223,11 +225,11 @@ public:
 class For : public Statement {
 private:
     Token m_loop_variable;
-    std::unique_ptr<Expression> m_iterable;
+    std::unique_ptr<expressions::Expression> m_iterable;
     std::unique_ptr<Statement> m_body;
 
 public:
-    For(Token const loop_variable, std::unique_ptr<Expression> iterable, std::unique_ptr<Statement> body)
+    For(Token const loop_variable, std::unique_ptr<expressions::Expression> iterable, std::unique_ptr<Statement> body)
         : m_loop_variable{ loop_variable },
           m_iterable{ std::move(iterable) },
           m_body{ std::move(body) } { }

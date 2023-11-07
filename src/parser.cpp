@@ -1,4 +1,13 @@
 #include "parser.hpp"
+#include "expressions/array_literal.hpp"
+#include "expressions/binary_operator.hpp"
+#include "expressions/bool_literal.hpp"
+#include "expressions/integer_literal.hpp"
+#include "expressions/name.hpp"
+#include "expressions/range.hpp"
+#include "expressions/string_literal.hpp"
+#include "expressions/subscript.hpp"
+#include "expressions/unary_operator.hpp"
 #include "parser_error.hpp"
 
 class ParserState final {
@@ -38,11 +47,11 @@ public:
         return statements;
     }
 
-    [[nodiscard]] std::unique_ptr<Expression> expression() {
+    [[nodiscard]] std::unique_ptr<expressions::Expression> expression() {
         return range();
     }
 
-    [[nodiscard]] std::unique_ptr<Expression> range() {
+    [[nodiscard]] std::unique_ptr<expressions::Expression> range() {
         auto start = logical_or();
         if (current().type == TokenType::DotDot) {
             advance(); // consume ".."
@@ -51,51 +60,54 @@ public:
                 advance(); // consume "="
             }
             auto end = logical_or();
-            return std::make_unique<Range>(std::move(start), end_is_inclusive, std::move(end));
+            return std::make_unique<expressions::Range>(std::move(start), end_is_inclusive, std::move(end));
         }
         return start;
     }
 
-    [[nodiscard]] std::unique_ptr<Expression> logical_or() {
+    [[nodiscard]] std::unique_ptr<expressions::Expression> logical_or() {
         auto accumulator = logical_and();
         while (current().type == TokenType::Identifier and current().lexeme() == "or") {
             advance(); // consume "or"
-            accumulator =
-                    std::make_unique<BinaryOperator>(std::move(accumulator), BinaryOperator::Kind::Or, logical_and());
+            accumulator = std::make_unique<expressions::BinaryOperator>(
+                    std::move(accumulator),
+                    expressions::BinaryOperator::Kind::Or,
+                    logical_and()
+            );
         }
         return accumulator;
     }
 
-    [[nodiscard]] std::unique_ptr<Expression> logical_and() {
+    [[nodiscard]] std::unique_ptr<expressions::Expression> logical_and() {
         auto accumulator = equals_or_unequals();
         while (current().type == TokenType::Identifier and current().lexeme() == "and") {
             advance(); // consume "and"
-            accumulator = std::make_unique<BinaryOperator>(
+            accumulator = std::make_unique<expressions::BinaryOperator>(
                     std::move(accumulator),
-                    BinaryOperator::Kind::And,
+                    expressions::BinaryOperator::Kind::And,
                     equals_or_unequals()
             );
         }
         return accumulator;
     }
 
-    [[nodiscard]] std::unique_ptr<Expression> equals_or_unequals() {
+    [[nodiscard]] std::unique_ptr<expressions::Expression> equals_or_unequals() {
         auto accumulator = relational_operator();
         while (true) {
             switch (current().type) {
                 case TokenType::EqualsEquals:
                     advance();
-                    accumulator = std::make_unique<BinaryOperator>(
+                    accumulator = std::make_unique<expressions::BinaryOperator>(
                             std::move(accumulator),
-                            BinaryOperator::Kind::Equality,
+                            expressions::BinaryOperator::Kind::Equality,
                             relational_operator()
                     );
                     break;
                 case TokenType::ExclamationMarkEquals:
                     advance();
-                    accumulator = std::make_unique<BinaryOperator>(
+                    accumulator = std::make_unique<expressions::BinaryOperator>(
                             std::move(accumulator),
-                            BinaryOperator::Kind::Inequality,
+                            expressions::BinaryOperator::Kind::Inequality,
                             relational_operator()
                     );
                     break;
@@ -105,39 +117,39 @@ public:
         }
     }
 
-    [[nodiscard]] std::unique_ptr<Expression> relational_operator() {
+    [[nodiscard]] std::unique_ptr<expressions::Expression> relational_operator() {
         auto accumulator = sum();
         while (true) {
             switch (current().type) {
                 case TokenType::LessThan:
                     advance();
-                    accumulator = std::make_unique<BinaryOperator>(
+                    accumulator = std::make_unique<expressions::BinaryOperator>(
                             std::move(accumulator),
-                            BinaryOperator::Kind::LessThan,
+                            expressions::BinaryOperator::Kind::LessThan,
                             sum()
                     );
                     break;
                 case TokenType::LessOrEqual:
                     advance();
-                    accumulator = std::make_unique<BinaryOperator>(
+                    accumulator = std::make_unique<expressions::BinaryOperator>(
                             std::move(accumulator),
-                            BinaryOperator::Kind::LessOrEqual,
+                            expressions::BinaryOperator::Kind::LessOrEqual,
                             sum()
                     );
                     break;
                 case TokenType::GreaterThan:
                     advance();
-                    accumulator = std::make_unique<BinaryOperator>(
+                    accumulator = std::make_unique<expressions::BinaryOperator>(
                             std::move(accumulator),
-                            BinaryOperator::Kind::GreaterThan,
+                            expressions::BinaryOperator::Kind::GreaterThan,
                             sum()
                     );
                     break;
                 case TokenType::GreaterOrEqual:
                     advance();
-                    accumulator = std::make_unique<BinaryOperator>(
+                    accumulator = std::make_unique<expressions::BinaryOperator>(
                             std::move(accumulator),
-                            BinaryOperator::Kind::GreaterOrEqual,
+                            expressions::BinaryOperator::Kind::GreaterOrEqual,
                             sum()
                     );
                     break;
@@ -147,23 +159,23 @@ public:
         }
     }
 
-    [[nodiscard]] std::unique_ptr<Expression> sum() {
+    [[nodiscard]] std::unique_ptr<expressions::Expression> sum() {
         auto accumulator = product();
         while (true) {
             switch (current().type) {
                 case TokenType::Plus:
                     advance();
-                    accumulator = std::make_unique<BinaryOperator>(
+                    accumulator = std::make_unique<expressions::BinaryOperator>(
                             std::move(accumulator),
-                            BinaryOperator::Kind::Plus,
+                            expressions::BinaryOperator::Kind::Plus,
                             product()
                     );
                     break;
                 case TokenType::Minus:
                     advance();
-                    accumulator = std::make_unique<BinaryOperator>(
+                    accumulator = std::make_unique<expressions::BinaryOperator>(
                             std::move(accumulator),
-                            BinaryOperator::Kind::Minus,
+                            expressions::BinaryOperator::Kind::Minus,
                             product()
                     );
                     break;
@@ -173,32 +185,32 @@ public:
         }
     }
 
-    [[nodiscard]] std::unique_ptr<Expression> product() {
+    [[nodiscard]] std::unique_ptr<expressions::Expression> product() {
         auto accumulator = unary_operator();
         while (true) {
             switch (current().type) {
                 case TokenType::Asterisk:
                     advance();
-                    accumulator = std::make_unique<BinaryOperator>(
+                    accumulator = std::make_unique<expressions::BinaryOperator>(
                             std::move(accumulator),
-                            BinaryOperator::Kind::Multiply,
+                            expressions::BinaryOperator::Kind::Multiply,
                             unary_operator()
                     );
                     break;
                 case TokenType::Slash:
                     advance();
-                    accumulator = std::make_unique<BinaryOperator>(
+                    accumulator = std::make_unique<expressions::BinaryOperator>(
                             std::move(accumulator),
-                            BinaryOperator::Kind::Divide,
+                            expressions::BinaryOperator::Kind::Divide,
                             unary_operator()
                     );
                     break;
                 default:
                     if (current().type == TokenType::Identifier and current().lexeme() == "mod") {
                         advance(); // consume "mod"
-                        accumulator = std::make_unique<BinaryOperator>(
+                        accumulator = std::make_unique<expressions::BinaryOperator>(
                                 std::move(accumulator),
-                                BinaryOperator::Kind::Mod,
+                                expressions::BinaryOperator::Kind::Mod,
                                 unary_operator()
                         );
                         break;
@@ -208,43 +220,43 @@ public:
         }
     }
 
-    [[nodiscard]] std::unique_ptr<Expression> unary_operator() {
+    [[nodiscard]] std::unique_ptr<expressions::Expression> unary_operator() {
         switch (current().type) {
             case TokenType::Plus:
             case TokenType::Minus: {
                 auto const operator_token = advance();
-                return std::make_unique<UnaryOperator>(operator_token, postfix_operator());
+                return std::make_unique<expressions::UnaryOperator>(operator_token, postfix_operator());
             }
             default:
                 return postfix_operator();
         }
     }
 
-    [[nodiscard]] std::unique_ptr<Expression> postfix_operator() {
+    [[nodiscard]] std::unique_ptr<expressions::Expression> postfix_operator() {
         auto lvalue = primary();
         switch (current().type) {
             case TokenType::LeftSquareBracket: {
                 advance(); // consume "["
                 auto index = expression();
                 auto const closing_bracket = expect(TokenType::RightSquareBracket);
-                return std::make_unique<Subscript>(std::move(lvalue), std::move(index), closing_bracket);
+                return std::make_unique<expressions::Subscript>(std::move(lvalue), std::move(index), closing_bracket);
             }
             default:
                 return lvalue;
         }
     }
 
-    [[nodiscard]] std::unique_ptr<Expression> primary() {
+    [[nodiscard]] std::unique_ptr<expressions::Expression> primary() {
         switch (current().type) {
             case TokenType::StringLiteral:
-                return std::make_unique<StringLiteral>(advance());
+                return std::make_unique<expressions::StringLiteral>(advance());
             case TokenType::IntegerLiteral:
-                return std::make_unique<IntegerLiteral>(advance());
+                return std::make_unique<expressions::IntegerLiteral>(advance());
             case TokenType::LeftSquareBracket: {
                 auto const opening_bracket = advance(); // consume "["
                 auto values = expression_list(TokenType::RightSquareBracket);
                 auto const closing_bracket = advance(); // consume "]"
-                return std::make_unique<ArrayLiteral>(opening_bracket, std::move(values), closing_bracket);
+                return std::make_unique<expressions::ArrayLiteral>(opening_bracket, std::move(values), closing_bracket);
             }
             case TokenType::LeftParenthesis: {
                 advance(); // consume "("
@@ -255,17 +267,19 @@ public:
             case TokenType::Identifier: {
                 auto token = advance();
                 if (token.lexeme() == "true" or token.lexeme() == "false") {
-                    return std::make_unique<BoolLiteral>(token);
+                    return std::make_unique<expressions::BoolLiteral>(token);
                 }
-                return std::make_unique<Name>(token);
+                return std::make_unique<expressions::Name>(token);
             }
             default:
                 throw ParserError{ UnexpectedToken{ current() } };
         }
     }
 
-    [[nodiscard]] std::vector<std::unique_ptr<Expression>> expression_list(TokenType const terminating_token) {
-        auto expressions = std::vector<std::unique_ptr<Expression>>{};
+    [[nodiscard]] std::vector<std::unique_ptr<expressions::Expression>> expression_list(
+            TokenType const terminating_token
+    ) {
+        auto expressions = std::vector<std::unique_ptr<expressions::Expression>>{};
         while (not is_at_end() and current().type != terminating_token) {
             expressions.push_back(expression());
             if (current().type != TokenType::Comma) {
@@ -302,7 +316,7 @@ public:
                     advance(); // consume "print"
                     expect(TokenType::LeftParenthesis);
                     // clang-format off
-                    auto expr = std::unique_ptr<Expression>{
+                    auto expr = std::unique_ptr<expressions::Expression>{
                             current().type == TokenType::RightParenthesis ? nullptr : expression()
                         };
                     // clang-format on
@@ -313,7 +327,7 @@ public:
                     advance(); // consume "print"
                     expect(TokenType::LeftParenthesis);
                     // clang-format off
-                    auto expr = std::unique_ptr<Expression>{
+                    auto expr = std::unique_ptr<expressions::Expression>{
                             current().type == TokenType::RightParenthesis ? nullptr : expression()
                         };
                     // clang-format on                                                                                                       : expression() };
