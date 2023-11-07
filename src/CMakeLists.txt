@@ -40,4 +40,8 @@ add_executable(
         expressions/subscript.hpp
         types.hpp
         expressions/typeof.hpp
+        values/function.hpp
+        expressions/call.hpp
+        values/nothing.hpp
+        values/function.cpp
 )

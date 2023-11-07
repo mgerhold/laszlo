@@ -133,6 +133,28 @@ namespace types {
         }
     };
 
+    class Nothing final : public BasicType {
+    public:
+        [[nodiscard]] std::string to_string() const override {
+            return "Nothing";
+        }
+
+        [[nodiscard]] bool equals(BasicType const& other) const override {
+            return dynamic_cast<Nothing const*>(&other) != nullptr;
+        }
+    };
+
+    class Function final : public BasicType {
+    public:
+        [[nodiscard]] std::string to_string() const override {
+            return "Function";
+        }
+
+        [[nodiscard]] bool equals(BasicType const& other) const override {
+            return false;
+        }
+    };
+
     [[nodiscard]] inline bool operator==(Type const& lhs, Type const& rhs) {
         return lhs->equals(*rhs);
     }
@@ -167,5 +189,13 @@ namespace types {
 
     [[nodiscard]] inline Type make_range_iterator() {
         return std::make_shared<RangeIterator>();
+    }
+
+    [[nodiscard]] inline Type make_function() {
+        return std::make_shared<Function>();
+    }
+
+    [[nodiscard]] inline Type make_nothing() {
+        return std::make_shared<Nothing>();
     }
 } // namespace types

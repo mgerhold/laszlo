@@ -4,8 +4,13 @@
 #include "expressions/expression.hpp"
 #include "scope.hpp"
 #include "values/bool.hpp"
+#include "values/function.hpp"
 #include "values/iterator.hpp"
 #include <list>
+
+namespace expressions {
+    class Expression;
+}
 
 class Statement {
 protected:
@@ -260,5 +265,25 @@ public:
             }
         }
         scope_stack.truncate(num_scopes);
+    }
+};
+
+class FunctionDeclaration final : public Statement {
+private:
+    Token m_name;
+    std::unique_ptr<Statement> m_body;
+
+public:
+    FunctionDeclaration(Token const name, std::unique_ptr<Statement> body)
+        : m_name{ name },
+          m_body{ std::move(body) } { }
+
+    void execute(ScopeStack& scope_stack) const override {
+        auto name = std::string{ m_name.lexeme() };
+        if (scope_stack.top().contains(name)) {
+            throw VariableRedefinition{ m_name };
+        }
+        scope_stack.top().insert({ std::move(name),
+                                   values::Function::make(m_body.get(), values::ValueCategory::Lvalue) });
     }
 };

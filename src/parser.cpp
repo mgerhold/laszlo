@@ -2,6 +2,7 @@
 #include "expressions/array_literal.hpp"
 #include "expressions/binary_operator.hpp"
 #include "expressions/bool_literal.hpp"
+#include "expressions/call.hpp"
 #include "expressions/integer_literal.hpp"
 #include "expressions/name.hpp"
 #include "expressions/range.hpp"
@@ -242,6 +243,11 @@ public:
                 auto const closing_bracket = expect(TokenType::RightSquareBracket);
                 return std::make_unique<expressions::Subscript>(std::move(lvalue), std::move(index), closing_bracket);
             }
+            case TokenType::LeftParenthesis: {
+                advance(); // consume "("
+                auto const closing_parenthesis = expect(TokenType::RightParenthesis);
+                return std::make_unique<expressions::Call>(std::move(lvalue), closing_parenthesis);
+            }
             default:
                 return lvalue;
         }
@@ -318,6 +324,14 @@ public:
             case TokenType::LeftCurlyBracket:
                 return block();
             case TokenType::Identifier:
+                if (current().lexeme() == "function") {
+                    advance(); // consume "function"
+                    auto const name = expect(TokenType::Identifier);
+                    expect(TokenType::LeftParenthesis);
+                    expect(TokenType::RightParenthesis);
+                    auto body = block();
+                    return std::make_unique<FunctionDeclaration>(name, std::move(body));
+                }
                 if (current().lexeme() == "print") {
                     advance(); // consume "print"
                     expect(TokenType::LeftParenthesis);
@@ -329,47 +343,55 @@ public:
                     expect(TokenType::RightParenthesis);
                     expect(TokenType::Semicolon);
                     return std::make_unique<Print>(std::move(expr));
-                } else if (current().lexeme() == "println") {
+                }
+                if (current().lexeme() == "println") {
                     advance(); // consume "print"
                     expect(TokenType::LeftParenthesis);
                     // clang-format off
                     auto expr = std::unique_ptr<expressions::Expression>{
                             current().type == TokenType::RightParenthesis ? nullptr : expression()
                         };
-                    // clang-format on                                                                                                       : expression() };
+                    // clang-format on
                     expect(TokenType::RightParenthesis);
                     expect(TokenType::Semicolon);
                     return std::make_unique<Println>(std::move(expr));
-                } else if (current().lexeme() == "let") {
+                }
+                if (current().lexeme() == "let") {
                     advance(); // consume "let"
                     auto name = expect(TokenType::Identifier);
                     expect(TokenType::Equals);
                     auto initializer = expression();
                     expect(TokenType::Semicolon);
                     return std::make_unique<VariableDefinition>(name, std::move(initializer));
-                } else if (current().lexeme() == "if") {
+                }
+                if (current().lexeme() == "if") {
                     return if_();
-                } else if (current().lexeme() == "assert") {
+                }
+                if (current().lexeme() == "assert") {
                     advance(); // consume "assert"
                     expect(TokenType::LeftParenthesis);
                     auto predicate = expression();
                     expect(TokenType::RightParenthesis);
                     expect(TokenType::Semicolon);
                     return std::make_unique<Assert>(std::move(predicate));
-                } else if (current().lexeme() == "while") {
+                }
+                if (current().lexeme() == "while") {
                     advance(); // consume "while"
                     auto condition = expression();
                     auto body = block();
                     return std::make_unique<While>(std::move(condition), std::move(body));
-                } else if (current().lexeme() == "break") {
+                }
+                if (current().lexeme() == "break") {
                     auto const break_token = advance();
                     expect(TokenType::Semicolon);
                     return std::make_unique<Break>(break_token);
-                } else if (current().lexeme() == "continue") {
+                }
+                if (current().lexeme() == "continue") {
                     auto const continue_token = advance();
                     expect(TokenType::Semicolon);
                     return std::make_unique<Continue>(continue_token);
-                } else if (current().lexeme() == "for") {
+                }
+                if (current().lexeme() == "for") {
                     advance(); // consume "for"
                     auto const loop_variable = expect(TokenType::Identifier);
                     if (current().type != TokenType::Identifier or current().lexeme() != "in") {

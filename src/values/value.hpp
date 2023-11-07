@@ -6,6 +6,8 @@
 #include <memory>
 #include <stdexcept>
 
+class ScopeStack;
+
 namespace values {
 
     class BasicValue;
@@ -179,6 +181,10 @@ namespace values {
 
         [[nodiscard]] virtual Value iterator() {
             throw OperationNotSupportedByType{ "iterator", type() };
+        }
+
+        [[nodiscard]] virtual Value call(ScopeStack& scope_stack) const {
+            throw OperationNotSupportedByType{ "call", type() };
         }
     };
 
