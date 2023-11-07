@@ -5,7 +5,7 @@
 
 namespace values {
 
-    class Array final : public BasicValue {
+    class Array final : public BasicValue, public std::enable_shared_from_this<Array> {
     public:
         using ValueType = std::vector<Value>;
 
@@ -125,7 +125,7 @@ namespace values {
             }
         }
 
-        [[nodiscard]] Value iterator() const override;
+        [[nodiscard]] Value iterator() override;
     };
 
 } // namespace values

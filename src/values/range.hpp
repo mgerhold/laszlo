@@ -48,7 +48,7 @@ namespace values {
             return make(m_start, m_end_is_inclusive, m_end, value_category());
         }
 
-        [[nodiscard]] Value iterator() const override {
+        [[nodiscard]] Value iterator() override {
             return RangeIterator::make(
                     m_start->as_rvalue(),
                     m_end_is_inclusive,

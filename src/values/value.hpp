@@ -176,7 +176,7 @@ namespace values {
             throw OperationNotSupportedByType{ "assignment", type_name(), other->type_name() };
         }
 
-        [[nodiscard]] virtual Value iterator() const {
+        [[nodiscard]] virtual Value iterator() {
             throw OperationNotSupportedByType{ "iterator", type_name() };
         }
     };

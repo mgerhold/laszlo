@@ -3,8 +3,8 @@
 
 namespace values {
 
-    [[nodiscard]] Value Array::iterator() const {
-        return ArrayIterator::make(as_rvalue(), ValueCategory::Rvalue);
+    [[nodiscard]] Value Array::iterator() {
+        return ArrayIterator::make(shared_from_this(), ValueCategory::Rvalue);
     }
 
 }

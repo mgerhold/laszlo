@@ -15,7 +15,7 @@ namespace values {
     public:
         ArrayIterator(Value array, ValueCategory const value_category)
             : Iterator{ value_category },
-              m_array{ array->is_rvalue() ? std::move(array) : array->as_rvalue() } { }
+              m_array{ std::move(array) } { }
 
         [[nodiscard]] static Value make(Value array, ValueCategory const value_category) {
             return std::make_shared<ArrayIterator>(std::move(array), value_category);
@@ -27,7 +27,7 @@ namespace values {
             }
             auto const old_index = m_current_index;
             ++m_current_index;
-            return m_array->as_array().value().at(old_index)->as_rvalue();
+            return m_array->as_array().value().at(old_index);
         }
 
         [[nodiscard]] std::string string_representation() const override {
