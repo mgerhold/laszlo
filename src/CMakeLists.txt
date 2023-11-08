@@ -23,7 +23,7 @@ add_executable(
         values/Array.hpp
         values/iterator.hpp
         values/sentinel.hpp
-        values/range_interator.hpp
+        values/range_iterator.hpp
         values/integer.cpp
         values/array_iterator.hpp
         values/range.hpp
