@@ -33,6 +33,7 @@ enum class TokenType {
     DotDot,
     Colon,
     TildeArrow,
+    QuestionMark,
     EndOfInput,
 };
 

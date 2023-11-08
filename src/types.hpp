@@ -9,6 +9,8 @@ namespace types {
 
     using Type = std::shared_ptr<BasicType>;
 
+    class Array;
+
     class BasicType {
     public:
         virtual ~BasicType() = default;
@@ -16,6 +18,20 @@ namespace types {
         [[nodiscard]] virtual std::string to_string() const = 0;
 
         [[nodiscard]] virtual bool equals(BasicType const& other) const = 0;
+
+        [[nodiscard]] virtual bool can_be_created_from(Type const& other) const {
+            return this->equals(*other);
+        }
+
+        [[nodiscard]] virtual bool is_primitive() const = 0;
+
+        [[nodiscard]] virtual bool is_array() const {
+            return false;
+        }
+
+        [[nodiscard]] virtual Array const& as_array() const {
+            throw std::runtime_error{ "unreachable" };
+        }
     };
 
     class I32 final : public BasicType {
@@ -26,6 +42,10 @@ namespace types {
 
         [[nodiscard]] bool equals(BasicType const& other) const override {
             return dynamic_cast<I32 const*>(&other) != nullptr;
+        }
+
+        [[nodiscard]] bool is_primitive() const override {
+            return true;
         }
     };
 
@@ -38,6 +58,10 @@ namespace types {
         [[nodiscard]] bool equals(BasicType const& other) const override {
             return dynamic_cast<Bool const*>(&other) != nullptr;
         }
+
+        [[nodiscard]] bool is_primitive() const override {
+            return true;
+        }
     };
 
     class String final : public BasicType {
@@ -48,6 +72,10 @@ namespace types {
 
         [[nodiscard]] bool equals(BasicType const& other) const override {
             return dynamic_cast<String const*>(&other) != nullptr;
+        }
+
+        [[nodiscard]] bool is_primitive() const override {
+            return true;
         }
     };
 
@@ -68,6 +96,23 @@ namespace types {
             }
             return false;
         }
+
+        [[nodiscard]] bool is_primitive() const override {
+            return false;
+        }
+
+        [[nodiscard]] bool can_be_created_from(Type const& other) const override {
+            return BasicType::can_be_created_from(other)
+                   or (other->is_array() and m_contained_type->can_be_created_from(other->as_array().m_contained_type));
+        }
+
+        [[nodiscard]] bool is_array() const override {
+            return true;
+        }
+
+        [[nodiscard]] Array const& as_array() const override {
+            return *this;
+        }
     };
 
     class Sentinel final : public BasicType {
@@ -78,6 +123,10 @@ namespace types {
 
         [[nodiscard]] bool equals(BasicType const& other) const override {
             return dynamic_cast<Sentinel const*>(&other) != nullptr;
+        }
+
+        [[nodiscard]] bool is_primitive() const override {
+            return true;
         }
     };
 
@@ -90,6 +139,10 @@ namespace types {
         [[nodiscard]] bool equals(BasicType const& other) const override {
             return dynamic_cast<RangeIterator const*>(&other) != nullptr;
         }
+
+        [[nodiscard]] bool is_primitive() const override {
+            return true;
+        }
     };
 
     class Range final : public BasicType {
@@ -100,6 +153,10 @@ namespace types {
 
         [[nodiscard]] bool equals(BasicType const& other) const override {
             return dynamic_cast<Range const*>(&other) != nullptr;
+        }
+
+        [[nodiscard]] bool is_primitive() const override {
+            return true;
         }
     };
 
@@ -120,6 +177,10 @@ namespace types {
             }
             return false;
         }
+
+        [[nodiscard]] bool is_primitive() const override {
+            return false;
+        }
     };
 
     class Unspecified final : public BasicType {
@@ -130,6 +191,14 @@ namespace types {
 
         [[nodiscard]] bool equals(BasicType const& other) const override {
             return dynamic_cast<Unspecified const*>(&other) != nullptr;
+        }
+
+        [[nodiscard]] bool can_be_created_from(Type const& other) const override {
+            return true; // we can convert anything to "?"
+        }
+
+        [[nodiscard]] bool is_primitive() const override {
+            return true;
         }
     };
 
@@ -142,6 +211,10 @@ namespace types {
         [[nodiscard]] bool equals(BasicType const& other) const override {
             return dynamic_cast<Nothing const*>(&other) != nullptr;
         }
+
+        [[nodiscard]] bool is_primitive() const override {
+            return true;
+        }
     };
 
     class Function final : public BasicType {
@@ -151,6 +224,10 @@ namespace types {
         }
 
         [[nodiscard]] bool equals(BasicType const& other) const override {
+            return false;
+        }
+
+        [[nodiscard]] bool is_primitive() const override {
             return false;
         }
     };
@@ -197,5 +274,9 @@ namespace types {
 
     [[nodiscard]] inline Type make_nothing() {
         return std::make_shared<Nothing>();
+    }
+
+    [[nodiscard]] inline Type make_unspecified() {
+        return std::make_shared<Unspecified>();
     }
 } // namespace types

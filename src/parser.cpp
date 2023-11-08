@@ -496,6 +496,9 @@ public:
                 expect(TokenType::RightSquareBracket);
                 return types::make_array(std::move(contained_type));
             }
+            case TokenType::QuestionMark:
+                advance(); // consume "?"
+                return types::make_unspecified();
             case TokenType::Identifier:
                 if (current().lexeme() == "I32") {
                     advance();

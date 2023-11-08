@@ -89,6 +89,10 @@ public:
                 add_token(TokenType::Comma);
                 state.advance();
                 break;
+            case '?':
+                add_token(TokenType::QuestionMark);
+                state.advance();
+                break;
             case '~': {
                 auto start = state.m_current_index;
                 state.advance();

@@ -39,7 +39,7 @@ namespace values {
             auto const& parameter = m_parameters.at(i);
             auto const& argument_expression = arguments.at(i);
             auto argument = argument_expression->evaluate(scope_stack);
-            if (parameter.type() != argument->type()) {
+            if (not parameter.type()->can_be_created_from(argument->type())) {
                 throw WrongArgumentType{ parameter.name(), parameter.type(), argument->type() };
             }
 
@@ -61,7 +61,7 @@ namespace values {
                 return_value = std::move(returned_value.value());
             }
         }
-        if (return_value->type() != m_return_type) {
+        if (not m_return_type->can_be_created_from(return_value->type())) {
             throw ReturnTypeMismatch{ m_name.source_location, m_return_type, return_value->type() };
         }
         return return_value;
