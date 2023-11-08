@@ -33,13 +33,9 @@ namespace values {
                 ValueCategory value_category
         );
 
-        [[nodiscard]] std::string string_representation() const override {
-            return "Function()";
-        }
+        [[nodiscard]] std::string string_representation() const override;
 
-        [[nodiscard]] types::Type type() const override {
-            return types::make_function();
-        }
+        [[nodiscard]] types::Type type() const override;
 
         [[nodiscard]] Value clone() const override;
 

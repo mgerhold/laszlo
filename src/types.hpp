@@ -10,6 +10,7 @@ namespace types {
     using Type = std::shared_ptr<BasicType>;
 
     class Array;
+    class Function;
 
     class BasicType {
     public:
@@ -30,6 +31,14 @@ namespace types {
         }
 
         [[nodiscard]] virtual Array const& as_array() const {
+            throw std::runtime_error{ "unreachable" };
+        }
+
+        [[nodiscard]] virtual bool is_function() const {
+            return false;
+        }
+
+        [[nodiscard]] virtual Function const& as_function() const {
             throw std::runtime_error{ "unreachable" };
         }
     };
@@ -218,13 +227,39 @@ namespace types {
     };
 
     class Function final : public BasicType {
+    private:
+        std::vector<Type> m_parameter_types;
+        Type m_return_type;
+
     public:
+        Function(std::vector<Type> parameter_types, Type return_type)
+            : m_parameter_types{ std::move(parameter_types) },
+              m_return_type{ std::move(return_type) } { }
+
         [[nodiscard]] std::string to_string() const override {
-            return "Function";
+            auto parameters = std::string{};
+            if (not m_parameter_types.empty()) {
+                parameters += m_parameter_types.front()->to_string();
+            }
+            for (auto i = std::size_t{ 1 }; i < m_parameter_types.size(); ++i) {
+                parameters += ", " + m_parameter_types.at(i)->to_string();
+            }
+            return std::format("Function({}) ~> {}", parameters, m_return_type->to_string());
         }
 
         [[nodiscard]] bool equals(BasicType const& other) const override {
-            return false;
+            if (not other.is_function()) {
+                return false;
+            }
+            if (m_parameter_types.size() != other.as_function().m_parameter_types.size()) {
+                return false;
+            }
+            for (auto i = std::size_t{ 0 }; i < m_parameter_types.size(); ++i) {
+                if (m_parameter_types.at(i) != other.as_function().m_parameter_types.at(i)) {
+                    return false;
+                }
+            }
+            return m_return_type == other.as_function().m_return_type;
         }
 
         [[nodiscard]] bool is_primitive() const override {
@@ -268,8 +303,8 @@ namespace types {
         return std::make_shared<RangeIterator>();
     }
 
-    [[nodiscard]] inline Type make_function() {
-        return std::make_shared<Function>();
+    [[nodiscard]] inline Type make_function(std::vector<Type> parameter_types, Type return_type) {
+        return std::make_shared<Function>(std::move(parameter_types), std::move(return_type));
     }
 
     [[nodiscard]] inline Type make_nothing() {

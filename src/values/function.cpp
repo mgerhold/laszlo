@@ -67,6 +67,32 @@ namespace values {
         return return_value;
     }
 
+    [[nodiscard]] std::string Function::string_representation() const {
+        auto parameters = std::string{};
+        parameters.reserve(m_parameters.size());
+        if (not m_parameters.empty()) {
+            parameters += std::format(
+                    "{}: {}",
+                    m_parameters.front().name().lexeme(),
+                    m_parameters.front().type()->to_string()
+            );
+        }
+        for (auto i = std::size_t{ 1 }; i < m_parameters.size(); ++i) {
+            parameters +=
+                    std::format(", {}: {}", m_parameters.at(i).name().lexeme(), m_parameters.at(i).type()->to_string());
+        }
+        return std::format("function {}({}) ~> {}", m_name.lexeme(), std::move(parameters), m_return_type->to_string());
+    }
+
+    [[nodiscard]] types::Type Function::type() const {
+        auto parameter_types = std::vector<types::Type>{};
+        parameter_types.reserve(m_parameters.size());
+        for (auto const& parameter : m_parameters) {
+            parameter_types.push_back(parameter.type());
+        }
+        return types::make_function(std::move(parameter_types), m_return_type);
+    }
+
     [[nodiscard]] Value Function::clone() const {
         return make(m_name, m_parameters, m_return_type, m_body, value_category());
     }
