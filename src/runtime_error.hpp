@@ -141,3 +141,14 @@ public:
                   actual->to_string()
           ) } { }
 };
+
+class NoSuchMember : public RuntimeError {
+public:
+    NoSuchMember(types::Type const& type, Token const member)
+        : RuntimeError{ std::format(
+                  "{}: type '{}' has no member named '{}'",
+                  member.source_location,
+                  type->to_string(),
+                  member.lexeme()
+          ) } { }
+};

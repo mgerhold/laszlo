@@ -193,6 +193,10 @@ namespace values {
                 [[maybe_unused]] std::vector<std::unique_ptr<expressions::Expression>> const&
         ) const;
         // clang-format on
+
+        [[nodiscard]] virtual Value member_access(Token const member) const {
+            throw NoSuchMember{ type(), member };
+        }
     };
 
 } // namespace values

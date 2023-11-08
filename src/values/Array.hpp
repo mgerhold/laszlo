@@ -122,6 +122,7 @@ namespace values {
         }
 
         [[nodiscard]] Value iterator() override;
+        Value member_access(Token member) const override;
     };
 
 } // namespace values

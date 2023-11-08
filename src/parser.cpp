@@ -4,6 +4,7 @@
 #include "expressions/bool_literal.hpp"
 #include "expressions/call.hpp"
 #include "expressions/integer_literal.hpp"
+#include "expressions/member_access.hpp"
 #include "expressions/name.hpp"
 #include "expressions/range.hpp"
 #include "expressions/string_literal.hpp"
@@ -253,6 +254,11 @@ public:
                         std::move(arguments),
                         closing_parenthesis
                 );
+            }
+            case TokenType::Dot: {
+                advance(); // consume "."
+                auto const member = expect(TokenType::Identifier);
+                return std::make_unique<expressions::MemberAccess>(std::move(lvalue), member);
             }
             default:
                 return lvalue;

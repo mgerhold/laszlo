@@ -45,4 +45,5 @@ add_executable(
         values/nothing.hpp
         values/function.cpp
         values/value.cpp
+        expressions/member_access.hpp
 )
