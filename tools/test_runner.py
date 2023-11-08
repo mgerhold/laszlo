@@ -8,18 +8,19 @@ from pathlib import Path
 
 def run_test(laszlo_path: str, source_path: str, expected_output: str) -> bool:
     logging.debug(f"running test for '{source_path}'...")
-    result = subprocess.run([laszlo_path, source_path], capture_output=True, text=True)
+    result = subprocess.run([laszlo_path, source_path], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     return_code = result.returncode
     if return_code != 0:
-        logging.error(f"\nfailed to execute the laszlo interpreter: return code {return_code}\n{result.stderr}")
+        logging.error(f"\ntest terminated with unsuccessful return code: return code {return_code}")
         sys.exit(1)
-    actual_output = result.stdout.strip()
-    if actual_output != expected_output.strip():
+    actual_output = result.stdout.decode("utf-8").replace("\r\n", "\n").strip()
+    expected_output = expected_output.strip()
+    if actual_output != expected_output:
         diff = difflib.unified_diff(
             actual_output.splitlines(True),
             expected_output.splitlines(True),
         )
-        logging.error(f"output does not match the expected output")
+        logging.error(f"\noutput does not match the expected output")
         logging.error("".join(diff))
         return False
     logging.debug("success")
