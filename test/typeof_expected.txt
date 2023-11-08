@@ -2,11 +2,11 @@ String
 I32
 Bool
 Range
-Array[I32]
-Array[?]
-Array[String]
+[I32]
+[?]
+[String]
 String
 String
-Array[I32]
-Array[?]
-Array[I32]
+[I32]
+[?]
+[I32]
