@@ -44,4 +44,5 @@ add_executable(
         expressions/call.hpp
         values/nothing.hpp
         values/function.cpp
+        values/value.cpp
 )

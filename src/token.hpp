@@ -31,6 +31,8 @@ enum class TokenType {
     ExclamationMark,
     Dot,
     DotDot,
+    Colon,
+    TildeArrow,
     EndOfInput,
 };
 
@@ -108,6 +110,10 @@ struct Token final {
                 return os << "Dot";
             case TokenType::DotDot:
                 return os << "DotDot";
+            case TokenType::Colon:
+                return os << "Colon";
+            case TokenType::TildeArrow:
+                return os << "TildeArray";
             default:
                 assert(false and "unreachable");
                 return os;

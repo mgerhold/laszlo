@@ -66,7 +66,18 @@ class TypeMismatch : public RuntimeError {
 public:
     TypeMismatch(SourceLocation const source_location, types::Type const& expected, types::Type const& actual)
         : RuntimeError{ std::format(
-                  "{}: type mismatch: expected '{}', got '{}'",
+                  "{}: type mismatch (expected '{}', got '{}')",
+                  source_location,
+                  expected->to_string(),
+                  actual->to_string()
+          ) } { }
+};
+
+class ReturnTypeMismatch : public RuntimeError {
+public:
+    ReturnTypeMismatch(SourceLocation const source_location, types::Type const& expected, types::Type const& actual)
+        : RuntimeError{ std::format(
+                  "{}: returning value of wrong type from function (expected '{}', got '{}')",
                   source_location,
                   expected->to_string(),
                   actual->to_string()
@@ -106,4 +117,27 @@ public:
 class LvalueRequired : public RuntimeError {
 public:
     explicit LvalueRequired() : RuntimeError{ std::format("got an rvalue where an lvalue is required") } { }
+};
+
+class WrongNumberOfArguments : public RuntimeError {
+public:
+    WrongNumberOfArguments(Token const function_name, std::size_t const expected_count, std::size_t const actual_count)
+        : RuntimeError{ std::format(
+                  "{}: wrong number of arguments when calling function '{}' (expected {}, got {})",
+                  function_name.source_location,
+                  function_name.lexeme(),
+                  expected_count,
+                  actual_count
+          ) } { }
+};
+
+class WrongArgumentType : public RuntimeError {
+public:
+    WrongArgumentType(Token const parameter_name, types::Type const& expected, types::Type const& actual)
+        : RuntimeError{ std::format(
+                  "{}: wrong argument type (expected '{}', got '{}'",
+                  parameter_name.source_location,
+                  expected->to_string(),
+                  actual->to_string()
+          ) } { }
 };

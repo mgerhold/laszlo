@@ -227,6 +227,24 @@ public:
     }
 };
 
+class Return : public Statement {
+private:
+    Token m_return_token;
+    std::optional<std::unique_ptr<expressions::Expression>> m_value;
+
+public:
+    Return(Token const return_token, std::optional<std::unique_ptr<expressions::Expression>> value)
+        : m_return_token{ return_token },
+          m_value{ std::move(value) } { }
+
+    void execute(ScopeStack& scope_stack) const override {
+        if (not m_value.has_value()) {
+            throw ReturnException{ m_return_token };
+        }
+        throw ReturnException{ m_return_token, m_value.value()->evaluate(scope_stack) };
+    }
+};
+
 class For : public Statement {
 private:
     Token m_loop_variable;
@@ -268,14 +286,42 @@ public:
     }
 };
 
+class FunctionParameter final {
+    friend class FunctionDeclaration;
+
+private:
+    Token m_name;
+    types::Type m_type;
+
+public:
+    FunctionParameter(Token const name, types::Type type) : m_name{ name }, m_type{ std::move(type) } { }
+
+    [[nodiscard]] Token name() const {
+        return m_name;
+    }
+
+    [[nodiscard]] types::Type const& type() const {
+        return m_type;
+    }
+};
+
 class FunctionDeclaration final : public Statement {
 private:
     Token m_name;
+    std::vector<FunctionParameter> m_parameters;
+    types::Type m_return_type;
     std::unique_ptr<Statement> m_body;
 
 public:
-    FunctionDeclaration(Token const name, std::unique_ptr<Statement> body)
+    FunctionDeclaration(
+            Token const name,
+            std::vector<FunctionParameter> parameters,
+            types::Type return_type,
+            std::unique_ptr<Statement> body
+    )
         : m_name{ name },
+          m_parameters{ std::move(parameters) },
+          m_return_type{ std::move(return_type) },
           m_body{ std::move(body) } { }
 
     void execute(ScopeStack& scope_stack) const override {
@@ -284,6 +330,12 @@ public:
             throw VariableRedefinition{ m_name };
         }
         scope_stack.top().insert({ std::move(name),
-                                   values::Function::make(m_body.get(), values::ValueCategory::Lvalue) });
+                                   values::Function::make(
+                                           m_name,
+                                           m_parameters,
+                                           m_return_type,
+                                           m_body.get(),
+                                           values::ValueCategory::Lvalue
+                                   ) });
     }
 };

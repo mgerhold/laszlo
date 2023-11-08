@@ -8,6 +8,10 @@
 
 class ScopeStack;
 
+namespace expressions {
+    class Expression;
+}
+
 namespace values {
 
     class BasicValue;
@@ -183,9 +187,12 @@ namespace values {
             throw OperationNotSupportedByType{ "iterator", type() };
         }
 
-        [[nodiscard]] virtual Value call(ScopeStack& scope_stack) const {
-            throw OperationNotSupportedByType{ "call", type() };
-        }
+        // clang-format off
+        [[nodiscard]] virtual Value call(
+                ScopeStack& scope_stack,
+                [[maybe_unused]] std::vector<std::unique_ptr<expressions::Expression>> const&
+        ) const;
+        // clang-format on
     };
 
 } // namespace values

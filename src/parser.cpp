@@ -11,6 +11,7 @@
 #include "expressions/typeof.hpp"
 #include "expressions/unary_operator.hpp"
 #include "parser_error.hpp"
+#include "types.hpp"
 
 class ParserState final {
 private:
@@ -49,11 +50,11 @@ public:
         return statements;
     }
 
-    [[nodiscard]] std::unique_ptr<expressions::Expression> expression() {
+    [[nodiscard]] std::unique_ptr<expressions::Expression> expression() { // NOLINT(misc-no-recursion)
         return range();
     }
 
-    [[nodiscard]] std::unique_ptr<expressions::Expression> range() {
+    [[nodiscard]] std::unique_ptr<expressions::Expression> range() { // NOLINT(misc-no-recursion)
         auto start = logical_or();
         if (current().type == TokenType::DotDot) {
             advance(); // consume ".."
@@ -67,7 +68,7 @@ public:
         return start;
     }
 
-    [[nodiscard]] std::unique_ptr<expressions::Expression> logical_or() {
+    [[nodiscard]] std::unique_ptr<expressions::Expression> logical_or() { // NOLINT(misc-no-recursion)
         auto accumulator = logical_and();
         while (current().type == TokenType::Identifier and current().lexeme() == "or") {
             advance(); // consume "or"
@@ -80,7 +81,7 @@ public:
         return accumulator;
     }
 
-    [[nodiscard]] std::unique_ptr<expressions::Expression> logical_and() {
+    [[nodiscard]] std::unique_ptr<expressions::Expression> logical_and() { // NOLINT(misc-no-recursion)
         auto accumulator = equals_or_unequals();
         while (current().type == TokenType::Identifier and current().lexeme() == "and") {
             advance(); // consume "and"
@@ -93,7 +94,7 @@ public:
         return accumulator;
     }
 
-    [[nodiscard]] std::unique_ptr<expressions::Expression> equals_or_unequals() {
+    [[nodiscard]] std::unique_ptr<expressions::Expression> equals_or_unequals() { // NOLINT(misc-no-recursion)
         auto accumulator = relational_operator();
         while (true) {
             switch (current().type) {
@@ -119,7 +120,7 @@ public:
         }
     }
 
-    [[nodiscard]] std::unique_ptr<expressions::Expression> relational_operator() {
+    [[nodiscard]] std::unique_ptr<expressions::Expression> relational_operator() { // NOLINT(misc-no-recursion)
         auto accumulator = sum();
         while (true) {
             switch (current().type) {
@@ -161,7 +162,7 @@ public:
         }
     }
 
-    [[nodiscard]] std::unique_ptr<expressions::Expression> sum() {
+    [[nodiscard]] std::unique_ptr<expressions::Expression> sum() { // NOLINT(misc-no-recursion)
         auto accumulator = product();
         while (true) {
             switch (current().type) {
@@ -187,7 +188,7 @@ public:
         }
     }
 
-    [[nodiscard]] std::unique_ptr<expressions::Expression> product() {
+    [[nodiscard]] std::unique_ptr<expressions::Expression> product() { // NOLINT(misc-no-recursion)
         auto accumulator = unary_operator();
         while (true) {
             switch (current().type) {
@@ -222,7 +223,7 @@ public:
         }
     }
 
-    [[nodiscard]] std::unique_ptr<expressions::Expression> unary_operator() {
+    [[nodiscard]] std::unique_ptr<expressions::Expression> unary_operator() { // NOLINT(misc-no-recursion)
         switch (current().type) {
             case TokenType::Plus:
             case TokenType::Minus: {
@@ -234,7 +235,7 @@ public:
         }
     }
 
-    [[nodiscard]] std::unique_ptr<expressions::Expression> postfix_operator() {
+    [[nodiscard]] std::unique_ptr<expressions::Expression> postfix_operator() { // NOLINT(misc-no-recursion)
         auto lvalue = primary();
         switch (current().type) {
             case TokenType::LeftSquareBracket: {
@@ -245,15 +246,20 @@ public:
             }
             case TokenType::LeftParenthesis: {
                 advance(); // consume "("
+                auto arguments = expression_list(TokenType::RightParenthesis);
                 auto const closing_parenthesis = expect(TokenType::RightParenthesis);
-                return std::make_unique<expressions::Call>(std::move(lvalue), closing_parenthesis);
+                return std::make_unique<expressions::Call>(
+                        std::move(lvalue),
+                        std::move(arguments),
+                        closing_parenthesis
+                );
             }
             default:
                 return lvalue;
         }
     }
 
-    [[nodiscard]] std::unique_ptr<expressions::Expression> primary() {
+    [[nodiscard]] std::unique_ptr<expressions::Expression> primary() { // NOLINT(misc-no-recursion)
         switch (current().type) {
             case TokenType::StringLiteral:
                 return std::make_unique<expressions::StringLiteral>(advance());
@@ -288,7 +294,7 @@ public:
         }
     }
 
-    [[nodiscard]] std::vector<std::unique_ptr<expressions::Expression>> expression_list(
+    [[nodiscard]] std::vector<std::unique_ptr<expressions::Expression>> expression_list( // NOLINT(misc-no-recursion)
             TokenType const terminating_token
     ) {
         auto expressions = std::vector<std::unique_ptr<expressions::Expression>>{};
@@ -309,7 +315,7 @@ public:
         return advance();
     }
 
-    [[nodiscard]] std::unique_ptr<Statement> block() {
+    [[nodiscard]] std::unique_ptr<Statement> block() { // NOLINT(misc-no-recursion)
         auto statements = Statements{};
         expect(TokenType::LeftCurlyBracket);
         while (current().type != TokenType::RightCurlyBracket) {
@@ -319,7 +325,7 @@ public:
         return std::make_unique<Block>(std::move(statements));
     }
 
-    [[nodiscard]] std::unique_ptr<Statement> statement() {
+    [[nodiscard]] std::unique_ptr<Statement> statement() { // NOLINT(misc-no-recursion)
         switch (current().type) {
             case TokenType::LeftCurlyBracket:
                 return block();
@@ -328,9 +334,20 @@ public:
                     advance(); // consume "function"
                     auto const name = expect(TokenType::Identifier);
                     expect(TokenType::LeftParenthesis);
+                    auto parameters = parameter_list();
                     expect(TokenType::RightParenthesis);
+                    auto return_type = types::make_nothing();
+                    if (current().type == TokenType::TildeArrow) {
+                        advance(); // consume "~>"
+                        return_type = data_type();
+                    }
                     auto body = block();
-                    return std::make_unique<FunctionDeclaration>(name, std::move(body));
+                    return std::make_unique<FunctionDeclaration>(
+                            name,
+                            std::move(parameters),
+                            std::move(return_type),
+                            std::move(body)
+                    );
                 }
                 if (current().lexeme() == "print") {
                     advance(); // consume "print"
@@ -391,6 +408,16 @@ public:
                     expect(TokenType::Semicolon);
                     return std::make_unique<Continue>(continue_token);
                 }
+                if (current().lexeme() == "return") {
+                    auto const return_token = advance();
+                    if (current().type == TokenType::Semicolon) {
+                        advance(); // consume ";"
+                        return std::make_unique<Return>(return_token, std::nullopt);
+                    }
+                    auto value = expression();
+                    expect(TokenType::Semicolon);
+                    return std::make_unique<Return>(return_token, std::move(value));
+                }
                 if (current().lexeme() == "for") {
                     advance(); // consume "for"
                     auto const loop_variable = expect(TokenType::Identifier);
@@ -419,7 +446,22 @@ public:
         }
     }
 
-    [[nodiscard]] std::unique_ptr<Statement> if_() {
+    [[nodiscard]] std::vector<FunctionParameter> parameter_list() {
+        auto parameters = std::vector<FunctionParameter>{};
+        while (current().type == TokenType::Identifier) {
+            auto const name = advance();
+            expect(TokenType::Colon);
+            auto type = data_type();
+            parameters.emplace_back(name, std::move(type));
+            if (current().type != TokenType::Comma) {
+                break;
+            }
+            advance(); // consume ","
+        }
+        return parameters;
+    }
+
+    [[nodiscard]] std::unique_ptr<Statement> if_() { // NOLINT(misc-no-recursion)
         assert(current().type == TokenType::Identifier and current().lexeme() == "if");
         auto const if_token = advance(); // consume "if"
         auto condition = expression();
@@ -438,6 +480,37 @@ public:
                 std::move(then),
                 std::make_unique<Block>(Statements{})
         );
+    }
+
+    [[nodiscard]] types::Type data_type() {
+        switch (current().type) {
+            case TokenType::LeftSquareBracket: {
+                advance(); // consume "["
+                auto contained_type = data_type();
+                expect(TokenType::RightSquareBracket);
+                return types::make_array(std::move(contained_type));
+            }
+            case TokenType::Identifier:
+                if (current().lexeme() == "I32") {
+                    advance();
+                    return types::make_i32();
+                } else if (current().lexeme() == "String") {
+                    advance();
+                    return types::make_string();
+                } else if (current().lexeme() == "Bool") {
+                    advance();
+                    return types::make_bool();
+                } else if (current().lexeme() == "Nothing") {
+                    advance();
+                    return types::make_nothing();
+                } else if (current().lexeme() == "Range") {
+                    advance();
+                    return types::make_range();
+                }
+                [[fallthrough]];
+            default:
+                throw ParserError{ UnexpectedToken{ current() } };
+        }
     }
 };
 

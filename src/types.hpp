@@ -59,7 +59,7 @@ namespace types {
         explicit Array(Type contained_type) : m_contained_type{ std::move(contained_type) } { }
 
         [[nodiscard]] std::string to_string() const override {
-            return std::format("Array[{}]", m_contained_type->to_string());
+            return std::format("[{}]", m_contained_type->to_string());
         }
 
         [[nodiscard]] bool equals(BasicType const& other) const override {
@@ -111,7 +111,7 @@ namespace types {
         explicit ArrayIterator(Type array_type) : m_array_type{ std::move(array_type) } { }
 
         [[nodiscard]] std::string to_string() const override {
-            return std::format("ArrayIterator[{}]", m_array_type->to_string());
+            return std::format("ArrayIterator({})", m_array_type->to_string());
         }
 
         [[nodiscard]] bool equals(BasicType const& other) const override {

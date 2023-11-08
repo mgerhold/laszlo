@@ -77,6 +77,10 @@ public:
                 add_token(TokenType::RightParenthesis);
                 state.advance();
                 break;
+            case ':':
+                add_token(TokenType::Colon);
+                state.advance();
+                break;
             case ';':
                 add_token(TokenType::Semicolon);
                 state.advance();
@@ -85,6 +89,18 @@ public:
                 add_token(TokenType::Comma);
                 state.advance();
                 break;
+            case '~': {
+                auto start = state.m_current_index;
+                state.advance();
+                if (state.current() != '>') {
+                    throw LexerError{
+                        UnexpectedChar{ state.current_source_location(), current }
+                    };
+                }
+                state.advance();
+                add_token(TokenType::TildeArrow, start, 2);
+                break;
+            }
             case '+':
                 add_token(TokenType::Plus);
                 state.advance();
