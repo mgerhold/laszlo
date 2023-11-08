@@ -79,7 +79,7 @@ namespace values {
             return false;
         }
 
-        [[nodiscard]] virtual String const& as_string_value() const {
+        [[nodiscard]] virtual String const& as_string() const {
             throw InvalidValueCast{ "String" };
         }
 

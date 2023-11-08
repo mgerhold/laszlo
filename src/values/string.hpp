@@ -24,7 +24,7 @@ namespace values {
             return true;
         }
 
-        [[nodiscard]] String const& as_string_value() const override {
+        [[nodiscard]] String const& as_string() const override {
             return *this;
         }
 
@@ -59,8 +59,12 @@ namespace values {
             if (not other->is_string_value()) {
                 BasicValue::assign(other); // throws
             }
-            m_value = other->as_string_value().m_value;
+            m_value = other->as_string().m_value;
         }
+
+        [[nodiscard]] Value equals(Value const& other) const override;
+
+        [[nodiscard]] Value not_equals(Value const& other) const override;
     };
 
 } // namespace values

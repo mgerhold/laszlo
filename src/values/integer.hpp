@@ -123,7 +123,7 @@ namespace values {
             if (other->is_string_value()) {
                 auto result = std::string{};
                 for (ValueType i = 0; i < value(); ++i) {
-                    result += other->as_string_value().value();
+                    result += other->as_string().value();
                 }
                 return String::make(std::move(result), ValueCategory::Rvalue);
             }
