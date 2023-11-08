@@ -24,14 +24,14 @@
 
 int main(int argc, const char** argv) try {
 #ifdef EMSCRIPTEN
-    auto filename = std::string_view{ "programs/test.las" };
+    auto const filename = std::string_view{ "programs/test.las" };
 #else
     assert(argc >= 1);
     if (argc != 2) {
         std::cerr << std::format("error: no input file\nusage: {} <INPUT_FILENAME>\n", argv[0]);
         return EXIT_FAILURE;
     }
-    auto filename = std::string_view{ argv[1] };
+    auto const filename = std::string_view{ argv[1] };
 #endif
     auto const source = read_file(filename);
     auto const tokens = Tokens::tokenize(filename, source);
