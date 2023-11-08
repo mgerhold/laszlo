@@ -48,3 +48,12 @@ add_executable(
         expressions/member_access.hpp
         values/string.cpp
 )
+
+if (EMSCRIPTEN)
+    add_definitions(-DEMSCRIPTEN)
+    target_compile_options(laszlo PRIVATE "-fexceptions")
+    set_target_properties(laszlo PROPERTIES LINK_FLAGS "--preload-file ${CMAKE_SOURCE_DIR}/asset_dir/test.las@programs/ --shell-file ${CMAKE_SOURCE_DIR}/emscripten/shell.html -sEXPORTED_FUNCTIONS=_main -fexceptions")
+
+    add_custom_target(RefreshShellFile ALL DEPENDS "${CMAKE_SOURCE_DIR}/emscripten/shell.html")
+    add_dependencies(laszlo RefreshShellFile)
+endif ()
