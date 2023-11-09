@@ -39,7 +39,7 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           publish_dir: ./build # Specify the directory you want to publish
           publish_branch: gh-pages # The target branch
           keep_files: false # Set to false to remove existing files in gh-pages branch
