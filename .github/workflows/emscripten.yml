@@ -29,16 +29,12 @@ jobs:
       - name: Create Build Directory
         run: |
           mkdir build
-          cd build
 
-      - name: Configure CMake Project
+      - name: Configure CMake Project and Build
         run: |
+          cd build          
           emcmake cmake ..
-
-      - name: Build with CMake
-        run: |
           cmake --build .
-          cd ..
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
