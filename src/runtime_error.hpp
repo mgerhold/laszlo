@@ -135,7 +135,7 @@ class WrongArgumentType : public RuntimeError {
 public:
     WrongArgumentType(Token const parameter_name, types::Type const& expected, types::Type const& actual)
         : RuntimeError{ std::format(
-                  "{}: wrong argument type (expected '{}', got '{}'",
+                  "{}: wrong argument type (expected '{}', got '{}')",
                   parameter_name.source_location,
                   expected->to_string(),
                   actual->to_string()
