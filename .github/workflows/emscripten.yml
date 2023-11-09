@@ -1,0 +1,45 @@
+name: Emscripten Build and Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Clone Emscripten
+        run: |
+          git clone https://github.com/emscripten-core/emsdk.git
+          cd emsdk
+          ./emsdk install latest
+          ./emsdk activate latest
+          source ./emsdk_env.sh
+          cd ..
+
+      - name: Create Build Directory
+        run: |
+          mkdir build
+          cd build
+
+      - name: Configure CMake Project
+        run: |
+          emcmake cmake ..
+
+      - name: Build with CMake
+        run: |
+          cmake --build .
+          cd ..
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build # Specify the directory you want to publish
+          publish_branch: gh-pages # The target branch
+          keep_files: false # Set to false to remove existing files in gh-pages branch
