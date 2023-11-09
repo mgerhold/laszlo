@@ -13,7 +13,7 @@
 #include <string>
 
 [[nodiscard]] std::string read_file(std::filesystem::path const& path) {
-    auto file = std::ifstream{ path };
+    auto const file = std::ifstream{ path };
     if (not file) {
         throw std::runtime_error{ std::format("unable to open file '{}'", path.string()) };
     }
@@ -22,7 +22,7 @@
     return std::move(stream).str();
 }
 
-int main(int argc, const char** argv) try {
+int main(int const argc, char const* const* const argv) try {
 #ifdef EMSCRIPTEN
     auto const filename = std::string_view{ "programs/test.las" };
 #else
