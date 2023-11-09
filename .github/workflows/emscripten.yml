@@ -19,7 +19,11 @@ jobs:
           cd emsdk
           ./emsdk install latest
           ./emsdk activate latest
-          source ./emsdk_env.sh
+          echo "EMSDK_PATH=$(pwd)/emsdk" >> $GITHUB_ENV
+          echo "EMSDK_NODE=$(pwd)/node/14.15.5_64bit/bin" >> $GITHUB_ENV
+          echo "EMSCRIPTEN=$(pwd)/upstream/emscripten" >> $GITHUB_ENV
+          echo "PATH=$(pwd):$(pwd)/upstream/emscripten:$(pwd)/node/14.15.5_64bit/bin:$PATH" >> $GITHUB_ENV
+          echo "PATH=$(pwd):/home/runner/work/laszlo/laszlo/emsdk:/home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten:$PATH" >> $GITHUB_ENV
           cd ..
 
       - name: Create Build Directory
