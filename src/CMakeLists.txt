@@ -20,7 +20,7 @@ add_executable(
         values/integer.hpp
         values/string.hpp
         values/bool.hpp
-        values/Array.hpp
+        values/array.hpp
         values/iterator.hpp
         values/sentinel.hpp
         values/range_iterator.hpp
