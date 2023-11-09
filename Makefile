@@ -87,14 +87,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/runner/work/laszlo/laszlo/build/CMakeFiles /home/runner/work/laszlo/laszlo/build//CMakeFiles/progress.marks
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
+	cd /home/runner/work/laszlo/laszlo/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/runner/work/laszlo/laszlo/build/CMakeFiles /home/runner/work/laszlo/laszlo/build/src//CMakeFiles/progress.marks
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/runner/work/laszlo/laszlo/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 clean
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/clean
 .PHONY : clean
 
 # The main clean target
@@ -103,31 +103,224 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 preinstall
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 preinstall
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/runner/work/laszlo/laszlo/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-#=============================================================================
-# Target rules for targets named laszlo
+# Convenience name for target.
+src/CMakeFiles/laszlo.dir/rule:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/laszlo.dir/rule
+.PHONY : src/CMakeFiles/laszlo.dir/rule
 
-# Build rule for target.
-laszlo: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 laszlo
+# Convenience name for target.
+laszlo: src/CMakeFiles/laszlo.dir/rule
 .PHONY : laszlo
 
 # fast build rule for target.
 laszlo/fast:
-	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/build
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/build
 .PHONY : laszlo/fast
+
+lexer.o: lexer.cpp.o
+.PHONY : lexer.o
+
+# target to build an object file
+lexer.cpp.o:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/lexer.cpp.o
+.PHONY : lexer.cpp.o
+
+lexer.i: lexer.cpp.i
+.PHONY : lexer.i
+
+# target to preprocess a source file
+lexer.cpp.i:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/lexer.cpp.i
+.PHONY : lexer.cpp.i
+
+lexer.s: lexer.cpp.s
+.PHONY : lexer.s
+
+# target to generate assembly for a file
+lexer.cpp.s:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/lexer.cpp.s
+.PHONY : lexer.cpp.s
+
+main.o: main.cpp.o
+.PHONY : main.o
+
+# target to build an object file
+main.cpp.o:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/main.cpp.o
+.PHONY : main.cpp.o
+
+main.i: main.cpp.i
+.PHONY : main.i
+
+# target to preprocess a source file
+main.cpp.i:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/main.cpp.i
+.PHONY : main.cpp.i
+
+main.s: main.cpp.s
+.PHONY : main.s
+
+# target to generate assembly for a file
+main.cpp.s:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/main.cpp.s
+.PHONY : main.cpp.s
+
+parser.o: parser.cpp.o
+.PHONY : parser.o
+
+# target to build an object file
+parser.cpp.o:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/parser.cpp.o
+.PHONY : parser.cpp.o
+
+parser.i: parser.cpp.i
+.PHONY : parser.i
+
+# target to preprocess a source file
+parser.cpp.i:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/parser.cpp.i
+.PHONY : parser.cpp.i
+
+parser.s: parser.cpp.s
+.PHONY : parser.s
+
+# target to generate assembly for a file
+parser.cpp.s:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/parser.cpp.s
+.PHONY : parser.cpp.s
+
+values/array.o: values/array.cpp.o
+.PHONY : values/array.o
+
+# target to build an object file
+values/array.cpp.o:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/values/array.cpp.o
+.PHONY : values/array.cpp.o
+
+values/array.i: values/array.cpp.i
+.PHONY : values/array.i
+
+# target to preprocess a source file
+values/array.cpp.i:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/values/array.cpp.i
+.PHONY : values/array.cpp.i
+
+values/array.s: values/array.cpp.s
+.PHONY : values/array.s
+
+# target to generate assembly for a file
+values/array.cpp.s:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/values/array.cpp.s
+.PHONY : values/array.cpp.s
+
+values/function.o: values/function.cpp.o
+.PHONY : values/function.o
+
+# target to build an object file
+values/function.cpp.o:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/values/function.cpp.o
+.PHONY : values/function.cpp.o
+
+values/function.i: values/function.cpp.i
+.PHONY : values/function.i
+
+# target to preprocess a source file
+values/function.cpp.i:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/values/function.cpp.i
+.PHONY : values/function.cpp.i
+
+values/function.s: values/function.cpp.s
+.PHONY : values/function.s
+
+# target to generate assembly for a file
+values/function.cpp.s:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/values/function.cpp.s
+.PHONY : values/function.cpp.s
+
+values/integer.o: values/integer.cpp.o
+.PHONY : values/integer.o
+
+# target to build an object file
+values/integer.cpp.o:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/values/integer.cpp.o
+.PHONY : values/integer.cpp.o
+
+values/integer.i: values/integer.cpp.i
+.PHONY : values/integer.i
+
+# target to preprocess a source file
+values/integer.cpp.i:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/values/integer.cpp.i
+.PHONY : values/integer.cpp.i
+
+values/integer.s: values/integer.cpp.s
+.PHONY : values/integer.s
+
+# target to generate assembly for a file
+values/integer.cpp.s:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/values/integer.cpp.s
+.PHONY : values/integer.cpp.s
+
+values/string.o: values/string.cpp.o
+.PHONY : values/string.o
+
+# target to build an object file
+values/string.cpp.o:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/values/string.cpp.o
+.PHONY : values/string.cpp.o
+
+values/string.i: values/string.cpp.i
+.PHONY : values/string.i
+
+# target to preprocess a source file
+values/string.cpp.i:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/values/string.cpp.i
+.PHONY : values/string.cpp.i
+
+values/string.s: values/string.cpp.s
+.PHONY : values/string.s
+
+# target to generate assembly for a file
+values/string.cpp.s:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/values/string.cpp.s
+.PHONY : values/string.cpp.s
+
+values/value.o: values/value.cpp.o
+.PHONY : values/value.o
+
+# target to build an object file
+values/value.cpp.o:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/values/value.cpp.o
+.PHONY : values/value.cpp.o
+
+values/value.i: values/value.cpp.i
+.PHONY : values/value.i
+
+# target to preprocess a source file
+values/value.cpp.i:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/values/value.cpp.i
+.PHONY : values/value.cpp.i
+
+values/value.s: values/value.cpp.s
+.PHONY : values/value.s
+
+# target to generate assembly for a file
+values/value.cpp.s:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/values/value.cpp.s
+.PHONY : values/value.cpp.s
 
 # Help Target
 help:
@@ -138,6 +331,30 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... laszlo"
+	@echo "... lexer.o"
+	@echo "... lexer.i"
+	@echo "... lexer.s"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
+	@echo "... parser.o"
+	@echo "... parser.i"
+	@echo "... parser.s"
+	@echo "... values/array.o"
+	@echo "... values/array.i"
+	@echo "... values/array.s"
+	@echo "... values/function.o"
+	@echo "... values/function.i"
+	@echo "... values/function.s"
+	@echo "... values/integer.o"
+	@echo "... values/integer.i"
+	@echo "... values/integer.s"
+	@echo "... values/string.o"
+	@echo "... values/string.i"
+	@echo "... values/string.s"
+	@echo "... values/value.o"
+	@echo "... values/value.i"
+	@echo "... values/value.s"
 .PHONY : help
 
 
@@ -149,6 +366,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/runner/work/laszlo/laszlo/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
