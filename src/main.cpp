@@ -9,6 +9,7 @@
 #include <format>
 #include <fstream>
 #include <iostream>
+#include <map>
 #include <sstream>
 #include <string>
 
@@ -37,6 +38,7 @@ int main(int const argc, char const* const* const argv) try {
     auto const tokens = Tokens::tokenize(filename, source);
     auto const ast = parse(tokens);
     interpret(ast);
+    std::cout << '\n';
 } catch (LexerError const& error) {
     std::cerr << '\n' << error.what() << '\n';
 } catch (ParserError const& error) {

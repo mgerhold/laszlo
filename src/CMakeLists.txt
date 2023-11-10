@@ -52,5 +52,8 @@ add_executable(
 if (EMSCRIPTEN)
     add_definitions(-DEMSCRIPTEN)
     target_compile_options(laszlo PRIVATE "-fexceptions")
-    set_target_properties(laszlo PROPERTIES LINK_FLAGS "--preload-file ${CMAKE_SOURCE_DIR}/asset_dir/test.las@programs/ --shell-file ${CMAKE_SOURCE_DIR}/emscripten/shell.html -sEXPORTED_FUNCTIONS=_main -fexceptions")
+    set_target_properties(laszlo PROPERTIES LINK_FLAGS "--preload-file ${CMAKE_SOURCE_DIR}/asset_dir/test.las@programs/ -fexceptions --shell-file ${CMAKE_SOURCE_DIR}/emscripten/shell.html -sEXPORTED_FUNCTIONS=_main -sNO_EXIT_RUNTIME"
+    )
+
+    add_custom_command(TARGET laszlo POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/emscripten/mode-laszlo.js ${CMAKE_CURRENT_BINARY_DIR}/mode-laszlo.js)
 endif ()
