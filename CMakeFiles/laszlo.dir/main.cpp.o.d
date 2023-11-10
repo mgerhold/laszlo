@@ -579,4 +579,6 @@ src/CMakeFiles/laszlo.dir/main.cpp.o: \
   /home/runner/work/laszlo/laszlo/src/source_location.hpp \
   /home/runner/work/laszlo/laszlo/src/parser_error.hpp \
   /home/runner/work/laszlo/laszlo/src/runtime_error.hpp \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/fstream
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/fstream \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/map \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__tree

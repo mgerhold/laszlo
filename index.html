@@ -5,80 +5,121 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Laszlo</title>
     <style>
-        .emscripten { padding-right: 0; margin-left: auto; margin-right: auto; display: block; }
-        textarea.emscripten { font-family: monospace; width: 80%; }
-        div.emscripten { text-align: center; }
-        div.emscripten_border { border: 1px solid black; }
-        /* the canvas *must not* have any border or padding, or mouse coords will be wrong */
-        /* canvas.emscripten { border: 0px none; background-color: black; } */
+        .emscripten {
+            padding-right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        textarea.emscripten {
+            font-family: monospace;
+            width: 80%;
+        }
+
+        div.emscripten {
+            text-align: center;
+        }
+
+        #editor {
+            width: 100%;
+            height: 300px;
+        }
 
         .spinner {
-          height: 50px;
-          width: 50px;
-          margin: 0px auto;
-          -webkit-animation: rotation .8s linear infinite;
-          -moz-animation: rotation .8s linear infinite;
-          -o-animation: rotation .8s linear infinite;
-          animation: rotation 0.8s linear infinite;
-          border-left: 10px solid rgb(0,150,240);
-          border-right: 10px solid rgb(0,150,240);
-          border-bottom: 10px solid rgb(0,150,240);
-          border-top: 10px solid rgb(100,0,200);
-          border-radius: 100%;
-          background-color: rgb(200,100,250);
+            height: 50px;
+            width: 50px;
+            margin: 0px auto;
+            -webkit-animation: rotation .8s linear infinite;
+            -moz-animation: rotation .8s linear infinite;
+            -o-animation: rotation .8s linear infinite;
+            animation: rotation 0.8s linear infinite;
+            border-left: 10px solid rgb(0, 150, 240);
+            border-right: 10px solid rgb(0, 150, 240);
+            border-bottom: 10px solid rgb(0, 150, 240);
+            border-top: 10px solid rgb(100, 0, 200);
+            border-radius: 100%;
+            background-color: rgb(200, 100, 250);
         }
+
         #sourceCodeInput {
             width: 80%; /* Or any size you want */
             height: 200px; /* Or any size you want */
-            margin-bottom: 20px;  /* Adds a little space between the textarea and the button */
+            margin-bottom: 20px; /* Adds a little space between the textarea and the button */
             font-family: monospace;
         }
+
         button {
             padding: 10px 20px; /* Or any size you prefer */
         }
+
         @-webkit-keyframes rotation {
-          from {-webkit-transform: rotate(0deg);}
-          to {-webkit-transform: rotate(360deg);}
+            from {
+                -webkit-transform: rotate(0deg);
+            }
+            to {
+                -webkit-transform: rotate(360deg);
+            }
         }
+
         @-moz-keyframes rotation {
-          from {-moz-transform: rotate(0deg);}
-          to {-moz-transform: rotate(360deg);}
+            from {
+                -moz-transform: rotate(0deg);
+            }
+            to {
+                -moz-transform: rotate(360deg);
+            }
         }
+
         @-o-keyframes rotation {
-          from {-o-transform: rotate(0deg);}
-          to {-o-transform: rotate(360deg);}
+            from {
+                -o-transform: rotate(0deg);
+            }
+            to {
+                -o-transform: rotate(360deg);
+            }
         }
+
         @keyframes rotation {
-          from {transform: rotate(0deg);}
-          to {transform: rotate(360deg);}
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
         }
 
     </style>
 </head>
 <body>
-<hr/>
-<textarea id="sourceCodeInput" placeholder="Enter Laszlo code here..."></textarea>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    let editor;
+    require(['mode-laszlo.js'], function (MyLanguageHighlightRules) {
+        editor = ace.edit("editor");
+        editor.setTheme("ace/theme/monokai");
+        editor.setFontSize(20);
+        editor.session.setMode(new MyLanguageHighlightRules());
+    });
+</script>
+<div id="editor">function main() {
+    println("Hello from Laszlo!");
+}
+
+main();
+</div>
 <br/>
 <button onclick="generateFile()">Run Laszlo!</button>
 <hr/>
-    <figure style="overflow:visible;" id="spinner"><div class="spinner"></div><center style="margin-top:0.5em"><strong>emscripten</strong></center></figure>
-    <div class="emscripten" id="status">Downloading...</div>
-    <div class="emscripten">
-      <progress value="0" max="100" id="progress" hidden=1></progress>  
-    </div>
-    <!-- <div class="emscripten_border">
-      <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" tabindex=-1></canvas>
-    </div> 
-    <hr/>
-    <div class="emscripten">
-      <input type="checkbox" id="resize">Resize canvas
-      <input type="checkbox" id="pointerLock" checked>Lock/hide mouse pointer
-      &nbsp;&nbsp;&nbsp;
-      <input type="button" value="Fullscreen" onclick="Module.requestFullscreen(document.getElementById('pointerLock').checked, 
-                                                                                document.getElementById('resize').checked)">
-    </div> 
-
-    <hr/> -->
+<figure style="overflow:visible;" id="spinner">
+    <div class="spinner"></div>
+    <center style="margin-top:0.5em"><strong>emscripten</strong></center>
+</figure>
+<div class="emscripten" id="status">Downloading...</div>
+<div class="emscripten">
+    <progress value="0" max="100" id="progress" hidden=1></progress>
+</div>
 <textarea class="emscripten" id="output" rows="8"></textarea>
 <hr>
 <script type='text/javascript'>
@@ -87,103 +128,93 @@
     var spinnerElement = document.getElementById('spinner');
 
     var Module = {
-      print: (function() {
-        var element = document.getElementById('output');
-        if (element) element.value = ''; // clear browser cache
-        return function(text) {
-          if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
-          console.log(text);
-          if (element) {
-            element.value += text + "\n";
-            element.scrollTop = element.scrollHeight; // focus on bottom
-          }
-        };
-      })(),
-      printErr: (function() {        
-        var element = document.getElementById('output');
-        if (element) element.value = ''; // clear browser cache
-        return function(text) {
-          if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
-          console.log(text);
-          if (element) {
-            element.value += text + "\n";
-            element.scrollTop = element.scrollHeight; // focus on bottom
-          }
-        };
-      })(),
-      /*canvas: (() => {
-        var canvas = document.getElementById('canvas');
-
-        // As a default initial behavior, pop up an alert when webgl context is lost. To make your
-        // application robust, you may want to override this behavior before shipping!
-        // See http://www.khronos.org/registry/webgl/specs/latest/1.0/#5.15.2
-        canvas.addEventListener("webglcontextlost", (e) => { alert('WebGL context lost. You will need to reload the page.'); e.preventDefault(); }, false);
-
-        return canvas;
-      })(),*/
-      setStatus: (text) => {
-        if (!Module.setStatus.last) Module.setStatus.last = { time: Date.now(), text: '' };
-        if (text === Module.setStatus.last.text) return;
-        var m = text.match(/([^(]+)\((\d+(\.\d+)?)\/(\d+)\)/);
-        var now = Date.now();
-        if (m && now - Module.setStatus.last.time < 30) return; // if this is a progress update, skip it if too soon
-        Module.setStatus.last.time = now;
-        Module.setStatus.last.text = text;
-        if (m) {
-          text = m[1];
-          progressElement.value = parseInt(m[2])*100;
-          progressElement.max = parseInt(m[4])*100;
-          progressElement.hidden = false;
-          spinnerElement.hidden = false;
-        } else {
-          progressElement.value = null;
-          progressElement.max = null;
-          progressElement.hidden = true;
-          if (!text) spinnerElement.hidden = true;
+        print: (function () {
+            var element = document.getElementById('output');
+            if (element) element.value = ''; // clear browser cache
+            return function (text) {
+                if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
+                console.log(text);
+                if (element) {
+                    element.value += text + "\n";
+                    element.scrollTop = element.scrollHeight; // focus on bottom
+                }
+            };
+        })(),
+        printErr: (function () {
+            var element = document.getElementById('output');
+            if (element) element.value = ''; // clear browser cache
+            return function (text) {
+                if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
+                console.log(text);
+                if (element) {
+                    element.value += text + "\n";
+                    element.scrollTop = element.scrollHeight; // focus on bottom
+                }
+            };
+        })(),
+        setStatus: (text) => {
+            if (!Module.setStatus.last) Module.setStatus.last = {time: Date.now(), text: ''};
+            if (text === Module.setStatus.last.text) return;
+            var m = text.match(/([^(]+)\((\d+(\.\d+)?)\/(\d+)\)/);
+            var now = Date.now();
+            if (m && now - Module.setStatus.last.time < 30) return; // if this is a progress update, skip it if too soon
+            Module.setStatus.last.time = now;
+            Module.setStatus.last.text = text;
+            if (m) {
+                text = m[1];
+                progressElement.value = parseInt(m[2]) * 100;
+                progressElement.max = parseInt(m[4]) * 100;
+                progressElement.hidden = false;
+                spinnerElement.hidden = false;
+            } else {
+                progressElement.value = null;
+                progressElement.max = null;
+                progressElement.hidden = true;
+                if (!text) spinnerElement.hidden = true;
+            }
+            statusElement.innerHTML = text;
+        },
+        totalDependencies: 0,
+        monitorRunDependencies: (left) => {
+            this.totalDependencies = Math.max(this.totalDependencies, left);
+            Module.setStatus(left ? 'Preparing... (' + (this.totalDependencies - left) + '/' + this.totalDependencies + ')' : 'All downloads complete.');
         }
-        statusElement.innerHTML = text;
-      },
-      totalDependencies: 0,
-      monitorRunDependencies: (left) => {
-        this.totalDependencies = Math.max(this.totalDependencies, left);
-        Module.setStatus(left ? 'Preparing... (' + (this.totalDependencies-left) + '/' + this.totalDependencies + ')' : 'All downloads complete.');
-      }
     };
     Module.setStatus('Downloading...');
     window.onerror = () => {
-      Module.setStatus('Exception thrown, see JavaScript console');
-      spinnerElement.style.display = 'none';
-      Module.setStatus = (text) => {
-        if (text) console.error('[post-exception status] ' + text);
-      };
+        Module.setStatus('Exception thrown, see JavaScript console');
+        spinnerElement.style.display = 'none';
+        Module.setStatus = (text) => {
+            if (text) console.error('[post-exception status] ' + text);
+        };
     };
 
-function generateFile() {
-    // Get the value of the input field
-    const text = document.getElementById("sourceCodeInput").value;
+    function generateFile() {
+        // Get the value of the input field
+        const text = editor.getValue();
 
-    // Check if the text is not empty
-    if (text.length > 0) {
-        // Write the file to the Emscripten file system
-        FS.writeFile("/programs/test.las", text);
+        // Check if the text is not empty
+        if (text.length > 0) {
+            // Write the file to the Emscripten file system
+            FS.writeFile("/programs/test.las", text);
 
-        // Synchronize the file system with the IndexedDB storage
-        FS.syncfs(false, function(err) {
-            if (err) {
-                // Handle the error
-                console.error("Failed to sync to IndexedDB:", err);
-            } else {
-                // Success!
-                console.log("Synchronized data to IndexedDB.");
-                document.getElementById('output').value = '';
-                Module._main();
-                
-            }
-        });
-    } else {
-       alert("Please enter some text.");
+            // Synchronize the file system with the IndexedDB storage
+            FS.syncfs(false, function (err) {
+                if (err) {
+                    // Handle the error
+                    console.error("Failed to sync to IndexedDB:", err);
+                } else {
+                    // Success!
+                    console.log("Synchronized data to IndexedDB.");
+                    document.getElementById('output').value = '';
+                    Module._main();
+
+                }
+            });
+        } else {
+            alert("Please enter some text.");
+        }
     }
-}
 </script>
 <script async type="text/javascript" src="laszlo.js"></script>
 </body>
