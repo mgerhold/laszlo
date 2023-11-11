@@ -1,14 +1,9 @@
 src/CMakeFiles/laszlo.dir/main.cpp.o: \
   /home/runner/work/laszlo/laszlo/src/main.cpp \
-  /home/runner/work/laszlo/laszlo/src/interpreter.hpp \
-  /home/runner/work/laszlo/laszlo/src/parser.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/expression.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/../scope.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/../values/value.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/../values/../runtime_error.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/../values/../token.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/../values/../source_location.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/../values/../ostream_formatter.hpp \
+  /home/runner/work/laszlo/laszlo/src/control_flow.hpp \
+  /home/runner/work/laszlo/laszlo/src/token.hpp \
+  /home/runner/work/laszlo/laszlo/src/source_location.hpp \
+  /home/runner/work/laszlo/laszlo/src/ostream_formatter.hpp \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/format \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__assert \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__config \
@@ -528,7 +523,10 @@ src/CMakeFiles/laszlo.dir/main.cpp.o: \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__utility/cmp.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__utility/forward_like.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__utility/rel_ops.h \
-  /home/runner/work/laszlo/laszlo/src/expressions/../values/../types.hpp \
+  /home/runner/work/laszlo/laszlo/src/values/value.hpp \
+  /home/runner/work/laszlo/laszlo/src/values/../runtime_error.hpp \
+  /home/runner/work/laszlo/laszlo/src/values/../token.hpp \
+  /home/runner/work/laszlo/laszlo/src/values/../types.hpp \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/memory \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory/align.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory/assume_aligned.h \
@@ -554,6 +552,11 @@ src/CMakeFiles/laszlo.dir/main.cpp.o: \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__numeric/transform_exclusive_scan.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__numeric/transform_inclusive_scan.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__numeric/transform_reduce.h \
+  /home/runner/work/laszlo/laszlo/src/interpreter.hpp \
+  /home/runner/work/laszlo/laszlo/src/parser.hpp \
+  /home/runner/work/laszlo/laszlo/src/expressions/expression.hpp \
+  /home/runner/work/laszlo/laszlo/src/expressions/../scope.hpp \
+  /home/runner/work/laszlo/laszlo/src/expressions/../values/value.hpp \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/list \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/unordered_map \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/is_permutation.h \
@@ -564,22 +567,10 @@ src/CMakeFiles/laszlo.dir/main.cpp.o: \
   /home/runner/work/laszlo/laszlo/src/expressions/../token.hpp \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/variant \
   /home/runner/work/laszlo/laszlo/src/lexer.hpp \
-  /home/runner/work/laszlo/laszlo/src/token.hpp \
-  /home/runner/work/laszlo/laszlo/src/statement.hpp \
-  /home/runner/work/laszlo/laszlo/src/control_flow.hpp \
-  /home/runner/work/laszlo/laszlo/src/values/value.hpp \
-  /home/runner/work/laszlo/laszlo/src/scope.hpp \
-  /home/runner/work/laszlo/laszlo/src/values/bool.hpp \
-  /home/runner/work/laszlo/laszlo/src/values/string.hpp \
-  /home/runner/work/laszlo/laszlo/src/values/char.hpp \
-  /home/runner/work/laszlo/laszlo/src/values/function.hpp \
-  /home/runner/work/laszlo/laszlo/src/values/../scope.hpp \
-  /home/runner/work/laszlo/laszlo/src/values/nothing.hpp \
-  /home/runner/work/laszlo/laszlo/src/values/iterator.hpp \
+  /home/runner/work/laszlo/laszlo/src/statements/statement.hpp \
+  /home/runner/work/laszlo/laszlo/src/statements/../expressions/expression.hpp \
+  /home/runner/work/laszlo/laszlo/src/statements/../scope.hpp \
   /home/runner/work/laszlo/laszlo/src/lexer_error.hpp \
-  /home/runner/work/laszlo/laszlo/src/source_location.hpp \
   /home/runner/work/laszlo/laszlo/src/parser_error.hpp \
   /home/runner/work/laszlo/laszlo/src/runtime_error.hpp \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/fstream \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/map \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__tree
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/fstream

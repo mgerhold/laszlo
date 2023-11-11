@@ -559,18 +559,16 @@ src/CMakeFiles/laszlo.dir/values/function.cpp.o: \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__hash_table \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__iterator/erase_if_container.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__node_handle \
-  /home/runner/work/laszlo/laszlo/src/values/nothing.hpp \
-  /home/runner/work/laszlo/laszlo/src/values/value.hpp \
-  /home/runner/work/laszlo/laszlo/src/values/../expressions/expression.hpp \
-  /home/runner/work/laszlo/laszlo/src/values/../expressions/../scope.hpp \
-  /home/runner/work/laszlo/laszlo/src/values/../expressions/../token.hpp \
-  /home/runner/work/laszlo/laszlo/src/values/../expressions/../values/value.hpp \
+  /home/runner/work/laszlo/laszlo/src/values/../statements/function_declaration.hpp \
+  /home/runner/work/laszlo/laszlo/src/values/../statements/statement.hpp \
+  /home/runner/work/laszlo/laszlo/src/values/../statements/../expressions/expression.hpp \
+  /home/runner/work/laszlo/laszlo/src/values/../statements/../expressions/../scope.hpp \
+  /home/runner/work/laszlo/laszlo/src/values/../statements/../expressions/../token.hpp \
+  /home/runner/work/laszlo/laszlo/src/values/../statements/../expressions/../values/value.hpp \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/variant \
-  /home/runner/work/laszlo/laszlo/src/values/../statement.hpp \
+  /home/runner/work/laszlo/laszlo/src/values/../statements/../scope.hpp \
+  /home/runner/work/laszlo/laszlo/src/values/value.hpp \
   /home/runner/work/laszlo/laszlo/src/values/../control_flow.hpp \
   /home/runner/work/laszlo/laszlo/src/values/../token.hpp \
-  /home/runner/work/laszlo/laszlo/src/values/../values/bool.hpp \
-  /home/runner/work/laszlo/laszlo/src/values/../values/string.hpp \
-  /home/runner/work/laszlo/laszlo/src/values/../values/char.hpp \
-  /home/runner/work/laszlo/laszlo/src/values/../values/function.hpp \
-  /home/runner/work/laszlo/laszlo/src/values/../values/iterator.hpp
+  /home/runner/work/laszlo/laszlo/src/values/../expressions/expression.hpp \
+  /home/runner/work/laszlo/laszlo/src/values/nothing.hpp

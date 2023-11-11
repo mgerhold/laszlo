@@ -223,6 +223,20 @@ src/CMakeFiles/laszlo.dir/values/string_iterator.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/laszlo.dir/values/string_iterator.cpp.s"
 	cd /home/runner/work/laszlo/laszlo/build/src && /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/runner/work/laszlo/laszlo/src/values/string_iterator.cpp -o CMakeFiles/laszlo.dir/values/string_iterator.cpp.s
 
+src/CMakeFiles/laszlo.dir/statements/function_declaration.cpp.o: src/CMakeFiles/laszlo.dir/flags.make
+src/CMakeFiles/laszlo.dir/statements/function_declaration.cpp.o: /home/runner/work/laszlo/laszlo/src/statements/function_declaration.cpp
+src/CMakeFiles/laszlo.dir/statements/function_declaration.cpp.o: src/CMakeFiles/laszlo.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/runner/work/laszlo/laszlo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object src/CMakeFiles/laszlo.dir/statements/function_declaration.cpp.o"
+	cd /home/runner/work/laszlo/laszlo/build/src && /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/laszlo.dir/statements/function_declaration.cpp.o -MF CMakeFiles/laszlo.dir/statements/function_declaration.cpp.o.d -o CMakeFiles/laszlo.dir/statements/function_declaration.cpp.o -c /home/runner/work/laszlo/laszlo/src/statements/function_declaration.cpp
+
+src/CMakeFiles/laszlo.dir/statements/function_declaration.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/laszlo.dir/statements/function_declaration.cpp.i"
+	cd /home/runner/work/laszlo/laszlo/build/src && /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/runner/work/laszlo/laszlo/src/statements/function_declaration.cpp > CMakeFiles/laszlo.dir/statements/function_declaration.cpp.i
+
+src/CMakeFiles/laszlo.dir/statements/function_declaration.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/laszlo.dir/statements/function_declaration.cpp.s"
+	cd /home/runner/work/laszlo/laszlo/build/src && /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/runner/work/laszlo/laszlo/src/statements/function_declaration.cpp -o CMakeFiles/laszlo.dir/statements/function_declaration.cpp.s
+
 # Object files for target laszlo
 laszlo_OBJECTS = \
 "CMakeFiles/laszlo.dir/main.cpp.o" \
@@ -235,7 +249,8 @@ laszlo_OBJECTS = \
 "CMakeFiles/laszlo.dir/values/value.cpp.o" \
 "CMakeFiles/laszlo.dir/values/string.cpp.o" \
 "CMakeFiles/laszlo.dir/values/char.cpp.o" \
-"CMakeFiles/laszlo.dir/values/string_iterator.cpp.o"
+"CMakeFiles/laszlo.dir/values/string_iterator.cpp.o" \
+"CMakeFiles/laszlo.dir/statements/function_declaration.cpp.o"
 
 # External object files for target laszlo
 laszlo_EXTERNAL_OBJECTS =
@@ -251,10 +266,11 @@ src/laszlo.html: src/CMakeFiles/laszlo.dir/values/value.cpp.o
 src/laszlo.html: src/CMakeFiles/laszlo.dir/values/string.cpp.o
 src/laszlo.html: src/CMakeFiles/laszlo.dir/values/char.cpp.o
 src/laszlo.html: src/CMakeFiles/laszlo.dir/values/string_iterator.cpp.o
+src/laszlo.html: src/CMakeFiles/laszlo.dir/statements/function_declaration.cpp.o
 src/laszlo.html: src/CMakeFiles/laszlo.dir/build.make
 src/laszlo.html: src/CMakeFiles/laszlo.dir/objects1.rsp
 src/laszlo.html: src/CMakeFiles/laszlo.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/runner/work/laszlo/laszlo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX executable laszlo.html"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/runner/work/laszlo/laszlo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable laszlo.html"
 	cd /home/runner/work/laszlo/laszlo/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/laszlo.dir/link.txt --verbose=$(VERBOSE)
 	cd /home/runner/work/laszlo/laszlo/build/src && /usr/local/bin/cmake -E copy /home/runner/work/laszlo/laszlo/emscripten/mode-laszlo.js /home/runner/work/laszlo/laszlo/build/src/mode-laszlo.js
 

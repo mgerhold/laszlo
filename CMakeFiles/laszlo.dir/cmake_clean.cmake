@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/laszlo.dir/main.cpp.o.d"
   "CMakeFiles/laszlo.dir/parser.cpp.o"
   "CMakeFiles/laszlo.dir/parser.cpp.o.d"
+  "CMakeFiles/laszlo.dir/statements/function_declaration.cpp.o"
+  "CMakeFiles/laszlo.dir/statements/function_declaration.cpp.o.d"
   "CMakeFiles/laszlo.dir/token.cpp.o"
   "CMakeFiles/laszlo.dir/token.cpp.o.d"
   "CMakeFiles/laszlo.dir/values/array.cpp.o"

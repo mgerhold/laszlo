@@ -202,6 +202,30 @@ parser.cpp.s:
 	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/parser.cpp.s
 .PHONY : parser.cpp.s
 
+statements/function_declaration.o: statements/function_declaration.cpp.o
+.PHONY : statements/function_declaration.o
+
+# target to build an object file
+statements/function_declaration.cpp.o:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/statements/function_declaration.cpp.o
+.PHONY : statements/function_declaration.cpp.o
+
+statements/function_declaration.i: statements/function_declaration.cpp.i
+.PHONY : statements/function_declaration.i
+
+# target to preprocess a source file
+statements/function_declaration.cpp.i:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/statements/function_declaration.cpp.i
+.PHONY : statements/function_declaration.cpp.i
+
+statements/function_declaration.s: statements/function_declaration.cpp.s
+.PHONY : statements/function_declaration.s
+
+# target to generate assembly for a file
+statements/function_declaration.cpp.s:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/statements/function_declaration.cpp.s
+.PHONY : statements/function_declaration.cpp.s
+
 token.o: token.cpp.o
 .PHONY : token.o
 
@@ -412,6 +436,9 @@ help:
 	@echo "... parser.o"
 	@echo "... parser.i"
 	@echo "... parser.s"
+	@echo "... statements/function_declaration.o"
+	@echo "... statements/function_declaration.i"
+	@echo "... statements/function_declaration.s"
 	@echo "... token.o"
 	@echo "... token.i"
 	@echo "... token.s"
