@@ -1,0 +1,5 @@
+H e l l o ,   w o r l d ! 
+! e ! l ! , ! 7 ! 9 for i == 10, char == 0
+! 
+ABC
+abcdefghijklmnopqrstuvwxyz
