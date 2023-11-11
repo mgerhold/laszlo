@@ -1,4 +1,4 @@
-[![Laszlo Logo](images/laszlo_logo.png)](https://mgerhold.github.io/laszlo/)
+<img src="images/laszlo_logo.png" width="400" height="400">
 
 Laszlo is both a programming language and an interpreter that can execute Laszlo
 programs.
