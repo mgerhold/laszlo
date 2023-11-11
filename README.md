@@ -34,7 +34,7 @@ According to ChatGPT, Laszlo is a programming language strongly influenced by ot
 - JavaScript
   - array operations and general "look and feel" of the code, which resembles modern JavaScript
 
-I won't judge whether ChatGPT is correct or not, though ¯\_(ツ)_/¯
+I won't judge whether ChatGPT is correct or not, though ¯\\\_(ツ)_/¯
 
 ## The Laszlo Programming Language
 
