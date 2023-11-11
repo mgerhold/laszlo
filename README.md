@@ -1,4 +1,4 @@
-# Laszlo
+[![Laszlo Logo](images/laszlo_logo.png)](https://mgerhold.github.io/laszlo/)
 
 Laszlo is both a programming language and an interpreter that can execute Laszlo
 programs.
@@ -191,3 +191,31 @@ Play around with the interpreter and report back any issues if you encounter
 them. Solve some [Advent of Code](https://adventofcode.com/) challenges using
 Laszlo! Have fun with it! Fork it! Extend it! It's a small codebase and can be a
 great starting point for experiments 🙂
+
+## FAQ
+
+---
+
+Q: Why is the Laszlo programming language called Laszlo?
+
+A: I wanted some name starting with an "L", which stands for "learning" (since
+almost all of my projects are learning projects). My brain decided that Laszlo
+would sound cool.
+
+---
+
+Q: Who created the Laszlo logo?
+
+A: ChatGPT4 (using DALL-E).
+
+---
+
+Q: Why does Laszlo handle XYZ in a weird way?
+
+A: Why not?
+
+---
+
+Q: Why is the Laszlo interpreter so slow?
+
+A: ¯\_(ツ)_/¯
