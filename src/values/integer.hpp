@@ -16,7 +16,7 @@ namespace values {
         ValueType m_value;
 
     public:
-        explicit Integer(ValueType value, ValueCategory value_category)
+        explicit Integer(ValueType const value, ValueCategory const value_category)
             : BasicValue{ value_category },
               m_value{ value } { }
 
