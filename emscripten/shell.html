@@ -21,11 +21,6 @@
             text-align: center;
         }
 
-        #editor {
-            width: 100%;
-            height: 300px;
-        }
-
         .spinner {
             height: 50px;
             width: 50px;
@@ -42,15 +37,57 @@
             background-color: rgb(200, 100, 250);
         }
 
-        #sourceCodeInput {
-            width: 80%; /* Or any size you want */
-            height: 200px; /* Or any size you want */
-            margin-bottom: 20px; /* Adds a little space between the textarea and the button */
+        body {
             font-family: monospace;
+            font-size: 20px;
+            background-color: rgb(30, 30, 30);
+            margin: 0;
+            padding: 20px;
         }
 
-        button {
-            padding: 10px 20px; /* Or any size you prefer */
+        .editor-container {
+            max-width: 900px;
+            height: 300px;
+            margin: 0 auto;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        #editor {
+            height: 250px;
+            font-size: 16px;
+            background-color: #1e1e1e;
+            color: #fff;
+            padding: 10px;
+        }
+
+        #run-button {
+            display: block;
+            width: 100%;
+            padding: 5px;
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        #run-button:hover {
+            background-color: #3e8d3e;
+        }
+
+        #output {
+            max-width: 900px;
+            background-color: #2f3129;
+            border-top: 1px solid #3d3d3b;
+            padding: 15px;
+            margin: 0 auto;
+            color: #d2d2d2;
+            height: auto; /* or 'auto' if you want it to grow with content */
+            min-height: 100px;
+            overflow-y: auto; /* for scroll */
+            border-radius: 8px;
         }
 
         @-webkit-keyframes rotation {
@@ -103,15 +140,13 @@
         editor.session.setMode(new MyLanguageHighlightRules());
     });
 </script>
-<div id="editor">function main() {
-    println("Hello from Laszlo!");
-}
-
-main();
+<div class="editor-container">
+    <div id="editor">println("Hello from Laszlo!");</div>
+    <button id="run-button" onclick="generateFile()">Run Code</button>
 </div>
+</br>
+<div id="output"></div>
 <br/>
-<button onclick="generateFile()">Run Laszlo!</button>
-<hr/>
 <figure style="overflow:visible;" id="spinner">
     <div class="spinner"></div>
     <center style="margin-top:0.5em"><strong>emscripten</strong></center>
@@ -120,8 +155,6 @@ main();
 <div class="emscripten">
     <progress value="0" max="100" id="progress" hidden=1></progress>
 </div>
-<textarea class="emscripten" id="output" rows="8"></textarea>
-<hr>
 <script type='text/javascript'>
     var statusElement = document.getElementById('status');
     var progressElement = document.getElementById('progress');
@@ -130,24 +163,24 @@ main();
     var Module = {
         print: (function () {
             var element = document.getElementById('output');
-            if (element) element.value = ''; // clear browser cache
+            if (element) element.innerHTML = ''; // clear browser cache
             return function (text) {
                 if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
                 console.log(text);
                 if (element) {
-                    element.value += text + "\n";
+                    element.innerHTML += text + "</br>";
                     element.scrollTop = element.scrollHeight; // focus on bottom
                 }
             };
         })(),
         printErr: (function () {
             var element = document.getElementById('output');
-            if (element) element.value = ''; // clear browser cache
+            if (element) element.innerHTML = ''; // clear browser cache
             return function (text) {
                 if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
                 console.log(text);
                 if (element) {
-                    element.value += text + "\n";
+                    element.innerHTML += text + "</br>";
                     element.scrollTop = element.scrollHeight; // focus on bottom
                 }
             };
@@ -207,7 +240,7 @@ main();
                 } else {
                     // Success!
                     console.log("Synchronized data to IndexedDB.");
-                    document.getElementById('output').value = '';
+                    document.getElementById('output').innerHTML = '';
                     Module._main();
 
                 }
