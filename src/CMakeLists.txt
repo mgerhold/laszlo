@@ -13,7 +13,6 @@ add_executable(
         ostream_formatter.hpp
         parser_error.hpp
         lexer_error.hpp
-        statement.hpp
         runtime_error.hpp
         scope.hpp
         control_flow.hpp
@@ -53,6 +52,22 @@ add_executable(
         values/char.cpp
         values/string_iterator.hpp
         values/string_iterator.cpp
+        statements/expression_statement.hpp
+        statements/statement.hpp
+        statements/print.hpp
+        statements/println.hpp
+        statements/if.hpp
+        statements/variable_definition.hpp
+        statements/block.hpp
+        statements/assert.hpp
+        statements/assignment.hpp
+        statements/while.hpp
+        statements/break.hpp
+        statements/continue.hpp
+        statements/return.hpp
+        statements/for.hpp
+        statements/function_declaration.hpp
+        statements/function_declaration.cpp
 )
 
 if (EMSCRIPTEN)

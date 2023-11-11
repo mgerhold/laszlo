@@ -1,35 +1,37 @@
 #pragma once
 
 #include "../scope.hpp"
-#include "nothing.hpp"
+#include "../statements/function_declaration.hpp"
 #include "value.hpp"
 
-class Statement;
-class FunctionParameter;
+namespace statements {
+    class Statement;
+    class FunctionParameter;
+} // namespace statements
 
 namespace values {
 
     class Function final : public BasicValue {
     private:
         Token m_name;
-        std::vector<FunctionParameter> m_parameters;
+        std::vector<statements::FunctionParameter> m_parameters;
         types::Type m_return_type;
-        Statement const* m_body;
+        statements::Statement const* m_body;
 
     public:
         Function(
                 Token name,
-                std::vector<FunctionParameter> parameters,
+                std::vector<statements::FunctionParameter> parameters,
                 types::Type return_type,
-                Statement const* body,
+                statements::Statement const* body,
                 ValueCategory value_category
         );
 
         [[nodiscard]] static Value make(
                 Token name,
-                std::vector<FunctionParameter> parameters,
+                std::vector<statements::FunctionParameter> parameters,
                 types::Type return_type,
-                Statement const* body,
+                statements::Statement const* body,
                 ValueCategory value_category
         );
 

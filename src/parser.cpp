@@ -13,7 +13,22 @@
 #include "expressions/typeof.hpp"
 #include "expressions/unary_operator.hpp"
 #include "parser_error.hpp"
+#include "statements/assert.hpp"
+#include "statements/assignment.hpp"
+#include "statements/block.hpp"
+#include "statements/break.hpp"
+#include "statements/continue.hpp"
+#include "statements/expression_statement.hpp"
+#include "statements/for.hpp"
+#include "statements/function_declaration.hpp"
+#include "statements/if.hpp"
+#include "statements/print.hpp"
+#include "statements/println.hpp"
+#include "statements/return.hpp"
+#include "statements/variable_definition.hpp"
+#include "statements/while.hpp"
 #include "types.hpp"
+
 #include <array>
 
 class ParserState final {
@@ -43,8 +58,8 @@ public:
         return m_tokens[m_current_index++];
     }
 
-    [[nodiscard]] std::vector<std::unique_ptr<Statement>> statements() {
-        auto statements = Statements{};
+    [[nodiscard]] std::vector<std::unique_ptr<statements::Statement>> statements() {
+        auto statements = statements::Statements{};
 
         while (not is_at_end()) {
             statements.push_back(statement());
@@ -325,17 +340,17 @@ public:
         return advance();
     }
 
-    [[nodiscard]] std::unique_ptr<Statement> block() { // NOLINT(misc-no-recursion)
-        auto statements = Statements{};
+    [[nodiscard]] std::unique_ptr<statements::Statement> block() { // NOLINT(misc-no-recursion)
+        auto statements = statements::Statements{};
         expect(TokenType::LeftCurlyBracket);
         while (current().type != TokenType::RightCurlyBracket) {
             statements.push_back(statement());
         }
         advance(); // consume '}'
-        return std::make_unique<Block>(std::move(statements));
+        return std::make_unique<statements::Block>(std::move(statements));
     }
 
-    [[nodiscard]] std::unique_ptr<Statement> statement() { // NOLINT(misc-no-recursion)
+    [[nodiscard]] std::unique_ptr<statements::Statement> statement() { // NOLINT(misc-no-recursion)
         switch (current().type) {
             case TokenType::LeftCurlyBracket:
                 return block();
@@ -352,7 +367,7 @@ public:
                         return_type = data_type();
                     }
                     auto body = block();
-                    return std::make_unique<FunctionDeclaration>(
+                    return std::make_unique<statements::FunctionDeclaration>(
                             name,
                             std::move(parameters),
                             std::move(return_type),
@@ -369,7 +384,7 @@ public:
                     // clang-format on
                     expect(TokenType::RightParenthesis);
                     expect(TokenType::Semicolon);
-                    return std::make_unique<Print>(std::move(expr));
+                    return std::make_unique<statements::Print>(std::move(expr));
                 }
                 if (current().lexeme() == "println") {
                     advance(); // consume "print"
@@ -381,7 +396,7 @@ public:
                     // clang-format on
                     expect(TokenType::RightParenthesis);
                     expect(TokenType::Semicolon);
-                    return std::make_unique<Println>(std::move(expr));
+                    return std::make_unique<statements::Println>(std::move(expr));
                 }
                 if (current().lexeme() == "let") {
                     advance(); // consume "let"
@@ -389,7 +404,7 @@ public:
                     expect(TokenType::Equals);
                     auto initializer = expression();
                     expect(TokenType::Semicolon);
-                    return std::make_unique<VariableDefinition>(name, std::move(initializer));
+                    return std::make_unique<statements::VariableDefinition>(name, std::move(initializer));
                 }
                 if (current().lexeme() == "if") {
                     return if_();
@@ -400,33 +415,33 @@ public:
                     auto predicate = expression();
                     expect(TokenType::RightParenthesis);
                     expect(TokenType::Semicolon);
-                    return std::make_unique<Assert>(std::move(predicate));
+                    return std::make_unique<statements::Assert>(std::move(predicate));
                 }
                 if (current().lexeme() == "while") {
                     advance(); // consume "while"
                     auto condition = expression();
                     auto body = block();
-                    return std::make_unique<While>(std::move(condition), std::move(body));
+                    return std::make_unique<statements::While>(std::move(condition), std::move(body));
                 }
                 if (current().lexeme() == "break") {
                     auto const break_token = advance();
                     expect(TokenType::Semicolon);
-                    return std::make_unique<Break>(break_token);
+                    return std::make_unique<statements::Break>(break_token);
                 }
                 if (current().lexeme() == "continue") {
                     auto const continue_token = advance();
                     expect(TokenType::Semicolon);
-                    return std::make_unique<Continue>(continue_token);
+                    return std::make_unique<statements::Continue>(continue_token);
                 }
                 if (current().lexeme() == "return") {
                     auto const return_token = advance();
                     if (current().type == TokenType::Semicolon) {
                         advance(); // consume ";"
-                        return std::make_unique<Return>(return_token, std::nullopt);
+                        return std::make_unique<statements::Return>(return_token, std::nullopt);
                     }
                     auto value = expression();
                     expect(TokenType::Semicolon);
-                    return std::make_unique<Return>(return_token, std::move(value));
+                    return std::make_unique<statements::Return>(return_token, std::move(value));
                 }
                 if (current().lexeme() == "for") {
                     advance(); // consume "for"
@@ -437,35 +452,39 @@ public:
                     advance(); // consume "in"
                     auto iterator = expression();
                     auto body = block();
-                    return std::make_unique<For>(loop_variable, std::move(iterator), std::move(body));
+                    return std::make_unique<statements::For>(loop_variable, std::move(iterator), std::move(body));
                 }
                 [[fallthrough]];
             default: {
                 auto expr = expression();
                 static constexpr auto assignment_tokens = std::to_array({
-                        std::pair{         TokenType::Equals,   Assignment::Type::Equals },
-                        std::pair{     TokenType::PlusEquals,     Assignment::Type::Plus },
-                        std::pair{    TokenType::MinusEquals,    Assignment::Type::Minus },
-                        std::pair{ TokenType::AsteriskEquals, Assignment::Type::Asterisk },
-                        std::pair{    TokenType::SlashEquals,    Assignment::Type::Slash },
+                        std::pair{         TokenType::Equals,   statements::Assignment::Type::Equals },
+                        std::pair{     TokenType::PlusEquals,     statements::Assignment::Type::Plus },
+                        std::pair{    TokenType::MinusEquals,    statements::Assignment::Type::Minus },
+                        std::pair{ TokenType::AsteriskEquals, statements::Assignment::Type::Asterisk },
+                        std::pair{    TokenType::SlashEquals,    statements::Assignment::Type::Slash },
                 });
                 for (auto const [token_type, assignment_type] : assignment_tokens) {
                     if (current().type == token_type) {
                         advance(); // consume token
                         auto rvalue = expression();
                         expect(TokenType::Semicolon);
-                        return std::make_unique<Assignment>(std::move(expr), assignment_type, std::move(rvalue));
+                        return std::make_unique<statements::Assignment>(
+                                std::move(expr),
+                                assignment_type,
+                                std::move(rvalue)
+                        );
                     }
                 }
                 // expression statement
                 expect(TokenType::Semicolon);
-                return std::make_unique<ExpressionStatement>(std::move(expr));
+                return std::make_unique<statements::ExpressionStatement>(std::move(expr));
             }
         }
     }
 
-    [[nodiscard]] std::vector<FunctionParameter> parameter_list() {
-        auto parameters = std::vector<FunctionParameter>{};
+    [[nodiscard]] std::vector<statements::FunctionParameter> parameter_list() {
+        auto parameters = std::vector<statements::FunctionParameter>{};
         while (current().type == TokenType::Identifier) {
             auto const name = advance();
             expect(TokenType::Colon);
@@ -479,7 +498,7 @@ public:
         return parameters;
     }
 
-    [[nodiscard]] std::unique_ptr<Statement> if_() { // NOLINT(misc-no-recursion)
+    [[nodiscard]] std::unique_ptr<statements::Statement> if_() { // NOLINT(misc-no-recursion)
         assert(current().type == TokenType::Identifier and current().lexeme() == "if");
         auto const if_token = advance(); // consume "if"
         auto condition = expression();
@@ -487,15 +506,15 @@ public:
         if (current().type == TokenType::Identifier and current().lexeme() == "else") {
             advance(); // consume "else"
             if (current().type == TokenType::Identifier and current().lexeme() == "if") {
-                return std::make_unique<If>(if_token, std::move(condition), std::move(then), if_());
+                return std::make_unique<statements::If>(if_token, std::move(condition), std::move(then), if_());
             }
-            return std::make_unique<If>(if_token, std::move(condition), std::move(then), block());
+            return std::make_unique<statements::If>(if_token, std::move(condition), std::move(then), block());
         }
-        return std::make_unique<If>(
+        return std::make_unique<statements::If>(
                 if_token,
                 std::move(condition),
                 std::move(then),
-                std::make_unique<Block>(Statements{})
+                std::make_unique<statements::Block>(statements::Statements{})
         );
     }
 
@@ -538,7 +557,7 @@ public:
     }
 };
 
-[[nodiscard]] Statements parse(Tokens const& tokens) {
+[[nodiscard]] statements::Statements parse(Tokens const& tokens) {
     auto state = ParserState{ tokens };
-    return Statements{ state.statements() };
+    return statements::Statements{ state.statements() };
 }

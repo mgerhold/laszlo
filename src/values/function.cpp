@@ -1,13 +1,16 @@
 #include "function.hpp"
+
+#include "../control_flow.hpp"
 #include "../expressions/expression.hpp"
-#include "../statement.hpp"
+#include "../statements/statement.hpp"
+#include "nothing.hpp"
 
 namespace values {
     Function::Function(
             Token const name,
-            std::vector<FunctionParameter> parameters,
+            std::vector<statements::FunctionParameter> parameters,
             types::Type return_type,
-            Statement const* const body,
+            statements::Statement const* const body,
             ValueCategory const value_category
     )
         : BasicValue{ value_category },
@@ -18,9 +21,9 @@ namespace values {
 
     [[nodiscard]] Value Function::make(
             Token const name,
-            std::vector<FunctionParameter> parameters,
+            std::vector<statements::FunctionParameter> parameters,
             types::Type return_type,
-            Statement const* const body,
+            statements::Statement const* const body,
             ValueCategory const value_category
     ) {
         return std::make_shared<Function>(name, std::move(parameters), std::move(return_type), body, value_category);
