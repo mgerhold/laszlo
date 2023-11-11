@@ -18,7 +18,7 @@ namespace values {
         if (not other->is_string_value()) {
             return BasicValue::equals(other); // throws
         }
-        return Bool::make(value() == other->as_string().value(), ValueCategory::Rvalue);
+        return Bool::make(string_representation() == other->string_representation(), ValueCategory::Rvalue);
     }
 
     [[nodiscard]] Value String::not_equals(Value const& other) const {
