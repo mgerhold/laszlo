@@ -570,6 +570,7 @@ src/CMakeFiles/laszlo.dir/parser.cpp.o: \
   /home/runner/work/laszlo/laszlo/src/scope.hpp \
   /home/runner/work/laszlo/laszlo/src/values/bool.hpp \
   /home/runner/work/laszlo/laszlo/src/values/string.hpp \
+  /home/runner/work/laszlo/laszlo/src/values/char.hpp \
   /home/runner/work/laszlo/laszlo/src/values/function.hpp \
   /home/runner/work/laszlo/laszlo/src/values/../scope.hpp \
   /home/runner/work/laszlo/laszlo/src/values/nothing.hpp \
@@ -590,5 +591,7 @@ src/CMakeFiles/laszlo.dir/parser.cpp.o: \
   /home/runner/work/laszlo/laszlo/src/expressions/subscript.hpp \
   /home/runner/work/laszlo/laszlo/src/expressions/typeof.hpp \
   /home/runner/work/laszlo/laszlo/src/expressions/unary_operator.hpp \
+  /home/runner/work/laszlo/laszlo/src/expressions/char_literal.hpp \
+  /home/runner/work/laszlo/laszlo/src/expressions/../values/char.hpp \
   /home/runner/work/laszlo/laszlo/src/parser_error.hpp \
   /home/runner/work/laszlo/laszlo/src/types.hpp

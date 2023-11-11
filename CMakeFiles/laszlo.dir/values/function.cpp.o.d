@@ -571,5 +571,6 @@ src/CMakeFiles/laszlo.dir/values/function.cpp.o: \
   /home/runner/work/laszlo/laszlo/src/values/../token.hpp \
   /home/runner/work/laszlo/laszlo/src/values/../values/bool.hpp \
   /home/runner/work/laszlo/laszlo/src/values/../values/string.hpp \
+  /home/runner/work/laszlo/laszlo/src/values/../values/char.hpp \
   /home/runner/work/laszlo/laszlo/src/values/../values/function.hpp \
   /home/runner/work/laszlo/laszlo/src/values/../values/iterator.hpp

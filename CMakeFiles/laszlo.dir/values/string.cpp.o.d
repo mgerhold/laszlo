@@ -1,6 +1,7 @@
 src/CMakeFiles/laszlo.dir/values/string.cpp.o: \
   /home/runner/work/laszlo/laszlo/src/values/string.cpp \
   /home/runner/work/laszlo/laszlo/src/values/string.hpp \
+  /home/runner/work/laszlo/laszlo/src/values/char.hpp \
   /home/runner/work/laszlo/laszlo/src/values/value.hpp \
   /home/runner/work/laszlo/laszlo/src/values/../runtime_error.hpp \
   /home/runner/work/laszlo/laszlo/src/values/../token.hpp \
@@ -551,4 +552,7 @@ src/CMakeFiles/laszlo.dir/values/string.cpp.o: \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__numeric/transform_exclusive_scan.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__numeric/transform_inclusive_scan.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__numeric/transform_reduce.h \
-  /home/runner/work/laszlo/laszlo/src/values/bool.hpp
+  /home/runner/work/laszlo/laszlo/src/values/bool.hpp \
+  /home/runner/work/laszlo/laszlo/src/values/integer.hpp \
+  /home/runner/work/laszlo/laszlo/src/values/string_iterator.hpp \
+  /home/runner/work/laszlo/laszlo/src/values/iterator.hpp

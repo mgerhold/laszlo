@@ -226,6 +226,30 @@ values/array.cpp.s:
 	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/values/array.cpp.s
 .PHONY : values/array.cpp.s
 
+values/char.o: values/char.cpp.o
+.PHONY : values/char.o
+
+# target to build an object file
+values/char.cpp.o:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/values/char.cpp.o
+.PHONY : values/char.cpp.o
+
+values/char.i: values/char.cpp.i
+.PHONY : values/char.i
+
+# target to preprocess a source file
+values/char.cpp.i:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/values/char.cpp.i
+.PHONY : values/char.cpp.i
+
+values/char.s: values/char.cpp.s
+.PHONY : values/char.s
+
+# target to generate assembly for a file
+values/char.cpp.s:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/values/char.cpp.s
+.PHONY : values/char.cpp.s
+
 values/function.o: values/function.cpp.o
 .PHONY : values/function.o
 
@@ -298,6 +322,30 @@ values/string.cpp.s:
 	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/values/string.cpp.s
 .PHONY : values/string.cpp.s
 
+values/string_iterator.o: values/string_iterator.cpp.o
+.PHONY : values/string_iterator.o
+
+# target to build an object file
+values/string_iterator.cpp.o:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/values/string_iterator.cpp.o
+.PHONY : values/string_iterator.cpp.o
+
+values/string_iterator.i: values/string_iterator.cpp.i
+.PHONY : values/string_iterator.i
+
+# target to preprocess a source file
+values/string_iterator.cpp.i:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/values/string_iterator.cpp.i
+.PHONY : values/string_iterator.cpp.i
+
+values/string_iterator.s: values/string_iterator.cpp.s
+.PHONY : values/string_iterator.s
+
+# target to generate assembly for a file
+values/string_iterator.cpp.s:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/values/string_iterator.cpp.s
+.PHONY : values/string_iterator.cpp.s
+
 values/value.o: values/value.cpp.o
 .PHONY : values/value.o
 
@@ -343,6 +391,9 @@ help:
 	@echo "... values/array.o"
 	@echo "... values/array.i"
 	@echo "... values/array.s"
+	@echo "... values/char.o"
+	@echo "... values/char.i"
+	@echo "... values/char.s"
 	@echo "... values/function.o"
 	@echo "... values/function.i"
 	@echo "... values/function.s"
@@ -352,6 +403,9 @@ help:
 	@echo "... values/string.o"
 	@echo "... values/string.i"
 	@echo "... values/string.s"
+	@echo "... values/string_iterator.o"
+	@echo "... values/string_iterator.i"
+	@echo "... values/string_iterator.s"
 	@echo "... values/value.o"
 	@echo "... values/value.i"
 	@echo "... values/value.s"

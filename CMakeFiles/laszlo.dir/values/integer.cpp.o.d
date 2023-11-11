@@ -3,6 +3,7 @@ src/CMakeFiles/laszlo.dir/values/integer.cpp.o: \
   /home/runner/work/laszlo/laszlo/src/values/integer.hpp \
   /home/runner/work/laszlo/laszlo/src/values/bool.hpp \
   /home/runner/work/laszlo/laszlo/src/values/string.hpp \
+  /home/runner/work/laszlo/laszlo/src/values/char.hpp \
   /home/runner/work/laszlo/laszlo/src/values/value.hpp \
   /home/runner/work/laszlo/laszlo/src/values/../runtime_error.hpp \
   /home/runner/work/laszlo/laszlo/src/values/../token.hpp \

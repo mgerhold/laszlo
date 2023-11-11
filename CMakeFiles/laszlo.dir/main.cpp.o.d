@@ -571,6 +571,7 @@ src/CMakeFiles/laszlo.dir/main.cpp.o: \
   /home/runner/work/laszlo/laszlo/src/scope.hpp \
   /home/runner/work/laszlo/laszlo/src/values/bool.hpp \
   /home/runner/work/laszlo/laszlo/src/values/string.hpp \
+  /home/runner/work/laszlo/laszlo/src/values/char.hpp \
   /home/runner/work/laszlo/laszlo/src/values/function.hpp \
   /home/runner/work/laszlo/laszlo/src/values/../scope.hpp \
   /home/runner/work/laszlo/laszlo/src/values/nothing.hpp \
