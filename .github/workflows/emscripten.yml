@@ -33,7 +33,7 @@ jobs:
       - name: Configure CMake Project and Build
         run: |
           cd build          
-          emcmake cmake ..
+          emcmake cmake -DCMAKE_BUILD_TYPE=Release ..
           cmake --build .
           mv src/laszlo.html src/index.html
 
