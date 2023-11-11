@@ -49,6 +49,7 @@ add_executable(
         values/string.cpp
         expressions/char_literal.hpp
         values/char.hpp
+        values/char.cpp
 )
 
 if (EMSCRIPTEN)

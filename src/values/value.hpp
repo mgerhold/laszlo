@@ -13,12 +13,12 @@ namespace expressions {
 }
 
 namespace values {
-
     class BasicValue;
 
     using Value = std::shared_ptr<BasicValue>;
 
     class Integer;
+    class Char;
     class String;
     class Bool;
     class Array;
@@ -73,6 +73,14 @@ namespace values {
 
         [[nodiscard]] virtual Integer const& as_integer_value() const {
             throw InvalidValueCast{ "Integer" };
+        }
+
+        [[nodiscard]] virtual bool is_char_value() const {
+            return false;
+        }
+
+        [[nodiscard]] virtual Char const& as_char_value() const {
+            throw InvalidValueCast{ "Char" };
         }
 
         [[nodiscard]] virtual bool is_string_value() const {
