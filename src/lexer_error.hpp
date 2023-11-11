@@ -30,8 +30,14 @@ public:
 
 class UnclosedStringLiteral final : public LexerErrorBase {
 public:
-    UnclosedStringLiteral(SourceLocation const source_location, std::string literal_beginning)
+    UnclosedStringLiteral(SourceLocation const& source_location, std::string literal_beginning)
         : LexerErrorBase{ source_location, std::format("unclosed string literal: {}", literal_beginning) } { }
+};
+
+class UnclosedCharLiteral final : public LexerErrorBase {
+public:
+    explicit UnclosedCharLiteral(SourceLocation const& source_location)
+        : LexerErrorBase{ source_location, "unclosed char literal" } { }
 };
 
 class ForbiddenCharacterInStringLiteral final : public LexerErrorBase {
@@ -51,7 +57,8 @@ private:
     }
 };
 
-using LexerErrorKind = std::variant<UnexpectedChar, UnclosedStringLiteral, ForbiddenCharacterInStringLiteral>;
+using LexerErrorKind =
+        std::variant<UnexpectedChar, UnclosedStringLiteral, ForbiddenCharacterInStringLiteral, UnclosedCharLiteral>;
 
 class LexerError final : public std::exception {
 private:

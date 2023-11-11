@@ -11,6 +11,7 @@
 #include "expressions/subscript.hpp"
 #include "expressions/typeof.hpp"
 #include "expressions/unary_operator.hpp"
+#include "expressions/char_literal.hpp"
 #include "parser_error.hpp"
 #include "types.hpp"
 
@@ -271,6 +272,8 @@ public:
                 return std::make_unique<expressions::StringLiteral>(advance());
             case TokenType::IntegerLiteral:
                 return std::make_unique<expressions::IntegerLiteral>(advance());
+            case TokenType::CharLiteral:
+                return std::make_unique<expressions::CharLiteral>(advance());
             case TokenType::LeftSquareBracket: {
                 auto const opening_bracket = advance(); // consume "["
                 auto values = expression_list(TokenType::RightSquareBracket);

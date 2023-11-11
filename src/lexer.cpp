@@ -202,6 +202,22 @@ public:
                 add_token(TokenType::Slash, start, 1);
                 break;
             }
+            case '\'': {
+                auto const start = state.m_current_index;
+                state.advance(); // consume "'"
+                if (state.is_at_end()) {
+                    throw LexerError{ UnclosedCharLiteral{state.current_source_location()} };
+                }
+                state.advance(); // consume the character
+                if (state.current() != '\'') {
+                    if (state.is_at_end()) {
+                        throw LexerError{ UnclosedCharLiteral{state.current_source_location()} };
+                    }
+                }
+                state.advance(); // "'"
+                add_token(TokenType::CharLiteral, start, 3);
+                break;
+            }
             case '"': {
                 auto const start = state.m_current_index;
                 auto length = 1;

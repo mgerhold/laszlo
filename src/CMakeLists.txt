@@ -47,6 +47,8 @@ add_executable(
         values/value.cpp
         expressions/member_access.hpp
         values/string.cpp
+        expressions/char_literal.hpp
+        values/char.hpp
 )
 
 if (EMSCRIPTEN)

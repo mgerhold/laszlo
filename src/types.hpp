@@ -59,6 +59,21 @@ namespace types {
         }
     };
 
+    class Char final : public BasicType {
+    public:
+        [[nodiscard]] std::string to_string() const override {
+            return "Char";
+        }
+
+        [[nodiscard]] bool equals(BasicType const& other) const override {
+            return dynamic_cast<Char const*>(&other) != nullptr;
+        }
+
+        [[nodiscard]] bool is_primitive() const override {
+            return true;
+        }
+    };
+
     class Bool final : public BasicType {
     public:
         [[nodiscard]] std::string to_string() const override {
@@ -278,6 +293,10 @@ namespace types {
 
     [[nodiscard]] inline Type make_i32() {
         return std::make_shared<I32>();
+    }
+
+    [[nodiscard]] inline Type make_char() {
+        return std::make_shared<Char>();
     }
 
     [[nodiscard]] inline Type make_string() {
