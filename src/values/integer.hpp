@@ -135,7 +135,11 @@ namespace values {
             if (not other->is_integer_value()) {
                 return BasicValue::divide(other->clone()); // throws
             }
-            return make(value() / other->as_integer_value().value(), ValueCategory::Rvalue);
+            auto const rhs = other->as_integer_value().value();
+            if (rhs == 0) {
+                throw DivisionByZero{};
+            }
+            return make(value() / rhs, ValueCategory::Rvalue);
         }
 
         [[nodiscard]] Value mod(Value const& other) const override {

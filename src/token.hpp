@@ -46,23 +46,17 @@ struct Token final {
     TokenType type;
     SourceLocation source_location;
 
-    Token(TokenType type, SourceLocation source_location) : type{ type }, source_location{ source_location } { }
+    Token(TokenType const type, SourceLocation const& source_location)
+        : type{ type },
+          source_location{ source_location } { }
 
     [[nodiscard]] std::string_view lexeme() const {
         return source_location.text();
     }
 
-    [[nodiscard]] std::int32_t parse_integer() const {
-        assert(type == TokenType::IntegerLiteral);
-        auto stream = std::stringstream{};
-        stream << lexeme();
-        auto result = std::int32_t{};
-        stream >> result;
-        assert(stream);
-        return result;
-    }
+    [[nodiscard]] std::int32_t parse_integer() const;
 
-    friend std::ostream& operator<<(std::ostream& os, Token token) {
+    friend std::ostream& operator<<(std::ostream& os, Token const& token) {
         switch (token.type) {
             default:
                 assert(false and "unreachable");

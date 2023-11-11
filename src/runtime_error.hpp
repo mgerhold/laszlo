@@ -152,3 +152,14 @@ public:
                   member.lexeme()
           ) } { }
 };
+
+class InvalidIntegerValue final : public RuntimeError {
+public:
+    explicit InvalidIntegerValue(std::string_view const string)
+        : RuntimeError{ std::format("'{}' is not a valid integer", string) } { }
+};
+
+class DivisionByZero final : public RuntimeError {
+public:
+    DivisionByZero() : RuntimeError{ "division by zero" } { }
+};

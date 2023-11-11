@@ -8,7 +8,7 @@
 #include <string_view>
 #include <utility>
 
-class Token;
+struct Token;
 
 struct SourceLocation {
     std::string_view filename;

@@ -4,6 +4,7 @@ add_executable(
         lexer.hpp
         lexer.cpp
         token.hpp
+        token.cpp
         overloaded.hpp
         parser.cpp
         parser.hpp
