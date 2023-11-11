@@ -2,6 +2,7 @@
 #include "bool.hpp"
 #include "char.hpp"
 #include "integer.hpp"
+#include "string_iterator.hpp"
 
 namespace values {
 
@@ -30,11 +31,22 @@ namespace values {
             return BasicValue::subscript(index); // throws
         }
         auto const index_value = index->as_integer_value().value();
-        if (index_value < 0 or index_value >= m_value.size()) {
-            throw IndexOutOfBounds{ index_value, static_cast<Integer::ValueType>(m_value.size()) };
+        if (index_value < 0 or index_value >= m_chars.size()) {
+            throw IndexOutOfBounds{ index_value, static_cast<Integer::ValueType>(m_chars.size()) };
         }
-        assert(m_value.at(index_value)->is_lvalue());
-        return m_value.at(index_value);
+        assert(m_chars.at(index_value)->is_lvalue());
+        return m_chars.at(index_value);
+    }
+
+    [[nodiscard]] Value String::member_access(Token const member) const {
+        if (member.lexeme() != "size" and member.lexeme() != "length") {
+            return BasicValue::member_access(member); // throw
+        }
+        return Integer::make(static_cast<Integer::ValueType>(m_chars.size()), ValueCategory::Rvalue);
+    }
+
+    [[nodiscard]] Value String::iterator() {
+        return StringIterator::make(shared_from_this(), 0, ValueCategory::Rvalue);
     }
 
 } // namespace values

@@ -25,8 +25,6 @@ namespace types {
             return this->equals(*other);
         }
 
-        [[nodiscard]] virtual bool is_primitive() const = 0;
-
         [[nodiscard]] virtual bool is_array() const {
             return false;
         }
@@ -53,10 +51,6 @@ namespace types {
         [[nodiscard]] bool equals(BasicType const& other) const override {
             return dynamic_cast<I32 const*>(&other) != nullptr;
         }
-
-        [[nodiscard]] bool is_primitive() const override {
-            return true;
-        }
     };
 
     class Char final : public BasicType {
@@ -67,10 +61,6 @@ namespace types {
 
         [[nodiscard]] bool equals(BasicType const& other) const override {
             return dynamic_cast<Char const*>(&other) != nullptr;
-        }
-
-        [[nodiscard]] bool is_primitive() const override {
-            return true;
         }
     };
 
@@ -83,10 +73,6 @@ namespace types {
         [[nodiscard]] bool equals(BasicType const& other) const override {
             return dynamic_cast<Bool const*>(&other) != nullptr;
         }
-
-        [[nodiscard]] bool is_primitive() const override {
-            return true;
-        }
     };
 
     class String final : public BasicType {
@@ -97,10 +83,6 @@ namespace types {
 
         [[nodiscard]] bool equals(BasicType const& other) const override {
             return dynamic_cast<String const*>(&other) != nullptr;
-        }
-
-        [[nodiscard]] bool is_primitive() const override {
-            return true;
         }
     };
 
@@ -119,10 +101,6 @@ namespace types {
             if (auto const other_array = dynamic_cast<Array const*>(&other); other_array != nullptr) {
                 return m_contained_type->equals(*other_array->m_contained_type);
             }
-            return false;
-        }
-
-        [[nodiscard]] bool is_primitive() const override {
             return false;
         }
 
@@ -149,10 +127,6 @@ namespace types {
         [[nodiscard]] bool equals(BasicType const& other) const override {
             return dynamic_cast<Sentinel const*>(&other) != nullptr;
         }
-
-        [[nodiscard]] bool is_primitive() const override {
-            return true;
-        }
     };
 
     class RangeIterator final : public BasicType {
@@ -164,10 +138,6 @@ namespace types {
         [[nodiscard]] bool equals(BasicType const& other) const override {
             return dynamic_cast<RangeIterator const*>(&other) != nullptr;
         }
-
-        [[nodiscard]] bool is_primitive() const override {
-            return true;
-        }
     };
 
     class Range final : public BasicType {
@@ -178,10 +148,6 @@ namespace types {
 
         [[nodiscard]] bool equals(BasicType const& other) const override {
             return dynamic_cast<Range const*>(&other) != nullptr;
-        }
-
-        [[nodiscard]] bool is_primitive() const override {
-            return true;
         }
     };
 
@@ -202,9 +168,16 @@ namespace types {
             }
             return false;
         }
+    };
 
-        [[nodiscard]] bool is_primitive() const override {
-            return false;
+    class StringIterator final : public BasicType {
+    public:
+        [[nodiscard]] std::string to_string() const override {
+            return "StringIterator";
+        }
+
+        [[nodiscard]] bool equals(BasicType const& other) const override {
+            return dynamic_cast<StringIterator const*>(&other) != nullptr;
         }
     };
 
@@ -221,10 +194,6 @@ namespace types {
         [[nodiscard]] bool can_be_created_from(Type const& other) const override {
             return true; // we can convert anything to "?"
         }
-
-        [[nodiscard]] bool is_primitive() const override {
-            return true;
-        }
     };
 
     class Nothing final : public BasicType {
@@ -235,10 +204,6 @@ namespace types {
 
         [[nodiscard]] bool equals(BasicType const& other) const override {
             return dynamic_cast<Nothing const*>(&other) != nullptr;
-        }
-
-        [[nodiscard]] bool is_primitive() const override {
-            return true;
         }
     };
 
@@ -277,10 +242,6 @@ namespace types {
             }
             return m_return_type == other.as_function().m_return_type;
         }
-
-        [[nodiscard]] bool is_primitive() const override {
-            return false;
-        }
     };
 
     [[nodiscard]] inline bool operator==(Type const& lhs, Type const& rhs) {
@@ -313,6 +274,10 @@ namespace types {
 
     [[nodiscard]] inline Type make_array_iterator(Type array_type) {
         return std::make_shared<ArrayIterator>(std::move(array_type));
+    }
+
+    [[nodiscard]] inline Type make_string_iterator() {
+        return std::make_shared<StringIterator>();
     }
 
     [[nodiscard]] inline Type make_range() {

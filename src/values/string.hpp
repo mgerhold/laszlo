@@ -5,19 +5,19 @@
 
 namespace values {
 
-    class String final : public BasicValue {
+    class String final : public BasicValue, public std::enable_shared_from_this<String> {
     public:
         using ValueType = std::vector<Value>;
 
     private:
-        ValueType m_value;
+        ValueType m_chars;
 
         [[nodiscard]] static ValueType to_value_type(std::string_view value);
 
     public:
         explicit String(std::string_view const value, ValueCategory const value_category)
             : BasicValue{ value_category },
-              m_value{ to_value_type(value) } { }
+              m_chars{ to_value_type(value) } { }
 
         [[nodiscard]] static Value make(std::string_view const value, ValueCategory const value_category) {
             return std::make_shared<String>(value, value_category);
@@ -31,13 +31,18 @@ namespace values {
             return *this;
         }
 
-        [[nodiscard]] ValueType const& value() const {
-            return m_value;
+        [[nodiscard]] Value at(std::size_t const index) const {
+            assert(index < m_chars.size());
+            return m_chars.at(index);
+        }
+
+        [[nodiscard]] std::size_t length() const {
+            return m_chars.size();
         }
 
         [[nodiscard]] std::string string_representation() const override {
             auto result = std::string{};
-            for (auto const& c : m_value) {
+            for (auto const& c : m_chars) {
                 assert(c->is_char_value());
                 result += c->as_char_value().value();
             }
@@ -67,7 +72,7 @@ namespace values {
             if (not other->is_string_value()) {
                 BasicValue::assign(other); // throws
             }
-            m_value = other->as_string().m_value;
+            m_chars = other->as_string().m_chars;
         }
 
         [[nodiscard]] Value equals(Value const& other) const override;
@@ -75,6 +80,10 @@ namespace values {
         [[nodiscard]] Value not_equals(Value const& other) const override;
 
         [[nodiscard]] Value subscript(Value const& index) const override;
+
+        [[nodiscard]] Value member_access(Token const member) const override;
+
+        [[nodiscard]] Value iterator() override;
     };
 
 } // namespace values

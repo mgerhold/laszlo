@@ -50,6 +50,8 @@ add_executable(
         expressions/char_literal.hpp
         values/char.hpp
         values/char.cpp
+        values/string_iterator.hpp
+        values/string_iterator.cpp
 )
 
 if (EMSCRIPTEN)
