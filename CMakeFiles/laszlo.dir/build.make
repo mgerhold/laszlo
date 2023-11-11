@@ -97,10 +97,24 @@ src/CMakeFiles/laszlo.dir/lexer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/laszlo.dir/lexer.cpp.s"
 	cd /home/runner/work/laszlo/laszlo/build/src && /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/runner/work/laszlo/laszlo/src/lexer.cpp -o CMakeFiles/laszlo.dir/lexer.cpp.s
 
+src/CMakeFiles/laszlo.dir/token.cpp.o: src/CMakeFiles/laszlo.dir/flags.make
+src/CMakeFiles/laszlo.dir/token.cpp.o: /home/runner/work/laszlo/laszlo/src/token.cpp
+src/CMakeFiles/laszlo.dir/token.cpp.o: src/CMakeFiles/laszlo.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/runner/work/laszlo/laszlo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/CMakeFiles/laszlo.dir/token.cpp.o"
+	cd /home/runner/work/laszlo/laszlo/build/src && /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/laszlo.dir/token.cpp.o -MF CMakeFiles/laszlo.dir/token.cpp.o.d -o CMakeFiles/laszlo.dir/token.cpp.o -c /home/runner/work/laszlo/laszlo/src/token.cpp
+
+src/CMakeFiles/laszlo.dir/token.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/laszlo.dir/token.cpp.i"
+	cd /home/runner/work/laszlo/laszlo/build/src && /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/runner/work/laszlo/laszlo/src/token.cpp > CMakeFiles/laszlo.dir/token.cpp.i
+
+src/CMakeFiles/laszlo.dir/token.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/laszlo.dir/token.cpp.s"
+	cd /home/runner/work/laszlo/laszlo/build/src && /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/runner/work/laszlo/laszlo/src/token.cpp -o CMakeFiles/laszlo.dir/token.cpp.s
+
 src/CMakeFiles/laszlo.dir/parser.cpp.o: src/CMakeFiles/laszlo.dir/flags.make
 src/CMakeFiles/laszlo.dir/parser.cpp.o: /home/runner/work/laszlo/laszlo/src/parser.cpp
 src/CMakeFiles/laszlo.dir/parser.cpp.o: src/CMakeFiles/laszlo.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/runner/work/laszlo/laszlo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/CMakeFiles/laszlo.dir/parser.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/runner/work/laszlo/laszlo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/CMakeFiles/laszlo.dir/parser.cpp.o"
 	cd /home/runner/work/laszlo/laszlo/build/src && /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/laszlo.dir/parser.cpp.o -MF CMakeFiles/laszlo.dir/parser.cpp.o.d -o CMakeFiles/laszlo.dir/parser.cpp.o -c /home/runner/work/laszlo/laszlo/src/parser.cpp
 
 src/CMakeFiles/laszlo.dir/parser.cpp.i: cmake_force
@@ -114,7 +128,7 @@ src/CMakeFiles/laszlo.dir/parser.cpp.s: cmake_force
 src/CMakeFiles/laszlo.dir/values/integer.cpp.o: src/CMakeFiles/laszlo.dir/flags.make
 src/CMakeFiles/laszlo.dir/values/integer.cpp.o: /home/runner/work/laszlo/laszlo/src/values/integer.cpp
 src/CMakeFiles/laszlo.dir/values/integer.cpp.o: src/CMakeFiles/laszlo.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/runner/work/laszlo/laszlo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/CMakeFiles/laszlo.dir/values/integer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/runner/work/laszlo/laszlo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/CMakeFiles/laszlo.dir/values/integer.cpp.o"
 	cd /home/runner/work/laszlo/laszlo/build/src && /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/laszlo.dir/values/integer.cpp.o -MF CMakeFiles/laszlo.dir/values/integer.cpp.o.d -o CMakeFiles/laszlo.dir/values/integer.cpp.o -c /home/runner/work/laszlo/laszlo/src/values/integer.cpp
 
 src/CMakeFiles/laszlo.dir/values/integer.cpp.i: cmake_force
@@ -128,7 +142,7 @@ src/CMakeFiles/laszlo.dir/values/integer.cpp.s: cmake_force
 src/CMakeFiles/laszlo.dir/values/array.cpp.o: src/CMakeFiles/laszlo.dir/flags.make
 src/CMakeFiles/laszlo.dir/values/array.cpp.o: /home/runner/work/laszlo/laszlo/src/values/array.cpp
 src/CMakeFiles/laszlo.dir/values/array.cpp.o: src/CMakeFiles/laszlo.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/runner/work/laszlo/laszlo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/CMakeFiles/laszlo.dir/values/array.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/runner/work/laszlo/laszlo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/CMakeFiles/laszlo.dir/values/array.cpp.o"
 	cd /home/runner/work/laszlo/laszlo/build/src && /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/laszlo.dir/values/array.cpp.o -MF CMakeFiles/laszlo.dir/values/array.cpp.o.d -o CMakeFiles/laszlo.dir/values/array.cpp.o -c /home/runner/work/laszlo/laszlo/src/values/array.cpp
 
 src/CMakeFiles/laszlo.dir/values/array.cpp.i: cmake_force
@@ -142,7 +156,7 @@ src/CMakeFiles/laszlo.dir/values/array.cpp.s: cmake_force
 src/CMakeFiles/laszlo.dir/values/function.cpp.o: src/CMakeFiles/laszlo.dir/flags.make
 src/CMakeFiles/laszlo.dir/values/function.cpp.o: /home/runner/work/laszlo/laszlo/src/values/function.cpp
 src/CMakeFiles/laszlo.dir/values/function.cpp.o: src/CMakeFiles/laszlo.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/runner/work/laszlo/laszlo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/CMakeFiles/laszlo.dir/values/function.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/runner/work/laszlo/laszlo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/CMakeFiles/laszlo.dir/values/function.cpp.o"
 	cd /home/runner/work/laszlo/laszlo/build/src && /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/laszlo.dir/values/function.cpp.o -MF CMakeFiles/laszlo.dir/values/function.cpp.o.d -o CMakeFiles/laszlo.dir/values/function.cpp.o -c /home/runner/work/laszlo/laszlo/src/values/function.cpp
 
 src/CMakeFiles/laszlo.dir/values/function.cpp.i: cmake_force
@@ -156,7 +170,7 @@ src/CMakeFiles/laszlo.dir/values/function.cpp.s: cmake_force
 src/CMakeFiles/laszlo.dir/values/value.cpp.o: src/CMakeFiles/laszlo.dir/flags.make
 src/CMakeFiles/laszlo.dir/values/value.cpp.o: /home/runner/work/laszlo/laszlo/src/values/value.cpp
 src/CMakeFiles/laszlo.dir/values/value.cpp.o: src/CMakeFiles/laszlo.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/runner/work/laszlo/laszlo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/CMakeFiles/laszlo.dir/values/value.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/runner/work/laszlo/laszlo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object src/CMakeFiles/laszlo.dir/values/value.cpp.o"
 	cd /home/runner/work/laszlo/laszlo/build/src && /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/laszlo.dir/values/value.cpp.o -MF CMakeFiles/laszlo.dir/values/value.cpp.o.d -o CMakeFiles/laszlo.dir/values/value.cpp.o -c /home/runner/work/laszlo/laszlo/src/values/value.cpp
 
 src/CMakeFiles/laszlo.dir/values/value.cpp.i: cmake_force
@@ -170,7 +184,7 @@ src/CMakeFiles/laszlo.dir/values/value.cpp.s: cmake_force
 src/CMakeFiles/laszlo.dir/values/string.cpp.o: src/CMakeFiles/laszlo.dir/flags.make
 src/CMakeFiles/laszlo.dir/values/string.cpp.o: /home/runner/work/laszlo/laszlo/src/values/string.cpp
 src/CMakeFiles/laszlo.dir/values/string.cpp.o: src/CMakeFiles/laszlo.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/runner/work/laszlo/laszlo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object src/CMakeFiles/laszlo.dir/values/string.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/runner/work/laszlo/laszlo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object src/CMakeFiles/laszlo.dir/values/string.cpp.o"
 	cd /home/runner/work/laszlo/laszlo/build/src && /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/laszlo.dir/values/string.cpp.o -MF CMakeFiles/laszlo.dir/values/string.cpp.o.d -o CMakeFiles/laszlo.dir/values/string.cpp.o -c /home/runner/work/laszlo/laszlo/src/values/string.cpp
 
 src/CMakeFiles/laszlo.dir/values/string.cpp.i: cmake_force
@@ -184,7 +198,7 @@ src/CMakeFiles/laszlo.dir/values/string.cpp.s: cmake_force
 src/CMakeFiles/laszlo.dir/values/char.cpp.o: src/CMakeFiles/laszlo.dir/flags.make
 src/CMakeFiles/laszlo.dir/values/char.cpp.o: /home/runner/work/laszlo/laszlo/src/values/char.cpp
 src/CMakeFiles/laszlo.dir/values/char.cpp.o: src/CMakeFiles/laszlo.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/runner/work/laszlo/laszlo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object src/CMakeFiles/laszlo.dir/values/char.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/runner/work/laszlo/laszlo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object src/CMakeFiles/laszlo.dir/values/char.cpp.o"
 	cd /home/runner/work/laszlo/laszlo/build/src && /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/laszlo.dir/values/char.cpp.o -MF CMakeFiles/laszlo.dir/values/char.cpp.o.d -o CMakeFiles/laszlo.dir/values/char.cpp.o -c /home/runner/work/laszlo/laszlo/src/values/char.cpp
 
 src/CMakeFiles/laszlo.dir/values/char.cpp.i: cmake_force
@@ -198,7 +212,7 @@ src/CMakeFiles/laszlo.dir/values/char.cpp.s: cmake_force
 src/CMakeFiles/laszlo.dir/values/string_iterator.cpp.o: src/CMakeFiles/laszlo.dir/flags.make
 src/CMakeFiles/laszlo.dir/values/string_iterator.cpp.o: /home/runner/work/laszlo/laszlo/src/values/string_iterator.cpp
 src/CMakeFiles/laszlo.dir/values/string_iterator.cpp.o: src/CMakeFiles/laszlo.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/runner/work/laszlo/laszlo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object src/CMakeFiles/laszlo.dir/values/string_iterator.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/runner/work/laszlo/laszlo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object src/CMakeFiles/laszlo.dir/values/string_iterator.cpp.o"
 	cd /home/runner/work/laszlo/laszlo/build/src && /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/laszlo.dir/values/string_iterator.cpp.o -MF CMakeFiles/laszlo.dir/values/string_iterator.cpp.o.d -o CMakeFiles/laszlo.dir/values/string_iterator.cpp.o -c /home/runner/work/laszlo/laszlo/src/values/string_iterator.cpp
 
 src/CMakeFiles/laszlo.dir/values/string_iterator.cpp.i: cmake_force
@@ -213,6 +227,7 @@ src/CMakeFiles/laszlo.dir/values/string_iterator.cpp.s: cmake_force
 laszlo_OBJECTS = \
 "CMakeFiles/laszlo.dir/main.cpp.o" \
 "CMakeFiles/laszlo.dir/lexer.cpp.o" \
+"CMakeFiles/laszlo.dir/token.cpp.o" \
 "CMakeFiles/laszlo.dir/parser.cpp.o" \
 "CMakeFiles/laszlo.dir/values/integer.cpp.o" \
 "CMakeFiles/laszlo.dir/values/array.cpp.o" \
@@ -227,6 +242,7 @@ laszlo_EXTERNAL_OBJECTS =
 
 src/laszlo.html: src/CMakeFiles/laszlo.dir/main.cpp.o
 src/laszlo.html: src/CMakeFiles/laszlo.dir/lexer.cpp.o
+src/laszlo.html: src/CMakeFiles/laszlo.dir/token.cpp.o
 src/laszlo.html: src/CMakeFiles/laszlo.dir/parser.cpp.o
 src/laszlo.html: src/CMakeFiles/laszlo.dir/values/integer.cpp.o
 src/laszlo.html: src/CMakeFiles/laszlo.dir/values/array.cpp.o
@@ -238,7 +254,7 @@ src/laszlo.html: src/CMakeFiles/laszlo.dir/values/string_iterator.cpp.o
 src/laszlo.html: src/CMakeFiles/laszlo.dir/build.make
 src/laszlo.html: src/CMakeFiles/laszlo.dir/objects1.rsp
 src/laszlo.html: src/CMakeFiles/laszlo.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/runner/work/laszlo/laszlo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable laszlo.html"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/runner/work/laszlo/laszlo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX executable laszlo.html"
 	cd /home/runner/work/laszlo/laszlo/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/laszlo.dir/link.txt --verbose=$(VERBOSE)
 	cd /home/runner/work/laszlo/laszlo/build/src && /usr/local/bin/cmake -E copy /home/runner/work/laszlo/laszlo/emscripten/mode-laszlo.js /home/runner/work/laszlo/laszlo/build/src/mode-laszlo.js
 

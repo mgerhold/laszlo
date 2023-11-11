@@ -202,6 +202,30 @@ parser.cpp.s:
 	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/parser.cpp.s
 .PHONY : parser.cpp.s
 
+token.o: token.cpp.o
+.PHONY : token.o
+
+# target to build an object file
+token.cpp.o:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/token.cpp.o
+.PHONY : token.cpp.o
+
+token.i: token.cpp.i
+.PHONY : token.i
+
+# target to preprocess a source file
+token.cpp.i:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/token.cpp.i
+.PHONY : token.cpp.i
+
+token.s: token.cpp.s
+.PHONY : token.s
+
+# target to generate assembly for a file
+token.cpp.s:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/token.cpp.s
+.PHONY : token.cpp.s
+
 values/array.o: values/array.cpp.o
 .PHONY : values/array.o
 
@@ -388,6 +412,9 @@ help:
 	@echo "... parser.o"
 	@echo "... parser.i"
 	@echo "... parser.s"
+	@echo "... token.o"
+	@echo "... token.i"
+	@echo "... token.s"
 	@echo "... values/array.o"
 	@echo "... values/array.i"
 	@echo "... values/array.s"
