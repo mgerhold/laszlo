@@ -3,6 +3,7 @@
 #include "expressions/binary_operator.hpp"
 #include "expressions/bool_literal.hpp"
 #include "expressions/call.hpp"
+#include "expressions/char_literal.hpp"
 #include "expressions/integer_literal.hpp"
 #include "expressions/member_access.hpp"
 #include "expressions/name.hpp"
@@ -11,9 +12,9 @@
 #include "expressions/subscript.hpp"
 #include "expressions/typeof.hpp"
 #include "expressions/unary_operator.hpp"
-#include "expressions/char_literal.hpp"
 #include "parser_error.hpp"
 #include "types.hpp"
+#include <array>
 
 class ParserState final {
 private:
@@ -441,12 +442,20 @@ public:
                 [[fallthrough]];
             default: {
                 auto expr = expression();
-                if (current().type == TokenType::Equals) {
-                    // assignment
-                    advance(); // consume "="
-                    auto rvalue = expression();
-                    expect(TokenType::Semicolon);
-                    return std::make_unique<Assignment>(std::move(expr), std::move(rvalue));
+                static constexpr auto assignment_tokens = std::to_array({
+                        std::pair{         TokenType::Equals,   Assignment::Type::Equals },
+                        std::pair{     TokenType::PlusEquals,     Assignment::Type::Plus },
+                        std::pair{    TokenType::MinusEquals,    Assignment::Type::Minus },
+                        std::pair{ TokenType::AsteriskEquals, Assignment::Type::Asterisk },
+                        std::pair{    TokenType::SlashEquals,    Assignment::Type::Slash },
+                });
+                for (auto const [token_type, assignment_type] : assignment_tokens) {
+                    if (current().type == token_type) {
+                        advance(); // consume token
+                        auto rvalue = expression();
+                        expect(TokenType::Semicolon);
+                        return std::make_unique<Assignment>(std::move(expr), assignment_type, std::move(rvalue));
+                    }
                 }
                 // expression statement
                 expect(TokenType::Semicolon);
@@ -479,9 +488,8 @@ public:
             advance(); // consume "else"
             if (current().type == TokenType::Identifier and current().lexeme() == "if") {
                 return std::make_unique<If>(if_token, std::move(condition), std::move(then), if_());
-            } else {
-                return std::make_unique<If>(if_token, std::move(condition), std::move(then), block());
             }
+            return std::make_unique<If>(if_token, std::move(condition), std::move(then), block());
         }
         return std::make_unique<If>(
                 if_token,
@@ -491,7 +499,7 @@ public:
         );
     }
 
-    [[nodiscard]] types::Type data_type() {
+    [[nodiscard]] types::Type data_type() { // NOLINT
         switch (current().type) {
             case TokenType::LeftSquareBracket: {
                 advance(); // consume "["
@@ -506,16 +514,20 @@ public:
                 if (current().lexeme() == "I32") {
                     advance();
                     return types::make_i32();
-                } else if (current().lexeme() == "String") {
+                }
+                if (current().lexeme() == "String") {
                     advance();
                     return types::make_string();
-                } else if (current().lexeme() == "Bool") {
+                }
+                if (current().lexeme() == "Bool") {
                     advance();
                     return types::make_bool();
-                } else if (current().lexeme() == "Nothing") {
+                }
+                if (current().lexeme() == "Nothing") {
                     advance();
                     return types::make_nothing();
-                } else if (current().lexeme() == "Range") {
+                }
+                if (current().lexeme() == "Range") {
                     advance();
                     return types::make_range();
                 }

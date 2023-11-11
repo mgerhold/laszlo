@@ -19,6 +19,10 @@ enum class TokenType {
     Asterisk,
     Slash,
     Equals,
+    PlusEquals,
+    MinusEquals,
+    AsteriskEquals,
+    SlashEquals,
     LeftCurlyBracket,
     RightCurlyBracket,
     LeftSquareBracket,
@@ -60,6 +64,9 @@ struct Token final {
 
     friend std::ostream& operator<<(std::ostream& os, Token token) {
         switch (token.type) {
+            default:
+                assert(false and "unreachable");
+                return os;
             case TokenType::LeftParenthesis:
                 return os << "LeftParenthesis";
             case TokenType::RightParenthesis:
@@ -116,9 +123,18 @@ struct Token final {
                 return os << "Colon";
             case TokenType::TildeArrow:
                 return os << "TildeArray";
-            default:
-                assert(false and "unreachable");
-                return os;
+            case TokenType::CharLiteral:
+                return os << "CharLiteral";
+            case TokenType::PlusEquals:
+                return os << "PlusEquals";
+            case TokenType::MinusEquals:
+                return os << "MinusEquals";
+            case TokenType::AsteriskEquals:
+                return os << "AsteriskEquals";
+            case TokenType::SlashEquals:
+                return os << "SlashEquals";
+            case TokenType::QuestionMark:
+                return os << "QuestionMark";
         }
     }
 };

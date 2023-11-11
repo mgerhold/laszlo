@@ -105,14 +105,28 @@ public:
                 add_token(TokenType::TildeArrow, start, 2);
                 break;
             }
-            case '+':
-                add_token(TokenType::Plus);
-                state.advance();
+            case '+': {
+                auto start = state.m_current_index;
+                state.advance(); // consume "+"
+                if (state.current() == '=') {
+                    state.advance(); // consume "="
+                    add_token(TokenType::PlusEquals, start, 2);
+                } else {
+                    add_token(TokenType::Plus, start, 1);
+                }
                 break;
-            case '-':
-                add_token(TokenType::Minus);
-                state.advance();
+            }
+            case '-': {
+                auto start = state.m_current_index;
+                state.advance(); // consume "-"
+                if (state.current() == '=') {
+                    state.advance(); // consume "="
+                    add_token(TokenType::MinusEquals, start, 2);
+                } else {
+                    add_token(TokenType::Minus, start, 1);
+                }
                 break;
+            }
             case '=': {
                 auto const start = state.m_current_index;
                 state.advance();
@@ -184,13 +198,20 @@ public:
                 }
                 break;
             }
-            case '*':
-                add_token(TokenType::Asterisk);
-                state.advance();
+            case '*': {
+                auto start = state.m_current_index;
+                state.advance(); // consume "*"
+                if (state.current() == '=') {
+                    state.advance(); // consume "="
+                    add_token(TokenType::AsteriskEquals, start, 2);
+                } else {
+                    add_token(TokenType::Asterisk, start, 1);
+                }
                 break;
+            }
             case '/': {
                 auto const start = state.m_current_index;
-                state.advance();
+                state.advance(); // consume "/"
                 if (state.current() == '/') {
                     // one line comment
                     while (not state.is_at_end() and state.current() != '\n') {
@@ -198,20 +219,24 @@ public:
                     }
                     break;
                 }
-
-                add_token(TokenType::Slash, start, 1);
+                if (state.current() == '=') {
+                    state.advance(); // consume "="
+                    add_token(TokenType::SlashEquals, start, 2);
+                } else {
+                    add_token(TokenType::Slash, start, 1);
+                }
                 break;
             }
             case '\'': {
                 auto const start = state.m_current_index;
                 state.advance(); // consume "'"
                 if (state.is_at_end()) {
-                    throw LexerError{ UnclosedCharLiteral{state.current_source_location()} };
+                    throw LexerError{ UnclosedCharLiteral{ state.current_source_location() } };
                 }
                 state.advance(); // consume the character
                 if (state.current() != '\'') {
                     if (state.is_at_end()) {
-                        throw LexerError{ UnclosedCharLiteral{state.current_source_location()} };
+                        throw LexerError{ UnclosedCharLiteral{ state.current_source_location() } };
                     }
                 }
                 state.advance(); // "'"
