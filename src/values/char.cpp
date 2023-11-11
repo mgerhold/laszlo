@@ -15,10 +15,16 @@ namespace values {
     }
 
     [[nodiscard]] Value Char::binary_plus(Value const& other) const {
-        if (not other->is_integer_value()) {
-            return BasicValue::binary_plus(other); // throws
+        if (other->is_integer_value()) {
+            return make(value() + other->as_integer_value().value(), ValueCategory::Rvalue);
         }
-        return make(value() + other->as_integer_value().value(), ValueCategory::Rvalue);
+        if (other->is_string_value()) {
+            return String::make(
+                    static_cast<char>(value()) + other->as_string().string_representation(),
+                    ValueCategory::Rvalue
+            );
+        }
+        return BasicValue::binary_plus(other); // throws
     }
 
     [[nodiscard]] Value Char::binary_minus(Value const& other) const {
