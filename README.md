@@ -187,7 +187,7 @@ You can use `?` to specify the *"unspecified"* type. In function calls, `?`
 matches to *any* type. Example:
 
 ```
-function calculate_length(any_array: [?])~ > I32
+function calculate_length(any_array: [?]) ~> I32
 {
   return any_array.size;
 }
@@ -236,4 +236,4 @@ A: Why not?
 
 Q: Why is the Laszlo interpreter so slow?
 
-A: ¯\_(ツ)_/¯
+A: ¯\\\_(ツ)_/¯
