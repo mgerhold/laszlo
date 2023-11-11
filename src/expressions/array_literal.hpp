@@ -1,7 +1,7 @@
 #pragma once
 
-#include "expression.hpp"
 #include "../values/array.hpp"
+#include "expression.hpp"
 
 namespace expressions {
     class ArrayLiteral final : public Expression {
@@ -54,4 +54,4 @@ namespace expressions {
             return SourceLocation::from_range(m_opening_bracket.source_location, m_closing_bracket.source_location);
         }
     };
-}
+} // namespace expressions
