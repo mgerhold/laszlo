@@ -6,5 +6,5 @@ CXX_DEFINES = -DEMSCRIPTEN
 
 CXX_INCLUDES = 
 
-CXX_FLAGS =  -fexperimental-library -std=gnu++23 -fexceptions
+CXX_FLAGS =  -fexperimental-library -O3 -DNDEBUG -std=gnu++23 -fexceptions
 
