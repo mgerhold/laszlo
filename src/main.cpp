@@ -25,7 +25,7 @@
 
 int main(int const argc, char const* const* const argv) try {
 #ifdef EMSCRIPTEN
-    auto const filename = std::string_view{ "programs/test.las" };
+    static constexpr auto filename = std::string_view{ "programs/test.las" };
 #else
     assert(argc >= 1);
     if (argc != 2) {
