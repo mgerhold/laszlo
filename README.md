@@ -48,10 +48,10 @@ I won't judge whether ChatGPT is correct or not, though ¯\\\_(ツ)_/¯
   println("Hello, world!")
   print("Hello, ");
   print("world!");
-  println();
+  println(); // only newline
   println("The answer is " + 42);
   ```
-- `function`: You can declare functions using the `function` keyword. Functions
+- `function`: You can define functions using the `function` keyword. Functions
   require type annotations (like in the
   renowned [Backseat™️](https://www.youtube.com/watch?v=dQw4w9WgXcQ) language).
   Example:
@@ -82,6 +82,7 @@ I won't judge whether ChatGPT is correct or not, though ¯\\\_(ツ)_/¯
   let text = "Hello!";
   let predicate = true;
   let array = [1, 2, 3];
+  let c = 'a';
   ```
 - `=`: You can assign to variables using `=`. Example:
   ```
@@ -100,8 +101,12 @@ I won't judge whether ChatGPT is correct or not, though ¯\\\_(ツ)_/¯
     println("it's rather cold");
   }
   ```
-- `for`: Loop over an iterable. The only iterables currently available are
-  ranges and arrays. Example:
+- `for`: Loop over an iterable. Thinks that can be iterated over:
+  - ranges (e.g. `0..10`)
+  - arrays (e.g. `['a', 'b', 'c']`)
+  - strings (e.g. `"lorem ipsum"`)
+
+  Example:
   ```
   for i in 1..=10 { // will run up until 10 (inclusive)
     println(i);
@@ -128,6 +133,19 @@ I won't judge whether ChatGPT is correct or not, though ¯\\\_(ツ)_/¯
   ```
   assert(42 == 42); // this is fine
   assert(false); // crashes
+  ```
+- `size`/`length`: You can get the number of elements in an array using the
+  member property "`size`". You can get the number of characters in a string
+  using the member properties "`size`" and "`length`" (they are equivalent).
+  Example:
+  ```
+  let text = "Laszlo";
+  println("'" + text + "' consists of " + text.length + " letters.");
+  assert(text.length == text.size);
+  let numbers = [42, 1337];
+  for i in 0..numbers.size {
+    println((i + 1) + ". " + numbers[i]);
+  }
   ```
 
 ## Call Semantics
