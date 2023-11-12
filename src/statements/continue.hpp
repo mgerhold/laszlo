@@ -12,7 +12,7 @@ namespace statements {
         explicit Continue(Token const& continue_token) : m_continue_token{ continue_token } { }
 
         void execute(ScopeStack& scope_stack) const override {
-            throw BreakException{ m_continue_token };
+            throw ContinueException{ m_continue_token };
         }
     };
 
