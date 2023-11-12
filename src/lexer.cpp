@@ -248,11 +248,6 @@ public:
                 auto length = 1;
                 state.advance();
                 while (not state.is_at_end() and state.current() != '"') {
-                    if (state.current() == '\n') {
-                        throw LexerError{
-                            ForbiddenCharacterInStringLiteral{ state.current_source_location(), state.current() }
-                        };
-                    }
                     state.advance();
                     ++length;
                 }
