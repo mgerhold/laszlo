@@ -84,6 +84,8 @@ namespace values {
         [[nodiscard]] Value member_access(Token const member) const override;
 
         [[nodiscard]] Value iterator() override;
+
+        [[nodiscard]] Value cast(types::Type const& target_type) const override;
     };
 
 } // namespace values

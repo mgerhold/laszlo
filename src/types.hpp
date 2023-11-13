@@ -4,6 +4,7 @@
 #include <memory>
 #include <string>
 #include <vector>
+#include "source_location.hpp"
 
 namespace types {
     class BasicType;

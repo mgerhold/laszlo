@@ -5,6 +5,22 @@
 #include <format>
 #include <stdexcept>
 
+namespace {
+    [[nodiscard]] constexpr bool is_valid_escape_sequence_char_in_char_literal(char const c) {
+        switch (c) {
+            case 'n':
+            case 'r':
+            case 't':
+            case 'v':
+            case '\\':
+            case '\'':
+                return true;
+            default:
+                return false;
+        }
+    }
+} // namespace
+
 class LexerState final {
 private:
     std::string_view m_filename;
@@ -133,6 +149,9 @@ public:
                 if (state.current() == '=') {
                     state.advance();
                     add_token(TokenType::EqualsEquals, start, 2);
+                } else if (state.current() == '>') {
+                    state.advance();
+                    add_token(TokenType::EqualsGreaterThan, start, 2);
                 } else {
                     add_token(TokenType::Equals);
                 }
@@ -233,14 +252,24 @@ public:
                 if (state.is_at_end()) {
                     throw LexerError{ UnclosedCharLiteral{ state.current_source_location() } };
                 }
-                state.advance(); // consume the character
-                if (state.current() != '\'') {
+                auto const is_escape_sequence = (state.current() == '\\');
+                if (is_escape_sequence) {
+                    state.advance(); // consume "\"
                     if (state.is_at_end()) {
                         throw LexerError{ UnclosedCharLiteral{ state.current_source_location() } };
                     }
+                } else if (state.current() == '\'' or state.current() == '\n') {
+                    throw LexerError{ InvalidCharLiteral{ state.current_source_location() } };
                 }
-                state.advance(); // "'"
-                add_token(TokenType::CharLiteral, start, 3);
+                if (is_escape_sequence and not is_valid_escape_sequence_char_in_char_literal(state.current())) {
+                    throw LexerError{ InvalidEscapeSequence{ state.current_source_location() } };
+                }
+                state.advance(); // consume the character
+                if (state.current() != '\'' and state.is_at_end()) {
+                    throw LexerError{ UnclosedCharLiteral{ state.current_source_location() } };
+                }
+                state.advance(); // consume "'"
+                add_token(TokenType::CharLiteral, start, is_escape_sequence ? 4 : 3);
                 break;
             }
             case '"': {

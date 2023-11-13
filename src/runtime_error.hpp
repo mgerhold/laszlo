@@ -24,7 +24,7 @@ public:
     }
 };
 
-class OperationNotSupportedByType : public RuntimeError {
+class OperationNotSupportedByType final : public RuntimeError {
 public:
     template<std::convertible_to<types::Type>... Types>
     explicit OperationNotSupportedByType(std::string_view const operation, Types... types)
@@ -45,24 +45,30 @@ private:
     }
 };
 
-class IntegerOverflow : public RuntimeError {
+class IntegerOverflow final : public RuntimeError {
 public:
     explicit IntegerOverflow() : RuntimeError{ "integer overflow" } { }
 };
 
-class VariableRedefinition : public RuntimeError {
+class CastError final : public RuntimeError {
+public:
+    CastError(std::string_view const from, std::string_view const to)
+        : RuntimeError{ std::format("cast from '{}' to '{}' failed", from, to) } { }
+};
+
+class VariableRedefinition final : public RuntimeError {
 public:
     explicit VariableRedefinition(Token const token)
         : RuntimeError{ std::format("{}: redefinition of variable '{}'", token.source_location, token.lexeme()) } { }
 };
 
-class UndefinedReference : public RuntimeError {
+class UndefinedReference final : public RuntimeError {
 public:
     explicit UndefinedReference(Token const token)
         : RuntimeError{ std::format("{}: undefined reference to name '{}'", token.source_location, token.lexeme()) } { }
 };
 
-class TypeMismatch : public RuntimeError {
+class TypeMismatch final : public RuntimeError {
 public:
     TypeMismatch(SourceLocation const source_location, types::Type const& expected, types::Type const& actual)
         : RuntimeError{ std::format(
@@ -73,7 +79,7 @@ public:
           ) } { }
 };
 
-class ReturnTypeMismatch : public RuntimeError {
+class ReturnTypeMismatch final : public RuntimeError {
 public:
     ReturnTypeMismatch(SourceLocation const source_location, types::Type const& expected, types::Type const& actual)
         : RuntimeError{ std::format(
@@ -84,7 +90,7 @@ public:
           ) } { }
 };
 
-class FailedAssertion : public RuntimeError {
+class FailedAssertion final : public RuntimeError {
 public:
     explicit FailedAssertion(SourceLocation const source_location)
         : RuntimeError{
@@ -92,7 +98,7 @@ public:
           } { }
 };
 
-class UnableToSubscript : public RuntimeError {
+class UnableToSubscript final : public RuntimeError {
 public:
     UnableToSubscript(types::Type const& index_type, types::Type const& expression_type)
         : RuntimeError{ std::format(
@@ -102,24 +108,24 @@ public:
           ) } { }
 };
 
-class IndexOutOfBounds : public RuntimeError {
+class IndexOutOfBounds final : public RuntimeError {
 public:
     IndexOutOfBounds(std::int32_t const index, std::int32_t const size)
         : RuntimeError{ std::format("index '{}' is out of bounds for array of size '{}'", index, size) } { }
 };
 
-class InvalidValueCast : public RuntimeError {
+class InvalidValueCast final : public RuntimeError {
 public:
     explicit InvalidValueCast(std::string_view const target_type)
         : RuntimeError{ std::format("unable to cast value to target type '{}'", target_type) } { }
 };
 
-class LvalueRequired : public RuntimeError {
+class LvalueRequired final : public RuntimeError {
 public:
     explicit LvalueRequired() : RuntimeError{ std::format("got an rvalue where an lvalue is required") } { }
 };
 
-class WrongNumberOfArguments : public RuntimeError {
+class WrongNumberOfArguments final : public RuntimeError {
 public:
     WrongNumberOfArguments(Token const function_name, std::size_t const expected_count, std::size_t const actual_count)
         : RuntimeError{ std::format(
@@ -131,7 +137,7 @@ public:
           ) } { }
 };
 
-class WrongArgumentType : public RuntimeError {
+class WrongArgumentType final : public RuntimeError {
 public:
     WrongArgumentType(Token const parameter_name, types::Type const& expected, types::Type const& actual)
         : RuntimeError{ std::format(
@@ -142,7 +148,7 @@ public:
           ) } { }
 };
 
-class NoSuchMember : public RuntimeError {
+class NoSuchMember final : public RuntimeError {
 public:
     NoSuchMember(types::Type const& type, Token const member)
         : RuntimeError{ std::format(

@@ -19,6 +19,7 @@ enum class TokenType {
     Asterisk,
     Slash,
     Equals,
+    EqualsGreaterThan,
     PlusEquals,
     MinusEquals,
     AsteriskEquals,

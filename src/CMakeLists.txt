@@ -68,6 +68,7 @@ add_executable(
         statements/for.hpp
         statements/function_declaration.hpp
         statements/function_declaration.cpp
+        expressions/cast.hpp
 )
 
 if (EMSCRIPTEN)

@@ -3,6 +3,7 @@
 #include "char.hpp"
 #include "integer.hpp"
 #include "string_iterator.hpp"
+#include <sstream>
 
 namespace values {
 
@@ -47,6 +48,19 @@ namespace values {
 
     [[nodiscard]] Value String::iterator() {
         return StringIterator::make(shared_from_this(), 0, ValueCategory::Rvalue);
+    }
+
+    [[nodiscard]] Value String::cast(types::Type const& target_type) const {
+        if (target_type == types::make_i32()) {
+            auto stream = std::istringstream{ string_representation() };
+            auto value = Integer::ValueType{};
+            stream >> value;
+            if (not stream or not stream.eof()) {
+                throw CastError{ string_representation(), target_type->to_string() };
+            }
+            return Integer::make(value, ValueCategory::Rvalue);
+        }
+        return BasicValue::cast(target_type);
     }
 
 } // namespace values

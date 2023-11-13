@@ -205,6 +205,8 @@ namespace values {
         [[nodiscard]] virtual Value member_access(Token const member) const {
             throw NoSuchMember{ type(), member };
         }
+
+        [[nodiscard]] virtual Value cast(types::Type const& target_type) const;
     };
 
 } // namespace values

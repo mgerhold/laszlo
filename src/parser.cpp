@@ -3,6 +3,7 @@
 #include "expressions/binary_operator.hpp"
 #include "expressions/bool_literal.hpp"
 #include "expressions/call.hpp"
+#include "expressions/cast.hpp"
 #include "expressions/char_literal.hpp"
 #include "expressions/integer_literal.hpp"
 #include "expressions/member_access.hpp"
@@ -277,6 +278,11 @@ public:
                 auto const member = expect(TokenType::Identifier);
                 return std::make_unique<expressions::MemberAccess>(std::move(lvalue), member);
             }
+            case TokenType::EqualsGreaterThan: {
+                advance(); // consume "=>"
+                auto target_type = data_type();
+                return std::make_unique<expressions::Cast>(std::move(lvalue), std::move(target_type));
+            }
             default:
                 return lvalue;
         }
@@ -549,6 +555,10 @@ public:
                 if (current().lexeme() == "Range") {
                     advance();
                     return types::make_range();
+                }
+                if (current().lexeme() == "Char") {
+                    advance();
+                    return types::make_char();
                 }
                 [[fallthrough]];
             default:

@@ -40,6 +40,18 @@ public:
         : LexerErrorBase{ source_location, "unclosed char literal" } { }
 };
 
+class InvalidEscapeSequence final : public LexerErrorBase {
+public:
+    explicit InvalidEscapeSequence(SourceLocation const& source_location)
+        : LexerErrorBase{ source_location, "invalid escape sequence" } { }
+};
+
+class InvalidCharLiteral final : public LexerErrorBase {
+public:
+    explicit InvalidCharLiteral(SourceLocation const& source_location)
+        : LexerErrorBase{ source_location, "invalid char literal" } { }
+};
+
 class ForbiddenCharacterInStringLiteral final : public LexerErrorBase {
 public:
     ForbiddenCharacterInStringLiteral(SourceLocation const source_location, char const c)
@@ -57,8 +69,13 @@ private:
     }
 };
 
-using LexerErrorKind =
-        std::variant<UnexpectedChar, UnclosedStringLiteral, ForbiddenCharacterInStringLiteral, UnclosedCharLiteral>;
+using LexerErrorKind = std::variant<
+        UnexpectedChar,
+        UnclosedStringLiteral,
+        ForbiddenCharacterInStringLiteral,
+        UnclosedCharLiteral,
+        InvalidEscapeSequence,
+        InvalidCharLiteral>;
 
 class LexerError final : public std::exception {
 private:
