@@ -576,6 +576,7 @@ src/CMakeFiles/laszlo.dir/parser.cpp.o: \
   /home/runner/work/laszlo/laszlo/src/expressions/binary_operator.hpp \
   /home/runner/work/laszlo/laszlo/src/expressions/bool_literal.hpp \
   /home/runner/work/laszlo/laszlo/src/expressions/call.hpp \
+  /home/runner/work/laszlo/laszlo/src/expressions/cast.hpp \
   /home/runner/work/laszlo/laszlo/src/expressions/char_literal.hpp \
   /home/runner/work/laszlo/laszlo/src/expressions/integer_literal.hpp \
   /home/runner/work/laszlo/laszlo/src/expressions/member_access.hpp \
