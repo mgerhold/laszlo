@@ -255,36 +255,53 @@ public:
     }
 
     [[nodiscard]] std::unique_ptr<expressions::Expression> postfix_operator() { // NOLINT(misc-no-recursion)
-        auto lvalue = primary();
-        switch (current().type) {
-            case TokenType::LeftSquareBracket: {
-                advance(); // consume "["
-                auto index = expression();
-                auto const closing_bracket = expect(TokenType::RightSquareBracket);
-                return std::make_unique<expressions::Subscript>(std::move(lvalue), std::move(index), closing_bracket);
+        auto accumulator = primary();
+        while (true) {
+            switch (current().type) {
+                case TokenType::LeftSquareBracket: {
+                    advance(); // consume "["
+                    auto index = expression();
+                    auto const closing_bracket = expect(TokenType::RightSquareBracket);
+                    accumulator = std::make_unique<expressions::Subscript>(
+                            std::move(accumulator),
+                            std::move(index),
+                            closing_bracket
+                    );
+                    break;
+                }
+                case TokenType::LeftParenthesis: {
+                    advance(); // consume "("
+                    auto arguments = std::vector<std::unique_ptr<expressions::Expression>>{};
+                    if (auto const binary_operation = dynamic_cast<expressions::MemberAccess*>(accumulator.get())) {
+                        arguments.push_back(binary_operation->move_lhs_out());
+                        accumulator = std::make_unique<expressions::Name>(binary_operation->member_token());
+                    }
+                    for (auto& argument : expression_list(TokenType::RightParenthesis)) {
+                        arguments.push_back(std::move(argument));
+                    }
+                    auto const closing_parenthesis = expect(TokenType::RightParenthesis);
+                    accumulator = std::make_unique<expressions::Call>(
+                            std::move(accumulator),
+                            std::move(arguments),
+                            closing_parenthesis
+                    );
+                    break;
+                }
+                case TokenType::Dot: {
+                    advance(); // consume "."
+                    auto const member = expect(TokenType::Identifier);
+                    accumulator = std::make_unique<expressions::MemberAccess>(std::move(accumulator), member);
+                    break;
+                }
+                case TokenType::EqualsGreaterThan: {
+                    advance(); // consume "=>"
+                    auto target_type = data_type();
+                    accumulator = std::make_unique<expressions::Cast>(std::move(accumulator), std::move(target_type));
+                    break;
+                }
+                default:
+                    return accumulator;
             }
-            case TokenType::LeftParenthesis: {
-                advance(); // consume "("
-                auto arguments = expression_list(TokenType::RightParenthesis);
-                auto const closing_parenthesis = expect(TokenType::RightParenthesis);
-                return std::make_unique<expressions::Call>(
-                        std::move(lvalue),
-                        std::move(arguments),
-                        closing_parenthesis
-                );
-            }
-            case TokenType::Dot: {
-                advance(); // consume "."
-                auto const member = expect(TokenType::Identifier);
-                return std::make_unique<expressions::MemberAccess>(std::move(lvalue), member);
-            }
-            case TokenType::EqualsGreaterThan: {
-                advance(); // consume "=>"
-                auto target_type = data_type();
-                return std::make_unique<expressions::Cast>(std::move(lvalue), std::move(target_type));
-            }
-            default:
-                return lvalue;
         }
     }
 
@@ -560,10 +577,31 @@ public:
                     advance();
                     return types::make_char();
                 }
+                if (current().lexeme() == "Function") {
+                    advance(); // consume "Function"
+                    expect(TokenType::LeftParenthesis);
+                    auto parameter_types = type_list();
+                    expect(TokenType::RightParenthesis);
+                    expect(TokenType::TildeArrow);
+                    auto return_type = data_type();
+                    return types::make_function(std::move(parameter_types), std::move(return_type));
+                }
                 [[fallthrough]];
             default:
                 throw ParserError{ UnexpectedToken{ current() } };
         }
+    }
+
+    [[nodiscard]] std::vector<types::Type> type_list() {
+        auto result = std::vector<types::Type>{};
+        while (not is_at_end() and current().type != TokenType::RightParenthesis) {
+            result.push_back(data_type());
+            if (current().type != TokenType::Comma) {
+                break;
+            }
+            advance(); // consume ","
+        }
+        return result;
     }
 };
 

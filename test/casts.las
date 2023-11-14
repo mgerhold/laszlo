@@ -1,23 +1,6 @@
-function split(string: String, delimiter: Char) ~> [String] {
-    let result = [];
-    let current = "";
-    for char in string {
-        if char == delimiter {
-            result += [current];
-            current = "";
-            continue;
-        }
-        current = current + char;
-    }
-    if current.length > 0 {
-        result += [current];
-    }
-    return result;
-}
-
 let s = "100
 200";
-let parts = split(s, '\n');
+let parts = s.split('\n', true);
 for part in parts {
     let number = part => I32;
     let result = number * 2;

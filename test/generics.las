@@ -1,4 +1,4 @@
-function join(array: [?], separator: String) ~> String {
+function my_join(array: [?], separator: String) ~> String {
     let result = "";
     if array.size > 0 {
         result = result + array[0];
@@ -9,9 +9,9 @@ function join(array: [?], separator: String) ~> String {
     return result;
 }
 
-println(join([1, 2, 3], ", "));
-println(join(["test", "sentence", "with", "words"], ":"));
-println(join([[1, 2, 3], [4, 5, 6], [7, 8, 9]], " <-> "));
+println(my_join([1, 2, 3], ", "));
+println(my_join(["test", "sentence", "with", "words"], ":"));
+println(my_join([[1, 2, 3], [4, 5, 6], [7, 8, 9]], " <-> "));
 
 function add(lhs: ?, rhs: ?) ~> ? {
     return lhs + rhs;
