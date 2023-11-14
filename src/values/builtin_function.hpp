@@ -77,14 +77,14 @@ namespace values {
                     using std::ranges::views::split;
                     using std::ranges::views::transform;
                     auto const separator = static_cast<char>(values.at(1)->as_char_value().value());
-                    auto parts = values.front()->as_string().string_representation() | split(separator)
-                                 | filter([discard_empty](auto const& part) {
-                                       return not discard_empty or not std::string_view{ part }.empty();
-                                   })
-                                 | transform([](auto&& part) {
-                                       return String::make(std::string_view{ part }, ValueCategory::Lvalue);
-                                   })
-                                 | std::ranges::to<std::vector>();
+                    auto parts_view = values.front()->as_string().string_representation() | split(separator)
+                                      | filter([discard_empty](auto const& part) {
+                                            return not discard_empty or not std::string_view{ part }.empty();
+                                        })
+                                      | transform([](auto&& part) {
+                                            return String::make(std::string_view{ part }, ValueCategory::Lvalue);
+                                        });
+                    auto parts = std::vector<Value>{ parts_view.begin(), parts_view.end() };
                     return Array::make(std::move(parts), ValueCategory::Rvalue);
                 }
                 throw WrongArgumentType{ to_view(m_type), "separator", values.at(1)->type() };
