@@ -130,6 +130,30 @@ laszlo/fast:
 	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/build
 .PHONY : laszlo/fast
 
+interpreter.o: interpreter.cpp.o
+.PHONY : interpreter.o
+
+# target to build an object file
+interpreter.cpp.o:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/interpreter.cpp.o
+.PHONY : interpreter.cpp.o
+
+interpreter.i: interpreter.cpp.i
+.PHONY : interpreter.i
+
+# target to preprocess a source file
+interpreter.cpp.i:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/interpreter.cpp.i
+.PHONY : interpreter.cpp.i
+
+interpreter.s: interpreter.cpp.s
+.PHONY : interpreter.s
+
+# target to generate assembly for a file
+interpreter.cpp.s:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/interpreter.cpp.s
+.PHONY : interpreter.cpp.s
+
 lexer.o: lexer.cpp.o
 .PHONY : lexer.o
 
@@ -427,6 +451,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... laszlo"
+	@echo "... interpreter.o"
+	@echo "... interpreter.i"
+	@echo "... interpreter.s"
 	@echo "... lexer.o"
 	@echo "... lexer.i"
 	@echo "... lexer.s"

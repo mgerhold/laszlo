@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/laszlo.dir/interpreter.cpp.o"
+  "CMakeFiles/laszlo.dir/interpreter.cpp.o.d"
   "CMakeFiles/laszlo.dir/lexer.cpp.o"
   "CMakeFiles/laszlo.dir/lexer.cpp.o.d"
   "CMakeFiles/laszlo.dir/main.cpp.o"
