@@ -36,6 +36,7 @@ namespace values {
         if (m_parameters.size() != arguments.size()) {
             throw WrongNumberOfArguments{ m_name, m_parameters.size(), arguments.size() };
         }
+        auto const num_scopes = scope_stack.size();
         auto function_scope = Scope{};
         auto const num_args = arguments.size();
         for (std::size_t i = 0; i < num_args; ++i) {
@@ -67,6 +68,7 @@ namespace values {
         if (not m_return_type->can_be_created_from(return_value->type())) {
             throw ReturnTypeMismatch{ m_name.source_location, m_return_type, return_value->type() };
         }
+        scope_stack.truncate(num_scopes);
         return return_value;
     }
 
