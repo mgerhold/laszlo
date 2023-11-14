@@ -254,11 +254,19 @@ namespace types {
                 return false;
             }
             for (auto i = std::size_t{ 0 }; i < m_parameter_types.size(); ++i) {
-                if (m_parameter_types.at(i) != other.as_function().m_parameter_types.at(i)) {
+                if (not m_parameter_types.at(i)->equals(*other.as_function().m_parameter_types.at(i))) {
                     return false;
                 }
             }
-            return m_return_type == other.as_function().m_return_type;
+            return m_return_type->equals(*other.as_function().m_return_type);
+        }
+
+        [[nodiscard]] bool is_function() const override {
+            return true;
+        }
+
+        [[nodiscard]] Function const& as_function() const override {
+            return *this;
         }
     };
 
