@@ -1,5 +1,6 @@
 #pragma once
 
+#include "builtin_function_type.hpp"
 #include "source_location.hpp"
 #include <format>
 #include <memory>
@@ -208,6 +209,22 @@ namespace types {
         }
     };
 
+    class BuiltinFunction final : public BasicType {
+    private:
+        BuiltinFunctionType m_type;
+
+    public:
+        explicit BuiltinFunction(BuiltinFunctionType const type) : m_type{ type } { }
+
+        [[nodiscard]] std::string to_string() const override {
+            return std::format("BuiltinFunction({})", to_view(m_type));
+        }
+
+        [[nodiscard]] bool equals(BasicType const& other) const override {
+            return dynamic_cast<BuiltinFunction const*>(&other) != nullptr;
+        }
+    };
+
     class Function final : public BasicType {
     private:
         std::vector<Type> m_parameter_types;
@@ -299,5 +316,9 @@ namespace types {
 
     [[nodiscard]] inline Type make_unspecified() {
         return std::make_shared<Unspecified>();
+    }
+
+    [[nodiscard]] inline Type make_builtin_function(BuiltinFunctionType const type) {
+        return std::make_shared<BuiltinFunction>(type);
     }
 } // namespace types

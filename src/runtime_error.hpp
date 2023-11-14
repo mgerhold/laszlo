@@ -135,15 +135,39 @@ public:
                   expected_count,
                   actual_count
           ) } { }
+
+    WrongNumberOfArguments(
+            std::string_view const function_name,
+            std::size_t const expected_count,
+            std::size_t const actual_count
+    )
+        : RuntimeError{ std::format(
+                  "wrong number of arguments when calling function '{}' (expected {}, got {})",
+                  function_name,
+                  expected_count,
+                  actual_count
+          ) } { }
 };
 
 class WrongArgumentType final : public RuntimeError {
 public:
-    WrongArgumentType(Token const parameter_name, types::Type const& expected, types::Type const& actual)
+    WrongArgumentType(Token const& parameter_name, types::Type const& expected, types::Type const& actual)
         : RuntimeError{ std::format(
                   "{}: wrong argument type (expected '{}', got '{}')",
                   parameter_name.source_location,
                   expected->to_string(),
+                  actual->to_string()
+          ) } { }
+
+    WrongArgumentType(
+            std::string_view const function_name,
+            std::string_view const parameter_name,
+            types::Type const& actual
+    )
+        : RuntimeError{ std::format(
+                  "{}: invalid type for parameter '{}' (got '{}')",
+                  function_name,
+                  parameter_name,
                   actual->to_string()
           ) } { }
 };

@@ -69,6 +69,9 @@ add_executable(
         statements/function_declaration.hpp
         statements/function_declaration.cpp
         expressions/cast.hpp
+        values/builtin_function.hpp
+        builtin_function_type.hpp
+        interpreter.cpp
 )
 
 if (EMSCRIPTEN)
