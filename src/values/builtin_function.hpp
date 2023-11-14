@@ -6,7 +6,6 @@
 #include "iterator.hpp"
 #include "string.hpp"
 #include "value.hpp"
-#include <ranges>
 
 namespace values {
 
@@ -78,18 +77,26 @@ namespace values {
                 }
                 auto const discard_empty = values.size() > 2 and values.at(2)->as_bool_value().value();
                 if (values.at(1)->type() == types::make_char()) {
-                    using std::ranges::views::filter;
-                    using std::ranges::views::split;
-                    using std::ranges::views::transform;
+                    using namespace std::string_literals;
                     auto const separator = static_cast<char>(values.at(1)->as_char_value().value());
-                    auto parts_view = values.front()->as_string().string_representation() | split(separator)
-                                      | filter([discard_empty](auto const& part) {
-                                            return not discard_empty or not std::string_view{ part }.empty();
-                                        })
-                                      | transform([](auto&& part) {
-                                            return String::make(std::string_view{ part }, ValueCategory::Lvalue);
-                                        });
-                    auto parts = std::vector<Value>{ parts_view.begin(), parts_view.end() };
+                    auto const string = values.front()->as_string().string_representation();
+                    auto current = ""s;
+                    auto parts = std::vector<Value>{};
+                    for (auto const c : string) {
+                        if (c == separator) {
+                            if (not discard_empty or not current.empty()) {
+                                parts.push_back(
+                                        String::make(std::string_view{ std::move(current) }, ValueCategory::Lvalue)
+                                );
+                            }
+                            current.clear();
+                            continue;
+                        }
+                        current += c;
+                    }
+                    if (not current.empty()) {
+                        parts.push_back(String::make(std::string_view{ std::move(current) }, ValueCategory::Lvalue));
+                    }
                     return Array::make(std::move(parts), ValueCategory::Rvalue);
                 }
                 throw WrongArgumentType{ to_view(m_type), "separator", values.at(1)->type() };
