@@ -165,7 +165,7 @@ namespace values {
                 values.push_back(argument->evaluate(scope_stack));
             }
 
-            if (not values.front()->is_array()) {
+            if (not values.front()->is_array() and not values.front()->is_string_value()) {
                 throw WrongArgumentType{ to_view(m_type), "array", values.front()->type() };
             }
 
@@ -173,13 +173,29 @@ namespace values {
                 throw WrongArgumentType{ to_view(m_type), "index", values.at(1)->type() };
             }
 
+            auto const container_size = [&]() {
+                if (values.front()->is_array()) {
+                    return values.front()->as_array().value().size();
+                }
+                if (values.front()->is_string_value()) {
+                    return values.front()->as_string().length();
+                }
+                assert(false and "unreachable");
+                return std::size_t{ 0 };
+            }();
+
             auto const index = values.at(1)->as_integer_value().value();
-            if (index < 0 or static_cast<std::size_t>(index) >= values.front()->as_array().value().size()) {
-                throw IndexOutOfBounds{ index,
-                                        static_cast<Integer::ValueType>(values.front()->as_array().value().size()) };
+            if (index < 0 or static_cast<std::size_t>(index) >= container_size) {
+                throw IndexOutOfBounds{ index, static_cast<int>(container_size) };
             }
 
-            values.front()->as_array().value().erase(std::next(values.front()->as_array().value().begin(), index));
+            if (values.front()->is_array()) {
+                values.front()->as_array().value().erase(std::next(values.front()->as_array().value().begin(), index));
+            } else if (values.front()->is_string_value()) {
+                values.front()->as_string().delete_(index);
+            } else {
+                assert(false and "unreachable");
+            }
 
             return Nothing::make(ValueCategory::Rvalue);
         }

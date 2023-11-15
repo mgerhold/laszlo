@@ -31,6 +31,10 @@ namespace values {
             return *this;
         }
 
+        [[nodiscard]] String& as_string() override {
+            return *this;
+        }
+
         [[nodiscard]] Value at(std::size_t const index) const {
             assert(index < m_chars.size());
             return m_chars.at(index);
@@ -86,6 +90,10 @@ namespace values {
         [[nodiscard]] Value iterator() override;
 
         [[nodiscard]] Value cast(types::Type const& target_type) const override;
+
+        void delete_(std::size_t const index) {
+            m_chars.erase(std::next(m_chars.begin(), static_cast<long long>(index)));
+        }
     };
 
 } // namespace values

@@ -91,6 +91,10 @@ namespace values {
             throw InvalidValueCast{ "String" };
         }
 
+        [[nodiscard]] virtual String& as_string() {
+            throw InvalidValueCast{ "String" };
+        }
+
         [[nodiscard]] virtual bool is_bool_value() const {
             return false;
         }
