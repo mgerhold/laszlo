@@ -66,8 +66,8 @@ add_executable(
         statements/continue.hpp
         statements/return.hpp
         statements/for.hpp
-        statements/function_declaration.hpp
-        statements/function_declaration.cpp
+        statements/function_definition.hpp
+        statements/function_definition.cpp
         expressions/cast.hpp
         values/builtin_function.hpp
         builtin_function_type.hpp

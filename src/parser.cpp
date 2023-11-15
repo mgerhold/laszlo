@@ -21,13 +21,13 @@
 #include "statements/continue.hpp"
 #include "statements/expression_statement.hpp"
 #include "statements/for.hpp"
-#include "statements/function_declaration.hpp"
 #include "statements/if.hpp"
 #include "statements/print.hpp"
 #include "statements/println.hpp"
 #include "statements/return.hpp"
 #include "statements/variable_definition.hpp"
 #include "statements/while.hpp"
+#include "statements\function_definition.hpp"
 #include "types.hpp"
 
 #include <array>
@@ -390,7 +390,7 @@ public:
                         return_type = data_type();
                     }
                     auto body = block();
-                    return std::make_unique<statements::FunctionDeclaration>(
+                    return std::make_unique<statements::FunctionDefinition>(
                             name,
                             std::move(parameters),
                             std::move(return_type),

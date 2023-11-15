@@ -1,8 +1,8 @@
-#include "function_declaration.hpp"
 #include "../values/function.hpp"
+#include "function_definition.hpp"
 
 namespace statements {
-    void FunctionDeclaration::execute(ScopeStack& scope_stack) const {
+    void FunctionDefinition::execute(ScopeStack& scope_stack) const {
         auto name = std::string{ m_name.lexeme() };
         if (scope_stack.top().contains(name)) {
             throw VariableRedefinition{ m_name };

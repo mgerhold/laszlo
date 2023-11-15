@@ -4,7 +4,7 @@
 
 namespace statements {
     class FunctionParameter final {
-        friend class FunctionDeclaration;
+        friend class FunctionDefinition;
 
     private:
         Token m_name;
@@ -22,7 +22,7 @@ namespace statements {
         }
     };
 
-    class FunctionDeclaration final : public Statement {
+    class FunctionDefinition final : public Statement {
     private:
         Token m_name;
         std::vector<FunctionParameter> m_parameters;
@@ -30,7 +30,7 @@ namespace statements {
         std::unique_ptr<Statement> m_body;
 
     public:
-        FunctionDeclaration(
+        FunctionDefinition(
                 Token const name,
                 std::vector<FunctionParameter> parameters,
                 types::Type return_type,
