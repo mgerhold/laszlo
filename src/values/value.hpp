@@ -107,6 +107,10 @@ namespace values {
             throw InvalidValueCast{ "Array" };
         }
 
+        [[nodiscard]] virtual Array& as_array() {
+            throw InvalidValueCast{ "Array" };
+        }
+
         [[nodiscard]] virtual bool is_iterator() const {
             return false;
         }

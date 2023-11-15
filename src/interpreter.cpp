@@ -9,6 +9,9 @@ void interpret(statements::Statements const& program) {
     scope_stack.top().insert(
             { "join", values::BuiltinFunction::make(BuiltinFunctionType::Join, values::ValueCategory::Rvalue) }
     );
+    scope_stack.top().insert(
+            { "delete", values::BuiltinFunction::make(BuiltinFunctionType::Delete, values::ValueCategory::Rvalue) }
+    );
     for (auto const& statement : program) {
         statement->execute(scope_stack);
     }

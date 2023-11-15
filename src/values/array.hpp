@@ -29,7 +29,15 @@ namespace values {
             return *this;
         }
 
+        [[nodiscard]] Array& as_array() override {
+            return *this;
+        }
+
         [[nodiscard]] ValueType const& value() const {
+            return m_elements;
+        }
+
+        [[nodiscard]] ValueType& value() {
             return m_elements;
         }
 

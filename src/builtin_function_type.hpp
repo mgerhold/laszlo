@@ -6,6 +6,7 @@
 enum class BuiltinFunctionType {
     Split,
     Join,
+    Delete,
 };
 
 [[nodiscard]] constexpr std::string_view to_view(BuiltinFunctionType const type) {
@@ -14,6 +15,8 @@ enum class BuiltinFunctionType {
             return "split";
         case BuiltinFunctionType::Join:
             return "join";
+        case BuiltinFunctionType::Delete:
+            return "delete";
     }
     assert(false and "unreachable");
     return "";

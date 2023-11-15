@@ -4,6 +4,7 @@
 #include "../expressions/expression.hpp"
 #include "array.hpp"
 #include "iterator.hpp"
+#include "nothing.hpp"
 #include "string.hpp"
 #include "value.hpp"
 
@@ -49,6 +50,8 @@ namespace values {
                     return split(scope_stack, arguments);
                 case BuiltinFunctionType::Join:
                     return join(scope_stack, arguments);
+                case BuiltinFunctionType::Delete:
+                    return delete_(scope_stack, arguments);
             }
             throw std::runtime_error{ "unreachable" };
         }
@@ -146,6 +149,39 @@ namespace values {
             }
 
             return String::make(std::move(joined), ValueCategory::Rvalue);
+        }
+
+        // clang-format off
+        [[nodiscard]] Value delete_(
+            ScopeStack& scope_stack,
+            std::vector<std::unique_ptr<expressions::Expression>> const& arguments
+        ) const { // clang-format on
+            if (arguments.size() != 2) {
+                throw WrongNumberOfArguments{ to_view(m_type), 2, arguments.size() };
+            }
+            auto values = std::vector<Value>{};
+            values.reserve(arguments.size());
+            for (auto const& argument : arguments) {
+                values.push_back(argument->evaluate(scope_stack));
+            }
+
+            if (not values.front()->is_array()) {
+                throw WrongArgumentType{ to_view(m_type), "array", values.front()->type() };
+            }
+
+            if (not values.at(1)->is_integer_value()) {
+                throw WrongArgumentType{ to_view(m_type), "index", values.at(1)->type() };
+            }
+
+            auto const index = values.at(1)->as_integer_value().value();
+            if (index < 0 or static_cast<std::size_t>(index) >= values.front()->as_array().value().size()) {
+                throw IndexOutOfBounds{ index,
+                                        static_cast<Integer::ValueType>(values.front()->as_array().value().size()) };
+            }
+
+            values.front()->as_array().value().erase(std::next(values.front()->as_array().value().begin(), index));
+
+            return Nothing::make(ValueCategory::Rvalue);
         }
     };
 

@@ -268,6 +268,25 @@ namespace types {
         [[nodiscard]] Function const& as_function() const override {
             return *this;
         }
+
+        [[nodiscard]] bool can_be_created_from(Type const& other) const override {
+            if (not other->is_function()) {
+                return false;
+            }
+            auto const& other_function = other->as_function();
+            if (m_parameter_types.size() != other_function.m_parameter_types.size()) {
+                return false;
+            }
+            if (not m_return_type->can_be_created_from(other_function.m_return_type)) {
+                return false;
+            }
+            for (std::size_t i = 0; i < m_parameter_types.size(); ++i) {
+                if (not m_parameter_types.at(i)->can_be_created_from(other_function.m_parameter_types.at(i))) {
+                    return false;
+                }
+            }
+            return true;
+        }
     };
 
     [[nodiscard]] inline bool operator==(Type const& lhs, Type const& rhs) {
