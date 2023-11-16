@@ -36,3 +36,23 @@ function f(n: I32) {
 
 let words = ["a", "b"];
 f(words.size);
+
+struct GenericStruct {
+    number: I32,
+    value: ?,
+}
+
+struct Person {
+    name: String,
+    age: I32,
+}
+
+let s = new GenericStruct{
+    number: 42,
+    value: new Person{
+        name: "Claus Kleber",
+        age: 67,
+    }
+};
+
+println(s);

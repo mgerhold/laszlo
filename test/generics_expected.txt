@@ -4,3 +4,4 @@ test:sentence:with:words
 3
 Hello, World!
 The answer is 42
+struct GenericStruct(number: 42, value: struct Person(name: Claus Kleber, age: 67))
