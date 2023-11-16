@@ -90,7 +90,10 @@ namespace values {
         [[nodiscard]] Value cast(types::Type const& target_type) const override;
 
         void delete_(std::size_t const index) {
-            m_chars.erase(std::next(m_chars.begin(), static_cast<long long>(index)));
+            m_chars.erase(std::next(
+                    m_chars.begin(),
+                    static_cast<std::iterator_traits<decltype(m_chars.begin())>::difference_type>(index)
+            ));
         }
     };
 
