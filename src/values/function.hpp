@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../scope.hpp"
-#include "..\statements\function_definition.hpp"
+#include "../statements/function_definition.hpp"
 #include "value.hpp"
 
 namespace statements {
