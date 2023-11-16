@@ -4,7 +4,6 @@
 #include <list>
 #include <string>
 #include <unordered_map>
-#include <vector>
 
 using Scope = std::unordered_map<std::string, values::Value>;
 

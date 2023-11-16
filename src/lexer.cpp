@@ -3,7 +3,6 @@
 #include "overloaded.hpp"
 #include "source_location.hpp"
 #include <format>
-#include <stdexcept>
 
 namespace {
     [[nodiscard]] constexpr bool is_valid_escape_sequence_char_in_char_literal(char const c) {
