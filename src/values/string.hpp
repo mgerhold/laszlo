@@ -48,7 +48,7 @@ namespace values {
             auto result = std::string{};
             for (auto const& c : m_chars) {
                 assert(c->is_char_value());
-                result += c->as_char_value().value();
+                result += static_cast<char>(c->as_char_value().value());
             }
             return result;
         }
