@@ -18,7 +18,7 @@ public:
 
 using ParserErrorKind = std::variant<UnexpectedToken>;
 
-class ParserError : public std::exception {
+class ParserError final : public std::exception {
 private:
     ParserErrorKind m_kind;
 

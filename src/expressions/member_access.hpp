@@ -4,7 +4,7 @@
 
 namespace expressions {
 
-    class MemberAccess : public Expression {
+    class MemberAccess final : public Expression {
     private:
         std::unique_ptr<Expression> m_lhs;
         Token m_member;
