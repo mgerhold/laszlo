@@ -56,7 +56,7 @@ namespace values {
 
         scope_stack.push(std::move(function_scope));
 
-        auto return_value = values::Nothing::make(ValueCategory::Rvalue);
+        auto return_value = Nothing::make(ValueCategory::Rvalue);
         try {
             m_body->execute(scope_stack);
         } catch (ReturnException const& e) {
@@ -95,7 +95,7 @@ namespace values {
         for (auto const& parameter : m_parameters) {
             parameter_types.push_back(parameter.type());
         }
-        return types::make_function(std::move(parameter_types), m_return_type);
+        return make_function(std::move(parameter_types), m_return_type);
     }
 
     [[nodiscard]] Value Function::clone() const {
