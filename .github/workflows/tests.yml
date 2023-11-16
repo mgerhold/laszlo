@@ -16,10 +16,17 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install C++ build tools and CMake
+      - name: Install GCC 13
         run: |
+          sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
           sudo apt-get update
-          sudo apt-get install -y build-essential cmake
+          sudo apt-get install -y gcc-13 g++-13
+          sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-13 100
+          sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-13 100
+
+      - name: Install CMake
+        run: |
+          sudo apt-get install -y cmake
 
       - name: Check out repository
         uses: actions/checkout@v2
