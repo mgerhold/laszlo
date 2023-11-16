@@ -38,4 +38,4 @@ jobs:
           cmake ..
           cmake --build .
           cd ..
-          python tools/test_runner.py build/src/laszlo
+          python tools/test_runner.py build/src/laszlo test
