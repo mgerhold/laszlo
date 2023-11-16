@@ -23,10 +23,6 @@ namespace values {
         return Bool::make(string_representation() == other->string_representation(), ValueCategory::Rvalue);
     }
 
-    [[nodiscard]] Value String::not_equals(Value const& other) const {
-        return Bool::make(not equals(other)->as_bool_value().value(), ValueCategory::Rvalue);
-    }
-
     [[nodiscard]] Value String::subscript(Value const& index) const {
         if (not index->is_integer_value()) {
             return BasicValue::subscript(index); // throws

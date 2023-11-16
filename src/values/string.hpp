@@ -81,8 +81,6 @@ namespace values {
 
         [[nodiscard]] Value equals(Value const& other) const override;
 
-        [[nodiscard]] Value not_equals(Value const& other) const override;
-
         [[nodiscard]] Value subscript(Value const& index) const override;
 
         [[nodiscard]] Value member_access(Token const member) const override;

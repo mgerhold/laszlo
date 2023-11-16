@@ -1,5 +1,6 @@
 #include "value.hpp"
 #include "../expressions/expression.hpp"
+#include "bool.hpp"
 #include "string.hpp"
 
 namespace values {
@@ -16,5 +17,9 @@ namespace values {
             return String::make(string_representation(), ValueCategory::Rvalue);
         }
         throw OperationNotSupportedByType{ std::format("cast to type {}", target_type->to_string()), type() };
+    }
+
+    [[nodiscard]] Value BasicValue::not_equals(Value const& other) const {
+        return Bool::make(not equals(other)->as_bool_value().value(), ValueCategory::Rvalue);
     }
 } // namespace values

@@ -46,8 +46,6 @@ namespace values {
 
         [[nodiscard]] Value equals(Value const& other) const override;
 
-        [[nodiscard]] Value not_equals(Value const& other) const override;
-
         [[nodiscard]] Value binary_plus(Value const& other) const override;
 
         [[nodiscard]] Value binary_minus(Value const& other) const override;

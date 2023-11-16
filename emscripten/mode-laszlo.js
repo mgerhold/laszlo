@@ -8,7 +8,7 @@ define(function(require, exports, module) {
             "start": [
                 {
                     token: "keyword",
-                    regex: "\\b(?:Array|Bool|Function|I32|Char|Range|String|and|assert|break|continue|else|false|for|function|if|in|let|mod|or|println|print|return|true|typeof|while|split|delete)"
+                    regex: "\\b(?:Array|Bool|Function|I32|Char|Range|String|and|assert|break|continue|else|false|for|function|if|in|let|mod|or|println|print|return|true|typeof|while|split|delete|new)"
                 },
                 {
                     token : "string", // single line

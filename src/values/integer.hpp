@@ -80,13 +80,6 @@ namespace values {
             return Bool::make(value() == other->as_integer_value().value(), ValueCategory::Rvalue);
         }
 
-        [[nodiscard]] Value not_equals(Value const& other) const override {
-            if (not other->is_integer_value()) {
-                return BasicValue::equals(other); // throws
-            }
-            return Bool::make(value() != other->as_integer_value().value(), ValueCategory::Rvalue);
-        }
-
         [[nodiscard]] Value greater_than(Value const& other) const override {
             if (not other->is_integer_value()) {
                 return BasicValue::equals(other); // throws

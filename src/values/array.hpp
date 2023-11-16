@@ -132,7 +132,6 @@ namespace values {
         [[nodiscard]] Value iterator() override;
         [[nodiscard]] Value member_access(Token member) const override;
         [[nodiscard]] Value equals(Value const& other) const override;
-        [[nodiscard]] Value not_equals(Value const& other) const override;
     };
 
 } // namespace values

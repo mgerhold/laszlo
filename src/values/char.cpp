@@ -10,10 +10,6 @@ namespace values {
         return Bool::make(value() == other->as_char_value().value(), ValueCategory::Rvalue);
     }
 
-    [[nodiscard]] Value Char::not_equals(Value const& other) const {
-        return Bool::make(not equals(other)->as_bool_value().value(), ValueCategory::Rvalue);
-    }
-
     [[nodiscard]] Value Char::binary_plus(Value const& other) const {
         if (other->is_integer_value()) {
             return make(value() + other->as_integer_value().value(), ValueCategory::Rvalue);

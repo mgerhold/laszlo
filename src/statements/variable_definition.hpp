@@ -22,7 +22,7 @@ namespace statements {
             auto const& [iterator, inserted] =
                     scope_stack.top().insert({ std::string{ m_name.lexeme() }, std::move(value) });
             if (not inserted) {
-                throw VariableRedefinition{ m_name };
+                throw SymbolRedefinition{ m_name };
             }
         }
     };

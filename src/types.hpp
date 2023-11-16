@@ -7,6 +7,9 @@
 #include <string>
 #include <vector>
 
+namespace statements {
+    class StructDefinition;
+}
 namespace types {
     class BasicType;
 
@@ -289,6 +292,18 @@ namespace types {
         }
     };
 
+    class StructType : public BasicType {
+    private:
+        statements::StructDefinition const* m_definition;
+
+    public:
+        explicit StructType(statements::StructDefinition const* const definition) : m_definition{ definition } { }
+
+        [[nodiscard]] std::string to_string() const override;
+
+        [[nodiscard]] bool equals(BasicType const& other) const override;
+    };
+
     [[nodiscard]] inline bool operator==(Type const& lhs, Type const& rhs) {
         return lhs->equals(*rhs);
     }
@@ -347,5 +362,9 @@ namespace types {
 
     [[nodiscard]] inline Type make_builtin_function(BuiltinFunctionType const type) {
         return std::make_shared<BuiltinFunction>(type);
+    }
+
+    [[nodiscard]] inline Type make_struct_type(statements::StructDefinition const* const definition) {
+        return std::make_shared<StructType>(definition);
     }
 } // namespace types

@@ -56,16 +56,22 @@ public:
         : RuntimeError{ std::format("cast from '{}' to '{}' failed", from, to) } { }
 };
 
-class VariableRedefinition final : public RuntimeError {
+class SymbolRedefinition final : public RuntimeError {
 public:
-    explicit VariableRedefinition(Token const token)
-        : RuntimeError{ std::format("{}: redefinition of variable '{}'", token.source_location, token.lexeme()) } { }
+    explicit SymbolRedefinition(Token const& token)
+        : RuntimeError{ std::format("{}: redefinition of symbol '{}'", token.source_location, token.lexeme()) } { }
 };
 
 class UndefinedReference final : public RuntimeError {
 public:
-    explicit UndefinedReference(Token const token)
+    explicit UndefinedReference(Token const& token)
         : RuntimeError{ std::format("{}: undefined reference to name '{}'", token.source_location, token.lexeme()) } { }
+};
+
+class UnknownType final : public RuntimeError {
+public:
+    explicit UnknownType(Token const& token)
+        : RuntimeError{ std::format("{}: '{}' does not name a type", token.source_location, token.lexeme()) } { }
 };
 
 class TypeMismatch final : public RuntimeError {

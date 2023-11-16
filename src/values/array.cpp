@@ -29,8 +29,4 @@ namespace values {
         return values::Bool::make(true, ValueCategory::Rvalue);
     }
 
-    [[nodiscard]] Value Array::not_equals(Value const& other) const {
-        return values::Bool::make(not equals(other)->as_bool_value().value(), ValueCategory::Rvalue);
-    }
-
 } // namespace values

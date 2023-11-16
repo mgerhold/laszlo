@@ -72,6 +72,13 @@ add_executable(
         values/builtin_function.hpp
         builtin_function_type.hpp
         interpreter.cpp
+        statements/struct_definition.hpp
+        values/struct_type.hpp
+        types.cpp
+        statements/struct_definition.cpp
+        expressions/struct_literal.hpp
+        values/struct.hpp
+        expressions/struct_literal.cpp
 )
 
 if (EMSCRIPTEN)

@@ -5,7 +5,7 @@ namespace statements {
     void FunctionDefinition::execute(ScopeStack& scope_stack) const {
         auto name = std::string{ m_name.lexeme() };
         if (scope_stack.top().contains(name)) {
-            throw VariableRedefinition{ m_name };
+            throw SymbolRedefinition{ m_name };
         }
         scope_stack.top().insert({ std::move(name),
                                    values::Function::make(

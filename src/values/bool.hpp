@@ -77,13 +77,6 @@ namespace values {
             return make(value() == other->as_bool_value().value(), ValueCategory::Rvalue);
         }
 
-        [[nodiscard]] Value not_equals(Value const& other) const override {
-            if (not other->is_bool_value()) {
-                return BasicValue::not_equals(other); // throws
-            }
-            return make(value() != other->as_bool_value().value(), ValueCategory::Rvalue);
-        }
-
         void assign(Value const& other) override {
             if (not other->is_bool_value()) {
                 BasicValue::assign(other); // throws

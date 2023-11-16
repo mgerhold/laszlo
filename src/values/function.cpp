@@ -50,7 +50,7 @@ namespace values {
             auto const& [iterator, inserted] =
                     function_scope.insert({ std::string{ parameter.name().lexeme() }, std::move(argument) });
             if (not inserted) {
-                throw VariableRedefinition{ parameter.name() };
+                throw SymbolRedefinition{ parameter.name() };
             }
         }
 

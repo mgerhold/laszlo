@@ -6,6 +6,9 @@
 #include <memory>
 #include <stdexcept>
 
+namespace values {
+    class Struct;
+}
 class ScopeStack;
 
 namespace expressions {
@@ -23,6 +26,7 @@ namespace values {
     class Bool;
     class Array;
     class Iterator;
+    class StructType;
 
     enum class ValueCategory {
         Lvalue,
@@ -127,6 +131,22 @@ namespace values {
             return false;
         }
 
+        [[nodiscard]] virtual bool is_struct_type() const {
+            return false;
+        }
+
+        [[nodiscard]] virtual StructType const& as_struct_type() const {
+            throw InvalidValueCast{ "StructType" };
+        }
+
+        [[nodiscard]] virtual bool is_struct() const {
+            return false;
+        }
+
+        [[nodiscard]] virtual Struct const& as_struct() const {
+            throw InvalidValueCast{ "Struct" };
+        }
+
         [[nodiscard]] virtual Value unary_plus() const {
             throw OperationNotSupportedByType{ "unary_plus", type() };
         }
@@ -155,9 +175,7 @@ namespace values {
             throw OperationNotSupportedByType{ "equals", type(), other->type() };
         }
 
-        [[nodiscard]] virtual Value not_equals(Value const& other) const {
-            throw OperationNotSupportedByType{ "not_equals", type(), other->type() };
-        }
+        [[nodiscard]] virtual Value not_equals(Value const& other) const;
 
         [[nodiscard]] virtual Value greater_than(Value const& other) const {
             throw OperationNotSupportedByType{ "greater_than", type(), other->type() };

@@ -10,6 +10,7 @@
 #include "expressions/name.hpp"
 #include "expressions/range.hpp"
 #include "expressions/string_literal.hpp"
+#include "expressions/struct_literal.hpp"
 #include "expressions/subscript.hpp"
 #include "expressions/typeof.hpp"
 #include "expressions/unary_operator.hpp"
@@ -25,6 +26,7 @@
 #include "statements/print.hpp"
 #include "statements/println.hpp"
 #include "statements/return.hpp"
+#include "statements/struct_definition.hpp"
 #include "statements/variable_definition.hpp"
 #include "statements/while.hpp"
 #include "statements\function_definition.hpp"
@@ -329,11 +331,34 @@ public:
                 auto const token = advance();
                 if (token.lexeme() == "true" or token.lexeme() == "false") {
                     return std::make_unique<expressions::BoolLiteral>(token);
-                } else if (token.lexeme() == "typeof") {
+                }
+                if (token.lexeme() == "typeof") {
                     expect(TokenType::LeftParenthesis);
                     auto expr = expression();
                     auto const closing_parenthesis = expect(TokenType::RightParenthesis);
                     return std::make_unique<expressions::TypeOf>(token, std::move(expr), closing_parenthesis);
+                }
+                if (token.lexeme() == "new") {
+                    // struct literal
+                    auto const struct_type_name = expect(TokenType::Identifier);
+                    expect(TokenType::LeftCurlyBracket);
+                    auto initializers = std::vector<expressions::StructMemberInitializer>{};
+                    while (not is_at_end() and current().type != TokenType::RightCurlyBracket) {
+                        auto const name = expect(TokenType::Identifier);
+                        expect(TokenType::Colon);
+                        auto value = expression();
+                        initializers.push_back(expressions::StructMemberInitializer{ name, std::move(value) });
+                        if (current().type != TokenType::Comma) {
+                            break;
+                        }
+                        advance(); // consume ","
+                    }
+                    auto const closing_curly_bracket = expect(TokenType::RightCurlyBracket);
+                    return std::make_unique<expressions::StructLiteral>(
+                            struct_type_name,
+                            std::move(initializers),
+                            closing_curly_bracket
+                    );
                 }
                 return std::make_unique<expressions::Name>(token);
             }
@@ -378,6 +403,24 @@ public:
             case TokenType::LeftCurlyBracket:
                 return block();
             case TokenType::Identifier:
+                if (current().lexeme() == "struct") {
+                    advance(); // consume "struct"
+                    auto const name = expect(TokenType::Identifier);
+                    expect(TokenType::LeftCurlyBracket);
+                    auto members = std::vector<statements::StructMember>{};
+                    while (not is_at_end() and current().type != TokenType::RightCurlyBracket) {
+                        auto const member_name = expect(TokenType::Identifier);
+                        expect(TokenType::Colon);
+                        auto member_type = data_type();
+                        members.push_back(statements::StructMember{ member_name, std::move(member_type) });
+                        if (current().type != TokenType::Comma) {
+                            break;
+                        }
+                        advance(); // consume ","
+                    }
+                    expect(TokenType::RightCurlyBracket);
+                    return std::make_unique<statements::StructDefinition>(name, std::move(members));
+                }
                 if (current().lexeme() == "function") {
                     advance(); // consume "function"
                     auto const name = expect(TokenType::Identifier);
