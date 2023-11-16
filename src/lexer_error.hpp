@@ -60,12 +60,10 @@ public:
 
 private:
     [[nodiscard]] static std::string make_printable(char const c) {
-        switch (c) {
-            case '\n':
-                return "\\n";
-            default:
-                return std::string{ c };
+        if (c == '\n') {
+            return "\\n";
         }
+        return std::string{ c };
     }
 };
 
