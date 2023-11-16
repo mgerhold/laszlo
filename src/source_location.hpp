@@ -19,9 +19,9 @@ struct SourceLocation {
     [[nodiscard]] static SourceLocation from_range(SourceLocation const& first, SourceLocation const& last) {
         assert(first.filename == last.filename);
         assert(first.byte_offset < last.byte_offset + last.num_bytes);
-        auto start_offset = first.byte_offset;
-        auto end_offset = last.byte_offset + last.num_bytes;
-        auto num_bytes = end_offset - start_offset;
+        auto const start_offset = first.byte_offset;
+        auto const end_offset = last.byte_offset + last.num_bytes;
+        auto const num_bytes = end_offset - start_offset;
         return SourceLocation{ first.filename, first.source, start_offset, num_bytes };
     }
 

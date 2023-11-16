@@ -110,7 +110,7 @@ public:
                 state.advance();
                 break;
             case '~': {
-                auto start = state.m_current_index;
+                auto const start = state.m_current_index;
                 state.advance();
                 if (state.current() != '>') {
                     throw LexerError{
@@ -122,7 +122,7 @@ public:
                 break;
             }
             case '+': {
-                auto start = state.m_current_index;
+                auto const start = state.m_current_index;
                 state.advance(); // consume "+"
                 if (state.current() == '=') {
                     state.advance(); // consume "="
@@ -133,7 +133,7 @@ public:
                 break;
             }
             case '-': {
-                auto start = state.m_current_index;
+                auto const start = state.m_current_index;
                 state.advance(); // consume "-"
                 if (state.current() == '=') {
                     state.advance(); // consume "="
@@ -218,7 +218,7 @@ public:
                 break;
             }
             case '*': {
-                auto start = state.m_current_index;
+                auto const start = state.m_current_index;
                 state.advance(); // consume "*"
                 if (state.current() == '=') {
                     state.advance(); // consume "="

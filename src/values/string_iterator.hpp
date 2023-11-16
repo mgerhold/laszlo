@@ -10,7 +10,7 @@ namespace values {
         std::size_t m_current_index;
 
     public:
-        StringIterator(Value string, std::size_t current_index, ValueCategory const value_category)
+        StringIterator(Value string, std::size_t const current_index, ValueCategory const value_category)
             : Iterator{ value_category },
               m_string{ std::move(string) },
               m_current_index{ current_index } {
