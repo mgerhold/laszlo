@@ -83,7 +83,7 @@ namespace values {
 
         [[nodiscard]] Value subscript(Value const& index) const override;
 
-        [[nodiscard]] Value member_access(Token const member) const override;
+        [[nodiscard]] Value member_access(Token member) const override;
 
         [[nodiscard]] Value iterator() override;
 
