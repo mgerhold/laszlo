@@ -31,7 +31,7 @@ values::Value expressions::StructLiteral::evaluate(ScopeStack& scope_stack) cons
             // todo: throw different exception type
             throw std::runtime_error{ "missing initializer for struct member" };
         }
-        if (find_iterator->second->type() != type) {
+        if (not type->can_be_created_from(find_iterator->second->type())) {
             // todo: throw different exception type
             throw std::runtime_error{ "struct member initializer has wrong type" };
         }
