@@ -29,7 +29,7 @@ namespace values {
         }
 
         [[nodiscard]] std::string string_representation() const override {
-            auto result = std::format("Struct {}(", m_definition->name().lexeme());
+            auto result = std::format("struct {}(", m_definition->name().lexeme());
             for (std::size_t i = 0; i < m_definition->members().size(); ++i) {
                 auto const& [token, type] = m_definition->members().at(i);
                 result += std::format(
