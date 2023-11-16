@@ -3,7 +3,7 @@
 #include "expression.hpp"
 
 namespace expressions {
-    class Name : public Expression {
+    class Name final : public Expression {
     private:
         Token m_name;
 

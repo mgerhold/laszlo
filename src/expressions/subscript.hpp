@@ -3,7 +3,7 @@
 #include "expression.hpp"
 
 namespace expressions {
-    class Subscript : public Expression {
+    class Subscript final : public Expression {
     private:
         std::unique_ptr<Expression> m_expression;
         std::unique_ptr<Expression> m_subscript;

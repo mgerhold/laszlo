@@ -3,7 +3,7 @@
 #include "expression.hpp"
 
 namespace expressions {
-    class Range : public Expression {
+    class Range final : public Expression {
     private:
         std::unique_ptr<Expression> m_start;
         bool m_end_is_inclusive;

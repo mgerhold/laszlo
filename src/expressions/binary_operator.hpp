@@ -3,7 +3,7 @@
 #include "expression.hpp"
 
 namespace expressions {
-    class BinaryOperator : public Expression {
+    class BinaryOperator final : public Expression {
     public:
         enum class Kind {
             Plus,

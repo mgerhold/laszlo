@@ -21,13 +21,13 @@ public:
     }
 };
 
-class BreakException : public ControlFlowException {
+class BreakException final : public ControlFlowException {
 public:
     explicit BreakException(Token const break_token)
         : ControlFlowException{ std::format("{}: usage of 'break' outside of loop", break_token.source_location) } { }
 };
 
-class ContinueException : public ControlFlowException {
+class ContinueException final : public ControlFlowException {
 public:
     explicit ContinueException(Token const continue_token)
         : ControlFlowException{
@@ -35,7 +35,7 @@ public:
           } { }
 };
 
-class ReturnException : public ControlFlowException {
+class ReturnException final : public ControlFlowException {
 private:
     std::optional<values::Value> m_value;
 

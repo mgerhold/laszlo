@@ -292,7 +292,7 @@ namespace types {
         }
     };
 
-    class StructType : public BasicType {
+    class StructType final : public BasicType {
     private:
         statements::StructDefinition const* m_definition;
 
