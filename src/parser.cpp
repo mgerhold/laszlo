@@ -22,6 +22,7 @@
 #include "statements/continue.hpp"
 #include "statements/expression_statement.hpp"
 #include "statements/for.hpp"
+#include "statements/function_definition.hpp"
 #include "statements/if.hpp"
 #include "statements/print.hpp"
 #include "statements/println.hpp"
@@ -29,7 +30,6 @@
 #include "statements/struct_definition.hpp"
 #include "statements/variable_definition.hpp"
 #include "statements/while.hpp"
-#include "statements\function_definition.hpp"
 #include "types.hpp"
 
 #include <array>
