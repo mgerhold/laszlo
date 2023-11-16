@@ -76,7 +76,7 @@ public:
 
 class TypeMismatch final : public RuntimeError {
 public:
-    TypeMismatch(SourceLocation const source_location, types::Type const& expected, types::Type const& actual)
+    TypeMismatch(SourceLocation const& source_location, types::Type const& expected, types::Type const& actual)
         : RuntimeError{ std::format(
                   "{}: type mismatch (expected '{}', got '{}')",
                   source_location,
@@ -87,7 +87,7 @@ public:
 
 class ReturnTypeMismatch final : public RuntimeError {
 public:
-    ReturnTypeMismatch(SourceLocation const source_location, types::Type const& expected, types::Type const& actual)
+    ReturnTypeMismatch(SourceLocation const& source_location, types::Type const& expected, types::Type const& actual)
         : RuntimeError{ std::format(
                   "{}: returning value of wrong type from function (expected '{}', got '{}')",
                   source_location,
@@ -98,7 +98,7 @@ public:
 
 class FailedAssertion final : public RuntimeError {
 public:
-    explicit FailedAssertion(SourceLocation const source_location)
+    explicit FailedAssertion(SourceLocation const& source_location)
         : RuntimeError{
               std::format("{}: assertion failed, '{}' did not hold true", source_location, source_location.text())
           } { }
@@ -133,7 +133,7 @@ public:
 
 class WrongNumberOfArguments final : public RuntimeError {
 public:
-    WrongNumberOfArguments(Token const function_name, std::size_t const expected_count, std::size_t const actual_count)
+    WrongNumberOfArguments(Token const& function_name, std::size_t const expected_count, std::size_t const actual_count)
         : RuntimeError{ std::format(
                   "{}: wrong number of arguments when calling function '{}' (expected {}, got {})",
                   function_name.source_location,
@@ -180,7 +180,7 @@ public:
 
 class NoSuchMember final : public RuntimeError {
 public:
-    NoSuchMember(types::Type const& type, Token const member)
+    NoSuchMember(types::Type const& type, Token const& member)
         : RuntimeError{ std::format(
                   "{}: type '{}' has no member named '{}'",
                   member.source_location,

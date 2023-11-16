@@ -9,7 +9,7 @@ private:
     std::string m_message;
 
 public:
-    LexerErrorBase(SourceLocation const source_location, std::string message)
+    LexerErrorBase(SourceLocation const& source_location, std::string message)
         : m_message{ std::format("{}: {}", source_location, std::move(message)) },
           m_source_location{ source_location } { }
 
@@ -24,7 +24,7 @@ public:
 
 class UnexpectedChar final : public LexerErrorBase {
 public:
-    UnexpectedChar(SourceLocation const source_location, char const c)
+    UnexpectedChar(SourceLocation const& source_location, char const c)
         : LexerErrorBase{ source_location, std::format("unexpected char: '{}'", c) } { }
 };
 
@@ -54,7 +54,7 @@ public:
 
 class ForbiddenCharacterInStringLiteral final : public LexerErrorBase {
 public:
-    ForbiddenCharacterInStringLiteral(SourceLocation const source_location, char const c)
+    ForbiddenCharacterInStringLiteral(SourceLocation const& source_location, char const c)
         : LexerErrorBase{ source_location,
                           std::format("character '{}' is not allowed inside a string literal", make_printable(c)) } { }
 

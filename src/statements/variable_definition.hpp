@@ -9,7 +9,7 @@ namespace statements {
         std::unique_ptr<expressions::Expression> m_initializer;
 
     public:
-        VariableDefinition(Token const name, std::unique_ptr<expressions::Expression> initializer)
+        VariableDefinition(Token const& name, std::unique_ptr<expressions::Expression> initializer)
             : m_name{ name },
               m_initializer{ std::move(initializer) } { }
 

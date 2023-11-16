@@ -10,7 +10,7 @@ namespace expressions {
         Token m_member;
 
     public:
-        MemberAccess(std::unique_ptr<Expression> object, Token member)
+        MemberAccess(std::unique_ptr<Expression> object, Token const& member)
             : m_lhs{ std::move(object) },
               m_member{ member } { }
 
