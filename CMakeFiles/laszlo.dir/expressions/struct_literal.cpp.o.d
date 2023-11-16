@@ -556,9 +556,8 @@ src/CMakeFiles/laszlo.dir/expressions/struct_literal.cpp.o: \
   /home/runner/work/laszlo/laszlo/src/expressions/../values/struct.hpp \
   /home/runner/work/laszlo/laszlo/src/expressions/../values/../statements/struct_definition.hpp \
   /home/runner/work/laszlo/laszlo/src/expressions/../values/../statements/statement.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/../values/../statements/../expressions/expression.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/../values/../statements/../expressions/../scope.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/../values/../statements/../expressions/../values/value.hpp \
+  /home/runner/work/laszlo/laszlo/src/expressions/../values/../statements/../scope.hpp \
+  /home/runner/work/laszlo/laszlo/src/expressions/../values/../statements/../values/value.hpp \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/list \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/unordered_map \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/is_permutation.h \
@@ -566,11 +565,11 @@ src/CMakeFiles/laszlo.dir/expressions/struct_literal.cpp.o: \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__hash_table \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__iterator/erase_if_container.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__node_handle \
-  /home/runner/work/laszlo/laszlo/src/expressions/../values/../statements/../expressions/../token.hpp \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/variant \
-  /home/runner/work/laszlo/laszlo/src/expressions/../values/../statements/../scope.hpp \
   /home/runner/work/laszlo/laszlo/src/expressions/../values/bool.hpp \
   /home/runner/work/laszlo/laszlo/src/expressions/../values/string.hpp \
   /home/runner/work/laszlo/laszlo/src/expressions/../values/char.hpp \
   /home/runner/work/laszlo/laszlo/src/expressions/expression.hpp \
+  /home/runner/work/laszlo/laszlo/src/expressions/../scope.hpp \
+  /home/runner/work/laszlo/laszlo/src/expressions/../token.hpp \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/variant \
   /home/runner/work/laszlo/laszlo/src/expressions/../values/struct_type.hpp

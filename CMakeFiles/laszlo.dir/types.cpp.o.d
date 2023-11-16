@@ -534,13 +534,12 @@ src/CMakeFiles/laszlo.dir/types.cpp.o: \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory/uses_allocator_construction.h \
   /home/runner/work/laszlo/laszlo/src/statements/struct_definition.hpp \
   /home/runner/work/laszlo/laszlo/src/statements/statement.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/../expressions/expression.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/../expressions/../scope.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/../expressions/../values/value.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/../expressions/../values/../runtime_error.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/../expressions/../values/../token.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/../expressions/../values/../source_location.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/../expressions/../values/../types.hpp \
+  /home/runner/work/laszlo/laszlo/src/statements/../scope.hpp \
+  /home/runner/work/laszlo/laszlo/src/statements/../values/value.hpp \
+  /home/runner/work/laszlo/laszlo/src/statements/../values/../runtime_error.hpp \
+  /home/runner/work/laszlo/laszlo/src/statements/../values/../token.hpp \
+  /home/runner/work/laszlo/laszlo/src/statements/../values/../source_location.hpp \
+  /home/runner/work/laszlo/laszlo/src/statements/../values/../types.hpp \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/concepts \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__concepts/common_with.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/numeric \
@@ -563,7 +562,4 @@ src/CMakeFiles/laszlo.dir/types.cpp.o: \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__functional/is_transparent.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__hash_table \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__iterator/erase_if_container.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__node_handle \
-  /home/runner/work/laszlo/laszlo/src/statements/../expressions/../token.hpp \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/variant \
-  /home/runner/work/laszlo/laszlo/src/statements/../scope.hpp
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__node_handle
