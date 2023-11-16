@@ -22,7 +22,7 @@ namespace statements {
         void execute(ScopeStack& scope_stack) const override {
             auto const num_scopes = scope_stack.size();
 
-            auto iterator = m_iterable->evaluate(scope_stack)->iterator();
+            auto const iterator = m_iterable->evaluate(scope_stack)->iterator();
             assert(iterator->is_iterator());
 
             while (true) {
