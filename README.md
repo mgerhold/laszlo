@@ -1,3 +1,6 @@
+[![C++ Build and Test](https://github.com/mgerhold/laszlo/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/mgerhold/laszlo/actions/workflows/tests.yml)
+[![Emscripten Build and Deploy to GitHub Pages](https://github.com/mgerhold/laszlo/actions/workflows/emscripten.yml/badge.svg)](https://github.com/mgerhold/laszlo/actions/workflows/emscripten.yml)
+
 <img src="images/laszlo_logo.png" width="400" height="400">
 
 Laszlo is both a programming language and an interpreter that can execute Laszlo
