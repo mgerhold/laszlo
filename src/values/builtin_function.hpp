@@ -173,7 +173,7 @@ namespace values {
                 throw WrongArgumentType{ to_view(m_type), "index", values.at(1)->type() };
             }
 
-            auto const container_size = [&]() {
+            auto const container_size = [&] {
                 if (values.front()->is_array()) {
                     return values.front()->as_array().value().size();
                 }
