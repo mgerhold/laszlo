@@ -574,4 +574,5 @@ src/CMakeFiles/laszlo.dir/interpreter.cpp.o: \
   /home/runner/work/laszlo/laszlo/src/values/string.hpp \
   /home/runner/work/laszlo/laszlo/src/values/char.hpp \
   /home/runner/work/laszlo/laszlo/src/values/value.hpp \
-  /home/runner/work/laszlo/laszlo/src/values/iterator.hpp
+  /home/runner/work/laszlo/laszlo/src/values/iterator.hpp \
+  /home/runner/work/laszlo/laszlo/src/values/nothing.hpp

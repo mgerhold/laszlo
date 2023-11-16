@@ -1,8 +1,7 @@
-src/CMakeFiles/laszlo.dir/parser.cpp.o: \
-  /home/runner/work/laszlo/laszlo/src/parser.cpp \
-  /home/runner/work/laszlo/laszlo/src/parser.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/expression.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/../scope.hpp \
+src/CMakeFiles/laszlo.dir/expressions/struct_literal.cpp.o: \
+  /home/runner/work/laszlo/laszlo/src/expressions/struct_literal.cpp \
+  /home/runner/work/laszlo/laszlo/src/expressions/struct_literal.hpp \
+  /home/runner/work/laszlo/laszlo/src/expressions/../values/nothing.hpp \
   /home/runner/work/laszlo/laszlo/src/expressions/../values/value.hpp \
   /home/runner/work/laszlo/laszlo/src/expressions/../values/../runtime_error.hpp \
   /home/runner/work/laszlo/laszlo/src/expressions/../values/../token.hpp \
@@ -554,6 +553,12 @@ src/CMakeFiles/laszlo.dir/parser.cpp.o: \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__numeric/transform_exclusive_scan.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__numeric/transform_inclusive_scan.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__numeric/transform_reduce.h \
+  /home/runner/work/laszlo/laszlo/src/expressions/../values/struct.hpp \
+  /home/runner/work/laszlo/laszlo/src/expressions/../values/../statements/struct_definition.hpp \
+  /home/runner/work/laszlo/laszlo/src/expressions/../values/../statements/statement.hpp \
+  /home/runner/work/laszlo/laszlo/src/expressions/../values/../statements/../expressions/expression.hpp \
+  /home/runner/work/laszlo/laszlo/src/expressions/../values/../statements/../expressions/../scope.hpp \
+  /home/runner/work/laszlo/laszlo/src/expressions/../values/../statements/../expressions/../values/value.hpp \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/list \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/unordered_map \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/is_permutation.h \
@@ -561,56 +566,11 @@ src/CMakeFiles/laszlo.dir/parser.cpp.o: \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__hash_table \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__iterator/erase_if_container.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__node_handle \
-  /home/runner/work/laszlo/laszlo/src/expressions/../token.hpp \
+  /home/runner/work/laszlo/laszlo/src/expressions/../values/../statements/../expressions/../token.hpp \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/variant \
-  /home/runner/work/laszlo/laszlo/src/lexer.hpp \
-  /home/runner/work/laszlo/laszlo/src/token.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/statement.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/../expressions/expression.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/../scope.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/array_literal.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/../values/array.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/../values/integer.hpp \
+  /home/runner/work/laszlo/laszlo/src/expressions/../values/../statements/../scope.hpp \
   /home/runner/work/laszlo/laszlo/src/expressions/../values/bool.hpp \
   /home/runner/work/laszlo/laszlo/src/expressions/../values/string.hpp \
   /home/runner/work/laszlo/laszlo/src/expressions/../values/char.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/binary_operator.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/bool_literal.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/call.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/cast.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/char_literal.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/integer_literal.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/member_access.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/name.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/range.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/string_literal.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/struct_literal.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/../values/nothing.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/../values/struct.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/../values/../statements/struct_definition.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/../values/../statements/statement.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/subscript.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/typeof.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/unary_operator.hpp \
-  /home/runner/work/laszlo/laszlo/src/parser_error.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/assert.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/../values/bool.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/assignment.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/block.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/break.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/../control_flow.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/../token.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/../values/value.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/continue.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/expression_statement.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/for.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/../values/iterator.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/function_definition.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/if.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/print.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/println.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/return.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/struct_definition.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/variable_definition.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/while.hpp \
-  /home/runner/work/laszlo/laszlo/src/types.hpp
+  /home/runner/work/laszlo/laszlo/src/expressions/expression.hpp \
+  /home/runner/work/laszlo/laszlo/src/expressions/../values/struct_type.hpp

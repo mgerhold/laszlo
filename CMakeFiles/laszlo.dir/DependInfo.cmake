@@ -8,12 +8,15 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/runner/work/laszlo/laszlo/src/expressions/struct_literal.cpp" "src/CMakeFiles/laszlo.dir/expressions/struct_literal.cpp.o" "gcc" "src/CMakeFiles/laszlo.dir/expressions/struct_literal.cpp.o.d"
   "/home/runner/work/laszlo/laszlo/src/interpreter.cpp" "src/CMakeFiles/laszlo.dir/interpreter.cpp.o" "gcc" "src/CMakeFiles/laszlo.dir/interpreter.cpp.o.d"
   "/home/runner/work/laszlo/laszlo/src/lexer.cpp" "src/CMakeFiles/laszlo.dir/lexer.cpp.o" "gcc" "src/CMakeFiles/laszlo.dir/lexer.cpp.o.d"
   "/home/runner/work/laszlo/laszlo/src/main.cpp" "src/CMakeFiles/laszlo.dir/main.cpp.o" "gcc" "src/CMakeFiles/laszlo.dir/main.cpp.o.d"
   "/home/runner/work/laszlo/laszlo/src/parser.cpp" "src/CMakeFiles/laszlo.dir/parser.cpp.o" "gcc" "src/CMakeFiles/laszlo.dir/parser.cpp.o.d"
-  "/home/runner/work/laszlo/laszlo/src/statements/function_declaration.cpp" "src/CMakeFiles/laszlo.dir/statements/function_declaration.cpp.o" "gcc" "src/CMakeFiles/laszlo.dir/statements/function_declaration.cpp.o.d"
+  "/home/runner/work/laszlo/laszlo/src/statements/function_definition.cpp" "src/CMakeFiles/laszlo.dir/statements/function_definition.cpp.o" "gcc" "src/CMakeFiles/laszlo.dir/statements/function_definition.cpp.o.d"
+  "/home/runner/work/laszlo/laszlo/src/statements/struct_definition.cpp" "src/CMakeFiles/laszlo.dir/statements/struct_definition.cpp.o" "gcc" "src/CMakeFiles/laszlo.dir/statements/struct_definition.cpp.o.d"
   "/home/runner/work/laszlo/laszlo/src/token.cpp" "src/CMakeFiles/laszlo.dir/token.cpp.o" "gcc" "src/CMakeFiles/laszlo.dir/token.cpp.o.d"
+  "/home/runner/work/laszlo/laszlo/src/types.cpp" "src/CMakeFiles/laszlo.dir/types.cpp.o" "gcc" "src/CMakeFiles/laszlo.dir/types.cpp.o.d"
   "/home/runner/work/laszlo/laszlo/src/values/array.cpp" "src/CMakeFiles/laszlo.dir/values/array.cpp.o" "gcc" "src/CMakeFiles/laszlo.dir/values/array.cpp.o.d"
   "/home/runner/work/laszlo/laszlo/src/values/char.cpp" "src/CMakeFiles/laszlo.dir/values/char.cpp.o" "gcc" "src/CMakeFiles/laszlo.dir/values/char.cpp.o.d"
   "/home/runner/work/laszlo/laszlo/src/values/function.cpp" "src/CMakeFiles/laszlo.dir/values/function.cpp.o" "gcc" "src/CMakeFiles/laszlo.dir/values/function.cpp.o.d"

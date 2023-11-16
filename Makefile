@@ -130,6 +130,30 @@ laszlo/fast:
 	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/build
 .PHONY : laszlo/fast
 
+expressions/struct_literal.o: expressions/struct_literal.cpp.o
+.PHONY : expressions/struct_literal.o
+
+# target to build an object file
+expressions/struct_literal.cpp.o:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/expressions/struct_literal.cpp.o
+.PHONY : expressions/struct_literal.cpp.o
+
+expressions/struct_literal.i: expressions/struct_literal.cpp.i
+.PHONY : expressions/struct_literal.i
+
+# target to preprocess a source file
+expressions/struct_literal.cpp.i:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/expressions/struct_literal.cpp.i
+.PHONY : expressions/struct_literal.cpp.i
+
+expressions/struct_literal.s: expressions/struct_literal.cpp.s
+.PHONY : expressions/struct_literal.s
+
+# target to generate assembly for a file
+expressions/struct_literal.cpp.s:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/expressions/struct_literal.cpp.s
+.PHONY : expressions/struct_literal.cpp.s
+
 interpreter.o: interpreter.cpp.o
 .PHONY : interpreter.o
 
@@ -226,29 +250,53 @@ parser.cpp.s:
 	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/parser.cpp.s
 .PHONY : parser.cpp.s
 
-statements/function_declaration.o: statements/function_declaration.cpp.o
-.PHONY : statements/function_declaration.o
+statements/function_definition.o: statements/function_definition.cpp.o
+.PHONY : statements/function_definition.o
 
 # target to build an object file
-statements/function_declaration.cpp.o:
-	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/statements/function_declaration.cpp.o
-.PHONY : statements/function_declaration.cpp.o
+statements/function_definition.cpp.o:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/statements/function_definition.cpp.o
+.PHONY : statements/function_definition.cpp.o
 
-statements/function_declaration.i: statements/function_declaration.cpp.i
-.PHONY : statements/function_declaration.i
+statements/function_definition.i: statements/function_definition.cpp.i
+.PHONY : statements/function_definition.i
 
 # target to preprocess a source file
-statements/function_declaration.cpp.i:
-	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/statements/function_declaration.cpp.i
-.PHONY : statements/function_declaration.cpp.i
+statements/function_definition.cpp.i:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/statements/function_definition.cpp.i
+.PHONY : statements/function_definition.cpp.i
 
-statements/function_declaration.s: statements/function_declaration.cpp.s
-.PHONY : statements/function_declaration.s
+statements/function_definition.s: statements/function_definition.cpp.s
+.PHONY : statements/function_definition.s
 
 # target to generate assembly for a file
-statements/function_declaration.cpp.s:
-	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/statements/function_declaration.cpp.s
-.PHONY : statements/function_declaration.cpp.s
+statements/function_definition.cpp.s:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/statements/function_definition.cpp.s
+.PHONY : statements/function_definition.cpp.s
+
+statements/struct_definition.o: statements/struct_definition.cpp.o
+.PHONY : statements/struct_definition.o
+
+# target to build an object file
+statements/struct_definition.cpp.o:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/statements/struct_definition.cpp.o
+.PHONY : statements/struct_definition.cpp.o
+
+statements/struct_definition.i: statements/struct_definition.cpp.i
+.PHONY : statements/struct_definition.i
+
+# target to preprocess a source file
+statements/struct_definition.cpp.i:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/statements/struct_definition.cpp.i
+.PHONY : statements/struct_definition.cpp.i
+
+statements/struct_definition.s: statements/struct_definition.cpp.s
+.PHONY : statements/struct_definition.s
+
+# target to generate assembly for a file
+statements/struct_definition.cpp.s:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/statements/struct_definition.cpp.s
+.PHONY : statements/struct_definition.cpp.s
 
 token.o: token.cpp.o
 .PHONY : token.o
@@ -273,6 +321,30 @@ token.s: token.cpp.s
 token.cpp.s:
 	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/token.cpp.s
 .PHONY : token.cpp.s
+
+types.o: types.cpp.o
+.PHONY : types.o
+
+# target to build an object file
+types.cpp.o:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/types.cpp.o
+.PHONY : types.cpp.o
+
+types.i: types.cpp.i
+.PHONY : types.i
+
+# target to preprocess a source file
+types.cpp.i:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/types.cpp.i
+.PHONY : types.cpp.i
+
+types.s: types.cpp.s
+.PHONY : types.s
+
+# target to generate assembly for a file
+types.cpp.s:
+	cd /home/runner/work/laszlo/laszlo/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/laszlo.dir/build.make src/CMakeFiles/laszlo.dir/types.cpp.s
+.PHONY : types.cpp.s
 
 values/array.o: values/array.cpp.o
 .PHONY : values/array.o
@@ -451,6 +523,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... laszlo"
+	@echo "... expressions/struct_literal.o"
+	@echo "... expressions/struct_literal.i"
+	@echo "... expressions/struct_literal.s"
 	@echo "... interpreter.o"
 	@echo "... interpreter.i"
 	@echo "... interpreter.s"
@@ -463,12 +538,18 @@ help:
 	@echo "... parser.o"
 	@echo "... parser.i"
 	@echo "... parser.s"
-	@echo "... statements/function_declaration.o"
-	@echo "... statements/function_declaration.i"
-	@echo "... statements/function_declaration.s"
+	@echo "... statements/function_definition.o"
+	@echo "... statements/function_definition.i"
+	@echo "... statements/function_definition.s"
+	@echo "... statements/struct_definition.o"
+	@echo "... statements/struct_definition.i"
+	@echo "... statements/struct_definition.s"
 	@echo "... token.o"
 	@echo "... token.i"
 	@echo "... token.s"
+	@echo "... types.o"
+	@echo "... types.i"
+	@echo "... types.s"
 	@echo "... values/array.o"
 	@echo "... values/array.i"
 	@echo "... values/array.s"

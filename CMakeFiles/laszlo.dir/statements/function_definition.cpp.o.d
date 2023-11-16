@@ -1,13 +1,12 @@
-src/CMakeFiles/laszlo.dir/parser.cpp.o: \
-  /home/runner/work/laszlo/laszlo/src/parser.cpp \
-  /home/runner/work/laszlo/laszlo/src/parser.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/expression.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/../scope.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/../values/value.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/../values/../runtime_error.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/../values/../token.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/../values/../source_location.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/../values/../ostream_formatter.hpp \
+src/CMakeFiles/laszlo.dir/statements/function_definition.cpp.o: \
+  /home/runner/work/laszlo/laszlo/src/statements/function_definition.cpp \
+  /home/runner/work/laszlo/laszlo/src/statements/../values/function.hpp \
+  /home/runner/work/laszlo/laszlo/src/statements/../values/../scope.hpp \
+  /home/runner/work/laszlo/laszlo/src/statements/../values/../values/value.hpp \
+  /home/runner/work/laszlo/laszlo/src/statements/../values/../values/../runtime_error.hpp \
+  /home/runner/work/laszlo/laszlo/src/statements/../values/../values/../token.hpp \
+  /home/runner/work/laszlo/laszlo/src/statements/../values/../values/../source_location.hpp \
+  /home/runner/work/laszlo/laszlo/src/statements/../values/../values/../ostream_formatter.hpp \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/format \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__assert \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__config \
@@ -527,8 +526,8 @@ src/CMakeFiles/laszlo.dir/parser.cpp.o: \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__utility/cmp.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__utility/forward_like.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__utility/rel_ops.h \
-  /home/runner/work/laszlo/laszlo/src/expressions/../values/../types.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/../values/../builtin_function_type.hpp \
+  /home/runner/work/laszlo/laszlo/src/statements/../values/../values/../types.hpp \
+  /home/runner/work/laszlo/laszlo/src/statements/../values/../values/../builtin_function_type.hpp \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/memory \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory/align.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory/assume_aligned.h \
@@ -561,56 +560,13 @@ src/CMakeFiles/laszlo.dir/parser.cpp.o: \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__hash_table \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__iterator/erase_if_container.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__node_handle \
-  /home/runner/work/laszlo/laszlo/src/expressions/../token.hpp \
+  /home/runner/work/laszlo/laszlo/src/statements/../values/../statements/function_definition.hpp \
+  /home/runner/work/laszlo/laszlo/src/statements/../values/../statements/statement.hpp \
+  /home/runner/work/laszlo/laszlo/src/statements/../values/../statements/../expressions/expression.hpp \
+  /home/runner/work/laszlo/laszlo/src/statements/../values/../statements/../expressions/../scope.hpp \
+  /home/runner/work/laszlo/laszlo/src/statements/../values/../statements/../expressions/../token.hpp \
+  /home/runner/work/laszlo/laszlo/src/statements/../values/../statements/../expressions/../values/value.hpp \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/variant \
-  /home/runner/work/laszlo/laszlo/src/lexer.hpp \
-  /home/runner/work/laszlo/laszlo/src/token.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/statement.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/../expressions/expression.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/../scope.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/array_literal.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/../values/array.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/../values/integer.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/../values/bool.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/../values/string.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/../values/char.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/binary_operator.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/bool_literal.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/call.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/cast.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/char_literal.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/integer_literal.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/member_access.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/name.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/range.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/string_literal.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/struct_literal.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/../values/nothing.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/../values/struct.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/../values/../statements/struct_definition.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/../values/../statements/statement.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/subscript.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/typeof.hpp \
-  /home/runner/work/laszlo/laszlo/src/expressions/unary_operator.hpp \
-  /home/runner/work/laszlo/laszlo/src/parser_error.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/assert.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/../values/bool.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/assignment.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/block.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/break.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/../control_flow.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/../token.hpp \
+  /home/runner/work/laszlo/laszlo/src/statements/../values/../statements/../scope.hpp \
   /home/runner/work/laszlo/laszlo/src/statements/../values/value.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/continue.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/expression_statement.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/for.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/../values/iterator.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/function_definition.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/if.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/print.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/println.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/return.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/struct_definition.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/variable_definition.hpp \
-  /home/runner/work/laszlo/laszlo/src/statements/while.hpp \
-  /home/runner/work/laszlo/laszlo/src/types.hpp
+  /home/runner/work/laszlo/laszlo/src/statements/function_definition.hpp
