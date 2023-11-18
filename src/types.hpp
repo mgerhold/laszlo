@@ -10,6 +10,7 @@
 namespace statements {
     class StructDefinition;
 }
+
 namespace types {
     class BasicType;
 
