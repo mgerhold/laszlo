@@ -153,6 +153,8 @@ namespace values {
             }
             m_value = other->as_integer_value().value();
         }
+
+        [[nodiscard]] Value cast(types::Type const& target_type) const override;
     };
 
 } // namespace values
