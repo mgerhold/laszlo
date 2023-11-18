@@ -7,6 +7,8 @@
 #include "nothing.hpp"
 #include "string.hpp"
 #include "value.hpp"
+#include <fstream>
+#include <sstream>
 
 namespace values {
 
@@ -52,6 +54,10 @@ namespace values {
                     return join(scope_stack, arguments);
                 case BuiltinFunctionType::Delete:
                     return delete_(scope_stack, arguments);
+                case BuiltinFunctionType::Write:
+                    return write(scope_stack, arguments);
+                case BuiltinFunctionType::Read:
+                    return read(scope_stack, arguments);
             }
             throw std::runtime_error{ "unreachable" };
         }
@@ -198,6 +204,77 @@ namespace values {
             }
 
             return Nothing::make(ValueCategory::Rvalue);
+        }
+
+        // clang-format off
+        [[nodiscard]] Value write(
+            ScopeStack& scope_stack,
+            std::vector<std::unique_ptr<expressions::Expression>> const& arguments
+        ) const {
+            // clang-format on
+            if (arguments.size() != 2) {
+                throw WrongNumberOfArguments{ to_view(m_type), 2, arguments.size() };
+            }
+            auto values = std::vector<Value>{};
+            values.reserve(arguments.size());
+            for (auto const& argument : arguments) {
+                values.push_back(argument->evaluate(scope_stack));
+            }
+
+            if (values.at(0)->type() != types::make_string()) {
+                throw WrongArgumentType{ to_view(m_type), "data", values.at(0)->type() };
+            }
+
+            if (values.at(1)->type() != types::make_string()) {
+                throw WrongArgumentType{ to_view(m_type), "filename", values.at(1)->type() };
+            }
+
+            auto file = std::ofstream{ values.at(1)->as_string().string_representation() };
+            if (not file) {
+                // todo: dedicated exception type
+                throw std::runtime_error{ "unable to open file for writing" };
+            }
+
+            file << values.at(0)->as_string().string_representation();
+            if (not file) {
+                // todo: dedicated exception type
+                throw std::runtime_error{ "failed to write file" };
+            }
+
+            return Nothing::make(ValueCategory::Rvalue);
+        }
+
+        // clang-format off
+        [[nodiscard]] Value read(
+            ScopeStack& scope_stack,
+            std::vector<std::unique_ptr<expressions::Expression>> const& arguments
+        ) const { // clang-format on
+            if (arguments.size() != 1) {
+                throw WrongNumberOfArguments{ to_view(m_type), 2, arguments.size() };
+            }
+            auto values = std::vector<Value>{};
+            values.reserve(arguments.size());
+            for (auto const& argument : arguments) {
+                values.push_back(argument->evaluate(scope_stack));
+            }
+
+            if (values.at(0)->type() != types::make_string()) {
+                throw WrongArgumentType{ to_view(m_type), "filename", values.at(0)->type() };
+            }
+
+            auto file = std::ifstream{ values.at(0)->as_string().string_representation() };
+            if (not file) {
+                // todo: dedicated exception type
+                throw std::runtime_error{ "unable to open file for reading" };
+            }
+            auto stream = std::ostringstream{};
+            stream << file.rdbuf();
+            if (not file) {
+                // todo: dedicated exception type
+                throw std::runtime_error{ "failed to read from file" };
+            }
+
+            return String::make(stream.str(), ValueCategory::Rvalue);
         }
     };
 
