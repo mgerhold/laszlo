@@ -18,6 +18,9 @@ void interpret(statements::Statements const& program) {
     scope_stack.top().insert(
             { "read", values::BuiltinFunction::make(BuiltinFunctionType::Read, values::ValueCategory::Rvalue) }
     );
+    scope_stack.top().insert(
+            { "trim", values::BuiltinFunction::make(BuiltinFunctionType::Trim, values::ValueCategory::Rvalue) }
+    );
     for (auto const& statement : program) {
         statement->execute(scope_stack);
     }

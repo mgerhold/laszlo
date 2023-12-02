@@ -16,8 +16,9 @@ values::Value expressions::StructLiteral::evaluate(ScopeStack& scope_stack) cons
     auto value_members = std::unordered_map<std::string, values::Value>{};
 
     for (auto const& [name, value] : m_initializers) {
-        auto const& [iterator, inserted] =
-                value_members.insert({ std::string{ name.lexeme() }, value->evaluate(scope_stack) });
+        auto evaluated = value->evaluate(scope_stack);
+        evaluated->promote_to_lvalue();
+        auto const& [iterator, inserted] = value_members.insert({ std::string{ name.lexeme() }, std::move(evaluated) });
         if (not inserted) {
             // todo: throw different exception type
             throw std::runtime_error{ "duplicate struct initializer" };

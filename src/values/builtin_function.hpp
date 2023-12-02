@@ -58,6 +58,8 @@ namespace values {
                     return write(scope_stack, arguments);
                 case BuiltinFunctionType::Read:
                     return read(scope_stack, arguments);
+                case BuiltinFunctionType::Trim:
+                    return trim(scope_stack, arguments);
             }
             throw std::runtime_error{ "unreachable" };
         }
@@ -275,6 +277,43 @@ namespace values {
             }
 
             return String::make(stream.str(), ValueCategory::Rvalue);
+        }
+
+        [[nodiscard]] Value trim(
+                ScopeStack& scope_stack,
+                std::vector<std::unique_ptr<expressions::Expression>> const& arguments
+        ) const { // clang-format on
+            if (arguments.size() != 1) {
+                throw WrongNumberOfArguments{ to_view(m_type), 2, arguments.size() };
+            }
+
+            auto values = std::vector<Value>{};
+            values.reserve(arguments.size());
+            for (auto const& argument : arguments) {
+                values.push_back(argument->evaluate(scope_stack));
+            }
+
+            if (values.at(0)->type() != types::make_string()) {
+                throw WrongArgumentType{ to_view(m_type), "to_be_trimmed", values.at(0)->type() };
+            }
+
+            auto string = values.at(0)->as_string().string_representation();
+            auto const left_find_iterator =
+                    std::find_if(string.cbegin(), string.cend(), [](char const c) { return not std::isspace(c); });
+            if (left_find_iterator == string.cend()) {
+                // only whitespace found
+                return String::make("", ValueCategory::Rvalue);
+            }
+            string.erase(string.cbegin(), left_find_iterator);
+
+            auto const right_find_iterator =
+                    std::find_if(string.crbegin(), string.crend(), [](char const c) { return not std::isspace(c); });
+            if (right_find_iterator == string.crend()) {
+                return String::make(std::move(string), ValueCategory::Rvalue);
+            }
+            string.erase(right_find_iterator.base(), string.cend());
+
+            return String::make(std::move(string), ValueCategory::Rvalue);
         }
     };
 
