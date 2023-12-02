@@ -7,6 +7,7 @@
 #include "nothing.hpp"
 #include "string.hpp"
 #include "value.hpp"
+#include <algorithm>
 #include <fstream>
 #include <sstream>
 
