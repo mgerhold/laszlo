@@ -13,7 +13,6 @@ src/CMakeFiles/laszlo.dir/expressions/struct_literal.cpp.o: \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__config_site \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__verbose_abort \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__availability \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/version \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__format/buffer.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/copy_n.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/copy.h \
@@ -40,6 +39,7 @@ src/CMakeFiles/laszlo.dir/expressions/struct_literal.cpp.o: \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/remove_cv.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/remove_const.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/remove_volatile.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/version \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/stddef.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/lib/clang/18/include/stddef.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/lib/clang/18/include/__stddef_ptrdiff_t.h \
@@ -57,6 +57,7 @@ src/CMakeFiles/laszlo.dir/expressions/struct_literal.cpp.o: \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_copy_constructible.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/add_const.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/remove_reference.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__undef_macros \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/ranges_iterator_concept.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__iterator/concepts.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__concepts/arithmetic.h \
@@ -113,6 +114,7 @@ src/CMakeFiles/laszlo.dir/expressions/struct_literal.cpp.o: \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__concepts/boolean_testable.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__concepts/invocable.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__functional/invoke.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/invoke.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/apply_cv.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_volatile.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_core_convertible.h \
@@ -140,15 +142,7 @@ src/CMakeFiles/laszlo.dir/expressions/struct_literal.cpp.o: \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__utility/convert_to_integral.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/underlying_type.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__utility/unreachable.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/cstdlib \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/compat/stdlib.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/stdlib.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/stdlib.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/features.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/bits/alltypes.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/alloca.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/limits \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__undef_macros \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__iterator/distance.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__ranges/access.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__ranges/enable_borrowed_range.h \
@@ -171,20 +165,21 @@ src/CMakeFiles/laszlo.dir/expressions/struct_literal.cpp.o: \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__compare/ordering.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__compare/synth_three_way.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__compare/three_way_comparable.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__functional/unwrap_ref.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__fwd/get.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__concepts/different_from.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__fwd/array.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__fwd/get.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__fwd/subrange.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__fwd/tuple.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__tuple_dir/tuple_element.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__tuple_dir/tuple_indices.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__tuple/tuple_element.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__tuple/tuple_indices.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__utility/integer_sequence.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__tuple_dir/tuple_types.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__tuple_dir/sfinae_helpers.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__tuple_dir/make_tuple_types.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__tuple_dir/apply_cv.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__tuple_dir/tuple_size.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__tuple_dir/tuple_like_ext.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__tuple/tuple_types.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__tuple/pair_like.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__tuple/tuple_like.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__tuple/tuple_size.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__tuple/sfinae_helpers.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__tuple/make_tuple_types.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__tuple/tuple_like_ext.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_assignable.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_copy_assignable.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_default_constructible.h \
@@ -192,64 +187,45 @@ src/CMakeFiles/laszlo.dir/expressions/struct_literal.cpp.o: \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_nothrow_copy_assignable.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_nothrow_copy_constructible.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_nothrow_default_constructible.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/unwrap_ref.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__utility/piecewise_construct.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__string/constexpr_c_functions.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory/construct_at.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__iterator/access.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory/voidify.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/new \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__exception/exception.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/alignment_of.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/cstdlib \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/compat/stdlib.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/stdlib.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/stdlib.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/features.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/bits/alltypes.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/alloca.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/datasizeof.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_final.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_always_bitcastable.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_trivially_copyable.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_constant_evaluated.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_trivially_assignable.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/min.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/comp.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/comp_ref_type.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__debug \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/min_element.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__functional/identity.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_callable.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__iterator/segmented_iterator.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/type_traits \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__fwd/hash.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/aligned_storage.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/aligned_union.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/alignment_of.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/can_extract_key.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/remove_const_ref.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/dependent_type.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/has_unique_object_representation.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/has_virtual_destructor.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_abstract.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_aggregate.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_bounded_array.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_char_like_type.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_standard_layout.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_trivial.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_compound.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_fundamental.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_empty.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_final.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_literal_type.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_nothrow_convertible.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/lazy.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_pod.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_polymorphic.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_scoped_enum.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_specialization.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_trivially_constructible.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_trivially_copy_assignable.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_trivially_copy_constructible.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_trivially_default_constructible.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_trivially_destructible.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_trivially_move_assignable.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_trivially_move_constructible.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_unbounded_array.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/maybe_const.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/negation.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/rank.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/result_of.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/type_identity.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/cstdint \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/stdint.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/lib/clang/18/include/stdint.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/stdint.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/bits/stdint.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_constant_evaluated.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_equality_comparable.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_trivially_lexicographically_comparable.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__utility/is_pointer_in_range.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/comp.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/predicate_traits.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_trivially_assignable.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/for_each_segment.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__iterator/segmented_iterator.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/min.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/comp_ref_type.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/min_element.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__functional/identity.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_callable.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/fill_n.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/max.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/max_element.h \
@@ -265,32 +241,34 @@ src/CMakeFiles/laszlo.dir/expressions/struct_literal.cpp.o: \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__format/format_parse_context.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__format/format_error.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/stdexcept \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/exception \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/iosfwd \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__fwd/fstream.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__fwd/string.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__fwd/memory_resource.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__fwd/ios.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__fwd/istream.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__fwd/ostream.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__fwd/sstream.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__fwd/streambuf.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__std_mbstate_t.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__mbstate_t.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/compat/wchar.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/wchar.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/wchar.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/string_view \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__functional/hash.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__functional/unary_function.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__fwd/hash.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/cstring \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/compat/string.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/string.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/string.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/strings.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__fwd/string_view.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__iterator/bounded_iter.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__iterator/reverse_iterator.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__compare/compare_three_way_result.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__iterator/iterator.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__ranges/subrange.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__concepts/different_from.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__ranges/view_interface.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__ranges/empty.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__tuple_dir/pair_like.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__tuple_dir/tuple_like.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__string/char_traits.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/find_end.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/search.h \
@@ -308,7 +286,12 @@ src/CMakeFiles/laszlo.dir/expressions/struct_literal.cpp.o: \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/compat/wctype.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/wctype.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/wctype.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__iterator/access.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/compat/wchar.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/wchar.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/wchar.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_standard_layout.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_trivial.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/type_identity.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__iterator/data.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__iterator/empty.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__iterator/reverse_access.h \
@@ -322,51 +305,60 @@ src/CMakeFiles/laszlo.dir/expressions/struct_literal.cpp.o: \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__bit/bit_cast.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__utility/priority_tag.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/cmath \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/promote.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/compat/math.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/math.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/math.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/promote.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__compare/compare_strong_order_fallback.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__compare/compare_weak_order_fallback.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__compare/is_eq.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_specialization.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/tuple \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory/allocator_arg_t.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory/uses_allocator.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_empty.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/lazy.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/maybe_const.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/negation.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__format/enable_insertable.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__format/format_to_n_result.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__iterator/back_insert_iterator.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/vector \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/equal.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/lexicographical_compare.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory/allocate_at_least.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory/allocator_traits.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory/ranges_construct_at.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory/concepts.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory/uninitialized_algorithms.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/move.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_trivially_copy_assignable.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_trivially_copy_constructible.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_trivially_move_assignable.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_trivially_move_constructible.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_unbounded_array.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__utility/exception_guard.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__format/container_adaptor.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__format/formatter.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__format/range_default_formatter.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__chrono/statically_widen.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__format/range_formatter.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__format/format_context.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__format/format_arg.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__variant/monostate.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__format/format_arg_store.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/string \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/remove.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/find.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/find_if.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/remove_if.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/rotate.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/move.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/move_backward.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/swap_ranges.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__bit_reference \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__bit/countr.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__bit/rotate.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__bit/popcount.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory/construct_at.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory/voidify.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/new \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__format/formatter.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory/allocate_at_least.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory/allocator_traits.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory/swap_allocator.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory/temp_value.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory/uninitialized_algorithms.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__utility/exception_guard.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory_resource/polymorphic_allocator.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory_resource/memory_resource.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__split_buffer \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__iterator/move_iterator.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__iterator/move_sentinel.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__ios/fpos.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory/allocator.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory/compressed_pair.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/dependent_type.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory/swap_allocator.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory_resource/polymorphic_allocator.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory_resource/memory_resource.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__ranges/container_compatible_range.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__ranges/from_range.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__string/extern_template_lists.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_allocator.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/noexcept_move_assign_container.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/climits \
@@ -374,64 +366,72 @@ src/CMakeFiles/laszlo.dir/expressions/struct_literal.cpp.o: \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/lib/clang/18/include/limits.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/limits.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/bits/limits.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__format/container_adaptor.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__format/range_default_formatter.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__chrono/statically_widen.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__format/range_formatter.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__format/format_args.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__format/format_arg.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__variant/monostate.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/string \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__ios/fpos.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__string/extern_template_lists.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__format/format_arg_store.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__format/format_context.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/locale \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/equal.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/reverse.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__iterator/istreambuf_iterator.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__iterator/default_sentinel.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__iterator/ostreambuf_iterator.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__locale \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/locale.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/locale.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/mutex \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory/shared_ptr.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__functional/binary_function.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__functional/operations.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/operation_traits.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__functional/reference_wrapper.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__functional/weak_result_type.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory/allocation_guard.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory/allocator_destructor.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory/auto_ptr.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory/unique_ptr.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_bounded_array.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/typeinfo \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/atomic \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__atomic/memory_order.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/clocale \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/locale.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/locale.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/mutex \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__chrono/steady_clock.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__chrono/duration.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/ratio \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__thread/poll_with_backoff.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__chrono/high_resolution_clock.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__chrono/steady_clock.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__chrono/time_point.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__condition_variable/condition_variable.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__chrono/system_clock.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/ctime \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/compat/time.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/time.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__thread/timed_backoff_policy.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__mutex/mutex.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__threading_support \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__chrono/convert_to_timespec.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__thread/poll_with_backoff.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__chrono/high_resolution_clock.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/errno.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/errno.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/bits/errno.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/pthread.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/sched.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__mutex_base \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/system_error \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__errc \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__mutex/unique_lock.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__mutex/tag_types.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__system_error/system_error.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__system_error/error_category.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__system_error/error_code.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__system_error/errc.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/cerrno \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__system_error/error_condition.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__mutex/lock_guard.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__thread/id.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__support/musl/xlocale.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/ios \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__atomic/atomic.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__atomic/atomic_base.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__atomic/atomic_sync.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__atomic/contention_t.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__atomic/cxx_atomic_impl.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__atomic/is_always_lock_free.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__atomic/check_memory_order.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/streambuf \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__bsd_locale_fallbacks.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__locale_dir/locale_base_api/bsd_locale_fallbacks.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__locale_dir/locale_base_api/locale_guard.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/compat/stdarg.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/lib/clang/18/include/stdarg.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/lib/clang/18/include/__stdarg___gnuc_va_list.h \
@@ -440,39 +440,25 @@ src/CMakeFiles/laszlo.dir/expressions/struct_literal.cpp.o: \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/lib/clang/18/include/__stdarg___va_copy.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/lib/clang/18/include/__stdarg_va_copy.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/optional \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_trivially_destructible.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__utility/in_place.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__format/formatter_output.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/ranges_fill_n.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/ranges_transform.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/in_in_out_result.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__iterator/projected.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__format/escaped_output_table.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/ranges_upper_bound.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/lower_bound.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/half_positive.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__functional/ranges_operations.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__bit/countl.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__bit/rotate.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__format/parser_std_format_spec.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__format/format_string.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__format/unicode.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__format/extended_grapheme_cluster_table.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/bit \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__bit/bit_ceil.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__bit/countl.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__bit/bit_floor.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__bit/bit_log2.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__bit/bit_width.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__bit/blsr.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__bit/byteswap.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__bit/endian.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__bit/has_single_bit.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/charconv \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__charconv/chars_format.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__utility/to_underlying.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__charconv/from_chars_result.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__charconv/tables.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__charconv/to_chars_base_10.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__charconv/to_chars_result.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/make_32_64_or_128_bit.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/ranges_upper_bound.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/lower_bound.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/half_positive.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__functional/ranges_operations.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__format/width_estimation_table.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__ranges/ref_view.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/queue \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/make_heap.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/sift_down.h \
@@ -480,14 +466,42 @@ src/CMakeFiles/laszlo.dir/expressions/struct_literal.cpp.o: \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/push_heap.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/deque \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/copy_backward.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/lexicographical_compare.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/lexicographical_compare_three_way.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/three_way_comp_ref_type.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory/temp_value.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/aligned_storage.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__split_buffer \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/move_backward.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__iterator/move_iterator.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__iterator/move_sentinel.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/vector \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/rotate.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/swap_ranges.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__bit_reference \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__bit/countr.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__bit/popcount.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__format/formatter_bool.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__format/formatter_integral.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__charconv/to_chars_integral.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__charconv/tables.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__charconv/to_chars_base_10.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__charconv/to_chars_result.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__charconv/traits.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/make_32_64_or_128_bit.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/array \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/stack \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__format/format_functions.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/clamp.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__format/formatter_bool.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__format/formatter_integral.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/array \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__format/formatter_char.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__format/write_escaped.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/ranges_for_each.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/in_fun_result.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__format/escaped_output_table.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__format/formatter_floating_point.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__charconv/chars_format.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__utility/to_underlying.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__charconv/to_chars_floating_point.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__format/formatter_integer.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__format/formatter_pointer.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__format/formatter_string.h \
@@ -495,8 +509,10 @@ src/CMakeFiles/laszlo.dir/expressions/struct_literal.cpp.o: \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/sstream \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/istream \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/ostream \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__exception/operations.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/bitset \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/fill.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_char_like_type.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/cassert \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/assert.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/filesystem \
@@ -531,8 +547,6 @@ src/CMakeFiles/laszlo.dir/expressions/struct_literal.cpp.o: \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/memory \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory/align.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory/assume_aligned.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory/concepts.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory/ranges_construct_at.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory/ranges_uninitialized_algorithms.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory/raw_storage_iterator.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory/temporary_buffer.h \
@@ -549,10 +563,44 @@ src/CMakeFiles/laszlo.dir/expressions/struct_literal.cpp.o: \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__numeric/iota.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__numeric/midpoint.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__numeric/partial_sum.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__numeric/pstl_reduce.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/pstl_frontend_dispatch.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__numeric/pstl_transform_reduce.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/pstl_backend.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/pstl_backends/cpu_backend.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/pstl_backends/cpu_backends/any_of.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/any_of.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/pstl_backends/cpu_backends/backend.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/pstl_backends/cpu_backends/serial.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_execution_policy.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__utility/terminate_on_exception.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__exception/terminate.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/pstl_backends/cpu_backends/fill.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/pstl_backends/cpu_backends/find_if.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/pstl_backends/cpu_backends/for_each.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/for_each.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/pstl_backends/cpu_backends/merge.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/merge.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/pstl_backends/cpu_backends/stable_sort.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/stable_sort.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/inplace_merge.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/upper_bound.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory/destruct_n.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/sort.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/partial_sort.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/sort_heap.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__debug_utils/strict_weak_ordering_check.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/is_sorted.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/is_sorted_until.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__debug_utils/randomize_range.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__bit/blsr.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/pstl_backends/cpu_backends/transform.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/pstl_backends/cpu_backends/transform_reduce.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__numeric/transform_reduce.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/execution \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__numeric/reduce.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__numeric/transform_exclusive_scan.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__numeric/transform_inclusive_scan.h \
-  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__numeric/transform_reduce.h \
   /home/runner/work/laszlo/laszlo/src/expressions/../values/struct.hpp \
   /home/runner/work/laszlo/laszlo/src/expressions/../values/../statements/struct_definition.hpp \
   /home/runner/work/laszlo/laszlo/src/expressions/../values/../statements/statement.hpp \
@@ -563,7 +611,10 @@ src/CMakeFiles/laszlo.dir/expressions/struct_literal.cpp.o: \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/is_permutation.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__functional/is_transparent.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__hash_table \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/can_extract_key.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/remove_const_ref.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__iterator/erase_if_container.h \
+  /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__iterator/ranges_iterator_traits.h \
   /home/runner/work/laszlo/laszlo/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__node_handle \
   /home/runner/work/laszlo/laszlo/src/expressions/../values/bool.hpp \
   /home/runner/work/laszlo/laszlo/src/expressions/../values/string.hpp \
